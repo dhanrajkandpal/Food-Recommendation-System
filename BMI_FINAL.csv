@@ -1,0 +1,742 @@
+Age,Height,Weight,Bmi,Gender,BmiClass
+61,1.85,109.3,31.9357195,Male,Obese Class 1
+60,1.71,79.02,27.0236996,Female,Overweight
+60,1.55,74.7,31.09261186,Female,Obese Class 1
+60,1.46,35.9,16.84180897,Female,Underweight
+60,1.58,97.1,38.89601025,Female,Obese Class 2
+59,1.71,79.32,27.12629527,Male,Overweight
+59,1.7,73.32,25.37024221,Male,Overweight
+59,1.72,85.32,28.83991347,Female,Overweight
+59,1.46,36,16.88872209,Female,Underweight
+59,1.83,104.7,31.26399713,Male,Obese Class 1
+58,1.71,79.31,27.12287541,Male,Overweight
+58,1.7,73.41,25.40138408,Female,Overweight
+58,1.72,85.21,28.80273121,Female,Overweight
+58,1.47,36,16.65972511,Female,Underweight
+57,1.71,79.3,27.11945556,Male,Overweight
+57,1.7,73.5,25.43252595,Male,Overweight
+57,1.72,85.1,28.76554895,Male,Overweight
+57,1.75,110,35.91836735,Male,Obese Class 2
+57,1.58,79.7,31.9259734,Female,Obese Class 1
+57,1.47,36,16.65972511,Female,Underweight
+57,1.6,99.1,38.7109375,Female,Obese Class 2
+56,1.71,79.29,27.1160357,Male,Overweight
+56,1.7,73.59,25.46366782,Male,Overweight
+56,1.72,84.99,28.72836668,Male,Overweight
+56,1.59,75.8,29.98299118,Female,Overweight
+56,1.47,36.1,16.70600213,Female,Underweight
+56,1.8,98.5,30.40123457,Male,Obese Class 1
+56,1.59,98,38.76428939,Female,Obese Class 2
+55,1.72,79.28,26.79826933,Male,Overweight
+55,1.71,73.68,25.19749667,Male,Overweight
+55,1.73,84.88,28.36045307,Male,Overweight
+55,1.72,95,32.11195241,Male,Obese Class 1
+55,1.7,160,55.3633218,Male,Obese Class 3
+55,1.48,36.1,16.48100804,Female,Underweight
+54,1.72,79.32,26.81179016,Female,Overweight
+54,1.71,73.82,25.24537465,Female,Overweight
+54,1.61,78.1,30.13001042,Female,Obese Class 1
+54,1.48,36.2,16.5266618,Female,Underweight
+54,1.61,100.3,38.69449481,Female,Obese Class 2
+53,1.72,79.31,26.80840995,Male,Overweight
+53,1.62,76.3,29.073312,Male,Overweight
+53,1.49,36.2,16.30557182,Female,Underweight
+53,1.62,101.7,38.75171468,Male,Obese Class 2
+52,1.72,79.3,26.80502975,Female,Overweight
+52,1.71,74,25.30693205,Male,Overweight
+52,1.6,73,28.515625,Female,Overweight
+52,1.49,36.3,16.35061484,Female,Underweight
+52,1.64,105.1,39.07644259,Female,Obese Class 2
+51,1.72,79.29,26.80164954,Male,Overweight
+51,1.71,74.09,25.33771075,Male,Overweight
+51,1.63,70.2,26.42176973,Female,Overweight
+51,1.5,36.4,16.17777778,Female,Underweight
+51,1.75,91.2,29.77959184,Female,Overweight
+51,1.7,107.3,37.12802768,Female,Obese Class 2
+50,1.73,79.28,26.48935815,Male,Overweight
+50,1.72,74.18,25.07436452,Female,Overweight
+50,1.74,84.38,27.87026027,Male,Overweight
+50,1.8,135,41.66666667,Male,Obese Class 3
+50,1.62,46,17.52781588,Male,Underweight
+50,1.63,72.5,27.28744025,Female,Overweight
+50,1.5,36.5,16.22222222,Female,Underweight
+50,1.84,106.9,31.57490548,Male,Obese Class 1
+50,1.66,110.5,40.10015967,Female,Obese Class 3
+49,1.73,79.02,26.40248588,Male,Overweight
+49,1.72,74.02,25.02028123,Male,Overweight
+49,1.74,84.02,27.75135421,Male,Overweight
+49,1.6,75,29.296875,Female,Overweight
+49,1.6,44,17.1875,Female,Underweight
+49,1.64,77.9,28.96341463,Male,Overweight
+49,1.51,36.6,16.05192755,Female,Underweight
+49,1.63,103.2,38.84225978,Female,Obese Class 2
+48,1.74,79.01,26.09657815,Male,Overweight
+48,1.73,74.11,24.76193658,Male,Normal Weight
+48,1.75,83.91,27.39918367,Male,Overweight
+48,1.63,100,37.63784862,Female,Obese Class 2
+48,1.58,42,16.82422689,Female,Underweight
+48,1.68,79.5,28.16751701,Female,Overweight
+48,1.51,36.7,16.09578527,Female,Underweight
+48,1.69,110.9,38.82917265,Male,Obese Class 2
+47,1.74,79,26.0932752,Male,Overweight
+47,1.73,74.2,24.79200775,Female,Normal Weight
+47,1.75,83.8,27.36326531,Male,Overweight
+47,1.55,40,16.64932362,Female,Underweight
+47,1.65,75.3,27.6584022,Male,Overweight
+47,1.52,36.8,15.92797784,Female,Underweight
+47,1.82,99.7,30.09902186,Male,Obese Class 1
+47,1.75,112.2,36.63673469,Male,Obese Class 2
+46,1.74,78.99,26.08997226,Male,Overweight
+46,1.73,74.29,24.82207892,Female,Normal Weight
+46,1.75,83.69,27.32734694,Male,Overweight
+46,1.86,70,20.23355301,Male,Normal Weight
+46,1.73,77,25.72755521,Male,Overweight
+46,1.52,36.9,15.97126039,Female,Underweight
+46,1.74,111.2,36.72876206,Male,Obese Class 2
+45,1.74,78.98,26.08666931,Male,Overweight
+45,1.73,74.38,24.85215009,Male,Normal Weight
+45,1.75,83.58,27.29142857,Male,Overweight
+45,1.68,140,49.6031746,Male,Obese Class 3
+45,1.84,68,20.08506616,Male,Normal Weight
+45,1.72,78.3,26.46700919,Male,Overweight
+45,1.53,37,15.80588662,Female,Underweight
+45,1.78,90.7,28.62643606,Male,Overweight
+45,1.8,116,35.80246914,Male,Obese Class 2
+44,1.74,78.62,25.96776324,Male,Overweight
+44,1.73,74.12,24.76527782,Female,Normal Weight
+44,1.75,83.12,27.14122449,Male,Overweight
+44,1.82,66,19.92512982,Male,Normal Weight
+44,1.71,74.4,25.44372627,Female,Overweight
+44,1.53,37.2,15.89132385,Female,Underweight
+44,1.8,96.1,29.66049383,Male,Overweight
+44,1.79,116.4,36.32845417,Male,Obese Class 2
+43,1.74,78.61,25.9644603,Male,Overweight
+43,1.73,74.21,24.79534899,Female,Normal Weight
+43,1.75,83.01,27.10530612,Male,Overweight
+43,1.8,64,19.75308642,Male,Normal Weight
+43,1.69,72.2,25.27922692,Female,Overweight
+43,1.54,37.4,15.76994434,Female,Underweight
+43,1.78,114.5,36.13811387,Male,Obese Class 2
+42,1.74,78.6,25.96115735,Female,Overweight
+42,1.73,74.3,24.82542016,Male,Normal Weight
+42,1.75,82.9,27.06938776,Male,Overweight
+42,1.65,90,33.05785124,Female,Obese Class 1
+42,1.78,62,19.56823633,Male,Normal Weight
+42,1.75,76.5,24.97959184,Male,Normal Weight
+42,1.54,37.5,15.81210997,Female,Underweight
+42,1.79,93.8,29.27499142,Male,Overweight
+42,1.75,112,36.57142857,Male,Obese Class 2
+41,1.74,78.59,25.95785441,Female,Overweight
+41,1.73,74.39,24.85549133,Male,Normal Weight
+41,1.75,82.79,27.03346939,Male,Overweight
+41,1.76,60,19.36983471,Male,Normal Weight
+41,1.72,78.6,26.56841536,Male,Overweight
+41,1.55,37.7,15.69198751,Female,Underweight
+41,1.73,110.1,36.78706272,Male,Obese Class 2
+40,1.74,78.58,25.95455146,Female,Overweight
+40,1.73,74.48,24.8855625,Male,Normal Weight
+40,1.75,82.68,26.99755102,Male,Overweight
+40,1.729,74.48,24.9143569,Male,Normal Weight
+40,1.7,105,36.33217993,Male,Obese Class 2
+40,1.74,58,19.15708812,Female,Normal Weight
+40,1.7,75,25.95155709,Female,Overweight
+40,1.56,38,15.61472715,Female,Underweight
+40,1.68,108.6,38.47789116,Female,Obese Class 2
+39,1.74,77.42,25.5714097,Male,Overweight
+39,1.73,73.42,24.53139096,Male,Normal Weight
+39,1.75,81.42,26.58612245,Male,Overweight
+39,1.729,73.42,24.55977556,Male,Normal Weight
+39,1.72,56,18.92915089,Male,Normal Weight
+39,1.66,71.7,26.01974162,Male,Overweight
+39,1.56,38.3,15.73800131,Female,Underweight
+39,1.78,90.2,28.4686277,Male,Overweight
+39,1.74,111.7,36.89390937,Male,Obese Class 2
+38,1.74,77.41,25.56810675,Male,Overweight
+38,1.73,73.51,24.56146213,Male,Normal Weight
+38,1.75,81.31,26.55020408,Female,Overweight
+38,1.729,73.51,24.58988152,Male,Normal Weight
+38,1.68,80,28.3446712,Female,Overweight
+38,1.7,54,18.68512111,Female,Normal Weight
+38,1.71,74.8,25.5805205,Male,Overweight
+38,1.57,38.7,15.70043409,Female,Underweight
+38,1.77,88.3,28.18474895,Male,Overweight
+38,1.78,118.9,37.52682742,Male,Obese Class 2
+37,1.74,77.4,25.5648038,Male,Overweight
+37,1.73,73.6,24.5915333,Male,Normal Weight
+37,1.75,81.2,26.51428571,Male,Overweight
+37,1.729,73.6,24.61998748,Female,Normal Weight
+37,1.7298,80.4,26.86978944,Male,Overweight
+37,1.68,52,18.42403628,Male,Underweight
+37,1.67,71.1,25.49392233,Male,Overweight
+37,1.58,39.1,15.66255408,Female,Underweight
+37,1.76,113.3,36.57670455,Male,Obese Class 2
+36,1.74,77.39,25.56150086,Male,Overweight
+36,1.73,73.69,24.62160446,Male,Normal Weight
+36,1.75,81.09,26.47836735,Male,Overweight
+36,1.729,73.69,24.65009345,Male,Normal Weight
+36,1.7298,80.39,26.86644743,Male,Overweight
+36,1.66,50,18.14486863,Female,Underweight
+36,1.69,62,21.70792339,Male,Normal Weight
+36,1.68,68.4,24.23469388,Female,Normal Weight
+36,1.59,39.6,15.66393734,Female,Underweight
+36,1.75,112.2,36.63673469,Male,Obese Class 2
+35,1.74,77.38,25.55819791,Male,Overweight
+35,1.73,73.78,24.65167563,Female,Normal Weight
+35,1.75,80.98,26.44244898,Female,Overweight
+35,1.729,73.78,24.68019941,Male,Normal Weight
+35,1.7298,80.38,26.86310541,Male,Overweight
+35,1.7,85,29.41176471,Female,Overweight
+35,1.64,48,17.84651993,Female,Underweight
+35,1.71,65,22.22906193,Male,Normal Weight
+35,1.72,67,22.64737696,Male,Normal Weight
+35,1.65,65.2,23.94857668,Male,Normal Weight
+35,1.6,40.1,15.6640625,Female,Underweight
+35,1.75,85.6,27.95102041,Female,Overweight
+35,1.7,98.5,34.08304498,Female,Obese Class 1
+34,1.74,76.22,25.17505615,Male,Overweight
+34,1.73,72.72,24.29750409,Male,Normal Weight
+34,1.75,79.72,26.03102041,Male,Overweight
+34,1.729,72.72,24.32561807,Female,Normal Weight
+34,1.7298,79.22,26.47543184,Female,Overweight
+34,1.62,46,17.52781588,Female,Underweight
+34,1.73,67,22.38631428,Male,Normal Weight
+34,1.72,66,22.30935641,Male,Normal Weight
+34,1.71,66,22.5710475,Male,Normal Weight
+34,1.7,65,22.49134948,Female,Normal Weight
+34,1.73,70.9,23.68939824,Male,Normal Weight
+34,1.61,40.6,15.66297597,Male,Underweight
+34,1.77,86.9,27.73787864,Male,Overweight
+34,1.81,120.9,36.90363542,Male,Obese Class 2
+33,1.74,76.21,25.1717532,Male,Overweight
+33,1.73,72.81,24.32757526,Male,Normal Weight
+33,1.75,79.61,25.99510204,Male,Overweight
+33,1.729,72.81,24.35572403,Male,Normal Weight
+33,1.7298,79.21,26.47208982,Male,Overweight
+33,1.6,44,17.1875,Female,Underweight
+33,1.69,64,22.40817899,Female,Normal Weight
+33,1.73,66,22.05219018,Male,Normal Weight
+33,1.7,65,22.49134948,Male,Normal Weight
+33,1.77,73.6,23.49261068,Male,Normal Weight
+33,1.62,41.2,15.6988264,Female,Underweight
+33,1.76,84.3,27.21461777,Male,Overweight
+33,1.8,118.1,36.45061728,Male,Obese Class 2
+32,1.74,76.2,25.16845026,Male,Overweight
+32,1.73,72.9,24.35764643,Male,Normal Weight
+32,1.75,79.5,25.95918367,Male,Overweight
+32,1.729,72.9,24.38582999,Male,Normal Weight
+32,1.6,120,46.875,Female,Obese Class 3
+32,1.58,42,16.82422689,Female,Underweight
+32,1.65,60,22.03856749,Female,Normal Weight
+32,1.68,65,23.03004535,Female,Normal Weight
+32,1.7,65,22.49134948,Female,Normal Weight
+32,1.68,64,22.67573696,Female,Normal Weight
+32,1.65,61,22.40587695,Female,Normal Weight
+32,1.69,67.8,23.73866461,Female,Normal Weight
+32,1.64,42.2,15.69006544,Female,Underweight
+32,1.72,81.9,27.68388318,Male,Overweight
+32,1.77,115.7,36.93063934,Male,Obese Class 2
+31,1.74,76.19,25.16514731,Male,Overweight
+31,1.73,72.99,24.3877176,Male,Normal Weight
+31,1.75,79.39,25.92326531,Male,Overweight
+31,1.729,72.99,24.41593596,Male,Normal Weight
+31,1.7298,76.07,25.42269755,Female,Overweight
+31,1.55,40,16.64932362,Female,Underweight
+31,1.68,62,21.96712018,Female,Normal Weight
+31,1.74,67,22.12973973,Male,Normal Weight
+31,1.71,66,22.5710475,Male,Normal Weight
+31,1.68,63,22.32142857,Female,Normal Weight
+31,1.63,60,22.58270917,Female,Normal Weight
+31,1.7,74.1,25.64013841,Female,Overweight
+31,1.65,43,15.7943067,Female,Underweight
+31,1.74,82.5,27.24930638,Female,Overweight
+31,1.85,132,38.56829803,Male,Obese Class 2
+30,1.74,76.18,25.16184437,Male,Overweight
+30,1.73,73.08,24.41778877,Female,Normal Weight
+30,1.75,79.28,25.88734694,Male,Overweight
+30,1.729,73.08,24.44604192,Male,Normal Weight
+30,1.7298,76.06,25.41935553,Male,Overweight
+30,1.68,95,33.65929705,Female,Obese Class 1
+30,1.7,155,53.63321799,Female,Obese Class 3
+30,1.8,175,54.01234568,Male,Obese Class 3
+30,2.07,270,63.01197227,Male,Obese Class 3
+30,1.86,70,20.23355301,Male,Normal Weight
+30,1.7,66,22.83737024,Female,Normal Weight
+30,1.72,66,22.30935641,Male,Normal Weight
+30,1.69,64,22.40817899,Male,Normal Weight
+30,1.65,61,22.40587695,Female,Normal Weight
+30,1.865,93.4,26.85277692,Male,Overweight
+30,1.87,92.3,26.39480683,Male,Overweight
+30,1.68,68.7,24.34098639,Female,Normal Weight
+30,1.67,44.5,15.95611173,Male,Underweight
+30,1.74,79.9,26.39054036,Male,Overweight
+30,1.72,106.7,36.06679286,Female,Obese Class 2
+29,1.79,74.72,23.32012109,Male,Normal Weight
+29,1.78,71.72,22.6360308,Male,Normal Weight
+29,1.8,77.72,23.98765432,Male,Normal Weight
+29,1.779,71.72,22.661486,Male,Normal Weight
+29,1.7798,74.6,23.55029885,Male,Normal Weight
+29,1.65,150,55.09641873,Female,Obese Class 3
+29,1.75,170,55.51020408,Male,Obese Class 3
+29,2.05,260,61.86793575,Male,Obese Class 3
+29,1.84,68,20.08506616,Male,Normal Weight
+29,1.63,58,21.8299522,Female,Normal Weight
+29,1.7,64,22.14532872,Male,Normal Weight
+29,1.68,63,22.32142857,Male,Normal Weight
+29,1.66,62,22.4996371,Male,Normal Weight
+29,1.847,90.9,26.64588151,Male,Overweight
+29,1.853,89.7,26.12411605,Male,Overweight
+29,1.72,69.3,23.42482423,Male,Normal Weight
+29,1.66,45.7,16.58440993,Female,Underweight
+29,1.75,81.4,26.57959184,Male,Overweight
+29,1.76,113.8,36.73811983,Male,Obese Class 2
+28,1.78,74.71,23.57972478,Male,Normal Weight
+28,1.77,71.81,22.92125507,Male,Normal Weight
+28,1.79,77.61,24.22209045,Male,Normal Weight
+28,1.769,71.81,22.94717676,Male,Normal Weight
+28,1.7698,74.59,23.81399322,Male,Normal Weight
+28,1.75,75,24.48979592,Male,Normal Weight
+28,1.67,145,51.99182473,Female,Obese Class 3
+28,1.72,165,55.77339102,Male,Obese Class 3
+28,2.02,250,61.26850309,Male,Obese Class 3
+28,1.82,66,19.92512982,Male,Normal Weight
+28,1.78,75,23.67125363,Male,Normal Weight
+28,1.76,69,22.27530992,Male,Normal Weight
+28,1.66,62,22.4996371,Female,Normal Weight
+28,1.67,63,22.58955144,Female,Normal Weight
+28,1.63,60,22.58270917,Female,Normal Weight
+28,1.832,88.3,26.30932858,Male,Overweight
+28,1.838,87.2,25.81222671,Male,Overweight
+28,1.78,72.1,22.75596516,Male,Normal Weight
+28,1.68,46.2,16.36904762,Female,Underweight
+28,1.73,78.6,26.26215376,Male,Overweight
+28,1.82,126.8,38.28040092,Male,Obese Class 2
+27,1.77,74.7,23.84372307,Male,Normal Weight
+27,1.76,71.9,23.2115186,Male,Normal Weight
+27,1.78,77.5,24.46029542,Female,Normal Weight
+27,1.759,71.9,23.23791782,Male,Normal Weight
+27,1.7598,74.58,24.08217746,Male,Normal Weight
+27,1.69,140,49.01789153,Male,Obese Class 3
+27,1.77,160,51.07089278,Male,Obese Class 3
+27,2,240,60,Male,Obese Class 3
+27,1.8,64,19.75308642,Male,Normal Weight
+27,1.67,63,22.58955144,Female,Normal Weight
+27,1.75,68,22.20408163,Male,Normal Weight
+27,1.66,62,22.4996371,Female,Normal Weight
+27,1.62,59,22.48132907,Female,Normal Weight
+27,1.82,85.8,25.90266876,Male,Overweight
+27,1.825,84.6,25.40063802,Male,Overweight
+27,1.79,76.8,23.96928935,Male,Normal Weight
+27,1.69,47.5,16.63107034,Female,Underweight
+27,1.71,76.3,26.09349885,Male,Overweight
+27,1.84,131,38.69328922,Male,Obese Class 2
+26,1.76,74.69,24.11221591,Male,Normal Weight
+26,1.75,71.99,23.50693878,Male,Normal Weight
+26,1.77,77.39,24.70235245,Male,Normal Weight
+26,1.749,71.99,23.53382689,Male,Normal Weight
+26,1.7498,74.57,24.35495428,Male,Normal Weight
+26,1.64,135,50.1933373,Male,Obese Class 3
+26,1.79,155,48.37551887,Male,Obese Class 3
+26,1.97,230,59.26460357,Male,Obese Class 3
+26,1.78,62,19.56823633,Male,Normal Weight
+26,1.74,68,22.46003435,Male,Normal Weight
+26,1.69,63,22.05805119,Male,Normal Weight
+26,1.65,61,22.40587695,Female,Normal Weight
+26,1.6,58,22.65625,Female,Normal Weight
+26,1.794,83.2,25.85106555,Male,Overweight
+26,1.799,82.1,25.36768466,Male,Overweight
+26,1.74,71.9,23.74818338,Male,Normal Weight
+26,1.71,48.9,16.72309429,Male,Underweight
+26,1.76,80.2,25.8910124,Male,Overweight
+26,1.86,134.1,38.76170656,Male,Obese Class 2
+25,1.75,74.68,24.38530612,Male,Normal Weight
+25,1.74,72.08,23.80763641,Male,Normal Weight
+25,1.76,77.28,24.94834711,Male,Normal Weight
+25,1.739,72.08,23.83502512,Male,Normal Weight
+25,1.7398,74.56,24.63242938,Male,Normal Weight
+25,1.7,130,44.98269896,Male,Obese Class 3
+25,1.74,150,49.54419342,Male,Obese Class 3
+25,1.95,220,57.85667324,Male,Obese Class 3
+25,1.76,60,19.36983471,Male,Normal Weight
+25,1.72,68,22.98539751,Female,Normal Weight
+25,1.62,60,22.86236854,Female,Normal Weight
+25,1.6,58,22.65625,Female,Normal Weight
+25,1.77,78,24.89706023,Male,Normal Weight
+25,1.77,77,24.57786715,Male,Normal Weight
+25,1.76,76,24.53512397,Male,Normal Weight
+25,1.76,75,24.21229339,Female,Normal Weight
+25,1.786,80.7,25.29942354,Male,Overweight
+25,1.781,79.5,25.06335986,Female,Overweight
+25,1.75,70.5,23.02040816,Female,Normal Weight
+25,1.73,49.7,16.60596746,Male,Underweight
+25,1.71,77.7,26.57227865,Male,Overweight
+25,1.75,100.2,32.71836735,Male,Obese Class 1
+24,1.77,71.82,22.924447,Male,Normal Weight
+24,1.76,69.32,22.3786157,Male,Normal Weight
+24,1.78,74.32,23.45663426,Male,Normal Weight
+24,1.759,69.32,22.40406764,Male,Normal Weight
+24,1.781,74.32,23.43030069,Male,Normal Weight
+24,1.62,125,47.62993446,Female,Obese Class 3
+24,1.76,145,46.81043388,Male,Obese Class 3
+24,1.92,210,56.96614583,Male,Obese Class 3
+24,1.74,58,19.15708812,Male,Normal Weight
+24,1.75,70,22.85714286,Male,Normal Weight
+24,1.76,76,24.53512397,Male,Normal Weight
+24,1.76,75,24.21229339,Male,Normal Weight
+24,1.75,74,24.16326531,Female,Normal Weight
+24,1.75,73,23.83673469,Male,Normal Weight
+24,1.772,78.1,24.87273821,Male,Normal Weight
+24,1.767,77,24.66139425,Male,Normal Weight
+24,1.76,68,21.95247934,Male,Normal Weight
+24,1.66,50.5,18.32631732,Female,Underweight
+24,1.72,74.8,25.28393726,Female,Overweight
+24,1.83,128.7,38.43052943,Female,Obese Class 2
+23,1.76,71.81,23.18246384,Male,Normal Weight
+23,1.75,69.41,22.6644898,Male,Normal Weight
+23,1.77,74.21,23.68731846,Male,Normal Weight
+23,1.749,69.41,22.69041429,Male,Normal Weight
+23,1.771,74.21,23.66057579,Female,Normal Weight
+23,1.68,120,42.5170068,Female,Obese Class 3
+23,1.71,140,47.87797955,Male,Obese Class 3
+23,1.9,200,55.40166205,Male,Obese Class 3
+23,1.72,56,18.92915089,Female,Normal Weight
+23,1.75,74,24.16326531,Male,Normal Weight
+23,1.75,73,23.83673469,Female,Normal Weight
+23,1.74,72,23.78121284,Male,Normal Weight
+23,1.74,71,23.45091822,Female,Normal Weight
+23,1.753,75.6,24.60129469,Male,Normal Weight
+23,1.746,74.4,24.40531721,Female,Normal Weight
+23,1.68,52.1,18.45946712,Male,Underweight
+23,1.7,75.9,26.26297578,Male,Overweight
+22,1.75,71.8,23.44489796,Female,Normal Weight
+22,1.74,69.5,22.95547628,Male,Normal Weight
+22,1.76,74.1,23.92174587,Male,Normal Weight
+22,1.739,69.5,22.98188465,Female,Normal Weight
+22,1.761,74.1,23.89458522,Female,Normal Weight
+22,1.762,71.901,23.15917703,Male,Normal Weight
+22,1.738,71.699,23.73632907,Male,Normal Weight
+22,1.63,95,35.75595619,Female,Obese Class 2
+22,1.66,115,41.73319785,Male,Obese Class 3
+22,1.69,135,47.26725255,Male,Obese Class 3
+22,1.87,190,54.33383854,Male,Obese Class 3
+22,1.7,54,18.68512111,Female,Normal Weight
+22,1.74,72,23.78121284,Male,Normal Weight
+22,1.76,73,23.56663223,Male,Normal Weight
+22,1.74,71,23.45091822,Male,Normal Weight
+22,1.73,70,23.38868656,Male,Normal Weight
+22,1.72,69,23.32341806,Male,Normal Weight
+22,1.709,73,24.99417088,Male,Normal Weight
+22,1.702,71.9,24.8204573,Male,Normal Weight
+22,1.8,80.2,24.75308642,Male,Normal Weight
+22,1.7,54.8,18.96193772,Male,Normal Weight
+22,1.68,72,25.51020408,Male,Overweight
+22,1.79,120.3,37.54564464,Male,Obese Class 2
+21,1.74,71.79,23.71185097,Male,Normal Weight
+21,1.73,69.59,23.25169568,Male,Normal Weight
+21,1.75,73.99,24.16,Male,Normal Weight
+21,1.729,69.59,23.27859958,Male,Normal Weight
+21,1.751,73.99,24.13241222,Male,Normal Weight
+21,1.752,71.891,23.42104783,Male,Normal Weight
+21,1.728,71.689,24.00850105,Female,Normal Weight
+21,1.75,110,35.91836735,Male,Obese Class 2
+21,1.71,110,37.6184125,Male,Obese Class 2
+21,1.73,130,43.43613218,Male,Obese Class 3
+21,1.85,180,52.59313367,Male,Obese Class 3
+21,1.68,52,18.42403628,Male,Underweight
+21,1.73,70,23.38868656,Male,Normal Weight
+21,1.75,71,23.18367347,Male,Normal Weight
+21,1.73,69,23.05456246,Female,Normal Weight
+21,1.72,68,22.98539751,Female,Normal Weight
+21,1.71,67,22.91303307,Female,Normal Weight
+21,1.721,70.5,23.80276321,Male,Normal Weight
+21,1.715,69.3,23.56161123,Male,Normal Weight
+21,1.75,57.3,18.71020408,Male,Normal Weight
+21,1.7,43.4,15.01730104,Male,Underweight
+21,1.55,37.6,15.6503642,Female,Underweight
+21,1.69,73.5,25.73439305,Female,Overweight
+20,1.73,71.78,23.98342744,Male,Normal Weight
+20,1.72,69.68,23.55327204,Male,Normal Weight
+20,1.74,73.88,24.40216673,Male,Normal Weight
+20,1.719,69.68,23.58068347,Male,Normal Weight
+20,1.741,73.88,24.37414243,Male,Normal Weight
+20,1.742,71.881,23.68742264,Male,Normal Weight
+20,1.718,71.679,24.28542001,Male,Normal Weight
+20,1.72,105,35.49215792,Male,Obese Class 2
+20,1.65,105,38.56749311,Female,Obese Class 2
+20,1.78,125,39.45208938,Male,Obese Class 2
+20,1.82,170,51.32230407,Male,Obese Class 3
+20,1.66,50,18.14486863,Female,Underweight
+20,1.72,68,22.98539751,Male,Normal Weight
+20,1.73,69,23.05456246,Female,Normal Weight
+20,1.72,67,22.64737696,Male,Normal Weight
+20,1.7,66,22.83737024,Female,Normal Weight
+20,1.69,65,22.75830678,Male,Normal Weight
+20,1.705,68.9,23.70120656,Female,Normal Weight
+20,1.697,66.8,23.19598279,Male,Normal Weight
+20,1.61,44.6,17.20612631,Female,Underweight
+20,1.57,41.1,16.67410443,Female,Underweight
+20,1.56,39.4,16.19000657,Female,Underweight
+20,1.54,34.9,14.71580368,Female,Underweight
+20,1.51,31.7,13.902899,Female,Underweight
+20,1.49,29.4,13.24264673,Female,Underweight
+20,1.47,27.6,12.77245592,Female,Underweight
+20,1.46,25.9,12.15049728,Female,Underweight
+20,1.68,72.9,25.82908163,Female,Overweight
+19,1.751,70,22.83104278,Male,Normal Weight
+19,1.741,68,22.43424046,Male,Normal Weight
+19,1.761,72,23.21741074,Male,Normal Weight
+19,1.74,68,22.46003435,Female,Normal Weight
+19,1.762,72,23.19106474,Male,Normal Weight
+19,1.763,70.101,22.55379292,Male,Normal Weight
+19,1.739,69.899,23.11382382,Female,Normal Weight
+19,1.68,98,34.72222222,Female,Obese Class 1
+19,1.69,98,34.31252407,Male,Obese Class 1
+19,1.75,120,39.18367347,Male,Obese Class 2
+19,1.8,160,49.38271605,Male,Obese Class 3
+19,1.64,48,17.84651993,Male,Underweight
+19,1.71,66,22.5710475,Male,Normal Weight
+19,1.72,67,22.64737696,Male,Normal Weight
+19,1.7,65,22.49134948,Male,Normal Weight
+19,1.69,64,22.40817899,Male,Normal Weight
+19,1.68,63,22.32142857,Female,Normal Weight
+19,1.673,65.4,23.36608038,Female,Normal Weight
+19,1.661,64.2,23.26996677,Female,Normal Weight
+19,1.58,41.5,16.62393847,Female,Underweight
+19,1.6,42.3,16.5234375,Female,Underweight
+19,1.59,41.2,16.2968237,Female,Underweight
+19,1.58,37,14.82134273,Female,Underweight
+19,1.53,33.6,14.3534538,Female,Underweight
+19,1.5,30.8,13.68888889,Female,Underweight
+19,1.48,28.7,13.10262966,Female,Underweight
+19,1.47,26.9,12.44851682,Female,Underweight
+19,1.69,74.4,26.04950807,Female,Overweight
+18,1.75,69.2,22.59591837,Male,Normal Weight
+18,1.74,67.3,22.22882811,Male,Normal Weight
+18,1.76,71.1,22.95325413,Female,Normal Weight
+18,1.739,67.3,22.25440053,Female,Normal Weight
+18,1.761,71.1,22.9271931,Male,Normal Weight
+18,1.762,69.301,22.32172191,Male,Normal Weight
+18,1.738,69.099,22.87558547,Male,Normal Weight
+18,1.59,69.32,27.41980143,Female,Overweight
+18,1.7,100,34.60207612,Female,Obese Class 1
+18,1.67,100,35.85643085,Male,Obese Class 2
+18,1.72,115,38.87236344,Male,Obese Class 2
+18,1.78,150,47.34250726,Male,Obese Class 3
+18,1.62,46,17.52781588,Female,Underweight
+18,1.7,64,22.14532872,Female,Normal Weight
+18,1.71,65,22.22906193,Female,Normal Weight
+18,1.69,63,22.05805119,Male,Normal Weight
+18,1.68,62,21.96712018,Male,Normal Weight
+18,1.67,61,21.87242282,Male,Normal Weight
+18,1.69,63.8,22.33815343,Male,Normal Weight
+18,1.684,61.7,21.75709909,Female,Normal Weight
+18,1.62,43.9,16.72763298,Female,Underweight
+18,1.55,40,16.64932362,Female,Underweight
+18,1.61,41.7,16.08734231,Female,Underweight
+18,1.57,36.3,14.72676376,Female,Underweight
+18,1.52,32.9,14.23995845,Female,Underweight
+18,1.5,30.3,13.46666667,Female,Underweight
+18,1.48,28.3,12.92001461,Female,Underweight
+18,1.46,26.6,12.4788891,Female,Underweight
+18,1.7,72.9,25.22491349,Male,Overweight
+17,1.65,95,34.89439853,Male,Obese Class 1
+17,1.63,95,35.75595619,Female,Obese Class 2
+17,1.68,110,38.9739229,Female,Obese Class 2
+17,1.75,140,45.71428571,Male,Obese Class 3
+17,1.6,44,17.1875,Female,Underweight
+17,1.69,61,21.3577956,Female,Normal Weight
+17,1.7,62,21.4532872,Male,Normal Weight
+17,1.68,60,21.2585034,Male,Normal Weight
+17,1.67,59,21.1552942,Female,Normal Weight
+17,1.65,58,21.30394858,Female,Normal Weight
+17,1.638,60.3,22.47447302,Female,Normal Weight
+17,1.628,59.1,22.29865559,Female,Normal Weight
+17,1.63,45.2,17.01230758,Female,Underweight
+17,1.62,44,16.76573693,Female,Underweight
+17,1.6,38.9,15.1953125,Female,Underweight
+17,1.54,34.1,14.37847866,Female,Underweight
+17,1.51,31.2,13.68361037,Female,Underweight
+17,1.49,29,13.06247466,Female,Underweight
+17,1.47,27.3,12.63362488,Female,Underweight
+16,1.6,90,35.15625,Female,Obese Class 2
+16,1.58,90,36.05191476,Female,Obese Class 2
+16,1.7,105,36.33217993,Female,Obese Class 2
+16,1.72,130,43.94267171,Male,Obese Class 3
+16,1.58,42,16.82422689,Female,Underweight
+16,1.67,58,20.79672989,Male,Normal Weight
+16,1.68,59,20.90419501,Male,Normal Weight
+16,1.66,57,20.68515024,Female,Normal Weight
+16,1.65,56,20.56932966,Female,Normal Weight
+16,1.64,55,20.44913742,Female,Normal Weight
+16,1.652,58.7,21.50889083,Female,Normal Weight
+16,1.642,56.6,20.99278827,Female,Normal Weight
+16,1.59,42.8,16.92971006,Female,Underweight
+16,1.58,40.1,16.06313091,Female,Underweight
+16,1.55,35.7,14.85952133,Female,Underweight
+16,1.52,32.2,13.93698061,Female,Underweight
+16,1.49,29.9,13.46786181,Female,Underweight
+16,1.47,28,12.95756398,Female,Underweight
+16,1.46,26.3,12.33814975,Female,Underweight
+15,1.55,85,35.3798127,Female,Obese Class 2
+15,1.62,85,32.38835543,Female,Obese Class 1
+15,1.65,100,36.73094582,Male,Obese Class 2
+15,1.7,120,41.52249135,Male,Obese Class 3
+15,1.55,40,16.64932362,Female,Underweight
+15,1.65,55,20.2020202,Female,Normal Weight
+15,1.66,56,20.32225287,Male,Normal Weight
+15,1.64,54,20.07733492,Female,Normal Weight
+15,1.63,53,19.94805977,Female,Normal Weight
+15,1.62,52,19.81405274,Male,Normal Weight
+15,1.605,55.2,21.42836347,Female,Normal Weight
+15,1.597,54,21.17307459,Female,Normal Weight
+22,1.78,115,36.29592223,Male,Obese Class 2
+32,1.76,130.5,42.1293905,Male,Obese Class 3
+42,1.73,146.2,48.8489425,Male,Obese Class 3
+25,1.81,128.7,39.28451512,Male,Obese Class 2
+35,1.75,141.5,46.20408163,Male,Obese Class 3
+45,1.7,155.8,53.9100346,Female,Obese Class 3
+28,1.85,142,41.49013879,Male,Obese Class 3
+38,1.8,159.6,49.25925926,Male,Obese Class 3
+48,1.68,175,62.00396825,Male,Obese Class 3
+30,1.8,150,46.2962963,Male,Obese Class 3
+40,1.74,165.3,54.59770115,Male,Obese Class 3
+50,1.66,182.7,66.30134998,Male,Obese Class 3
+24,1.77,124.5,39.73953845,Male,Obese Class 2
+34,1.76,138.9,44.84116736,Male,Obese Class 3
+44,1.72,154,52.05516495,Male,Obese Class 3
+27,1.83,136.2,40.67007077,Male,Obese Class 3
+37,1.78,152.3,48.0684257,Male,Obese Class 3
+47,1.67,168.9,60.56151171,Male,Obese Class 3
+29,1.79,132.1,41.22842608,Male,Obese Class 3
+39,1.77,146.3,46.69794759,Male,Obese Class 3
+49,1.65,162.5,59.68778696,Female,Obese Class 3
+26,1.82,132,39.85025963,Male,Obese Class 2
+36,1.76,144,46.48760331,Male,Obese Class 3
+46,1.71,158.7,54.27310967,Male,Obese Class 3
+31,1.78,127.8,40.33581618,Male,Obese Class 3
+41,1.75,151,49.30612245,Female,Obese Class 3
+17,1.65,60.5,22.22222222,Female,Normal Weight
+25,1.75,70.2,22.92244898,Male,Normal Weight
+32,1.8,76.8,23.7037037,Male,Normal Weight
+22,1.68,63.5,22.49858277,Female,Normal Weight
+39,1.7,72.9,25.22491349,Female,Overweight
+48,1.62,68.7,26.17741198,Female,Overweight
+19,1.7,67.3,23.28719723,Male,Normal Weight
+28,1.78,74.6,23.54500694,Male,Normal Weight
+35,1.75,71.8,23.44489796,Male,Normal Weight
+44,1.69,70.3,24.6139841,Female,Normal Weight
+20,1.72,66,22.30935641,Male,Normal Weight
+29,1.79,75.3,23.50113917,Male,Normal Weight
+37,1.72,69.5,23.49242834,Female,Normal Weight
+47,1.66,68,24.67702134,Male,Normal Weight
+21,1.69,65.7,23.00339624,Male,Normal Weight
+31,1.76,72,23.24380165,Male,Normal Weight
+38,1.71,70.2,24.00738689,Female,Normal Weight
+49,1.64,67.3,25.02230815,Female,Overweight
+24,1.73,68.5,22.88750042,Male,Normal Weight
+33,1.81,78.4,23.93089344,Male,Normal Weight
+41,1.67,68.9,24.70508086,Female,Normal Weight
+50,1.63,67,25.21735858,Female,Overweight
+23,1.71,67,22.91303307,Male,Normal Weight
+30,1.77,73.5,23.46069137,Male,Normal Weight
+36,1.74,70.8,23.38485929,Male,Normal Weight
+46,1.68,69.2,24.51814059,Male,Normal Weight
+18,1.66,62.3,22.60850631,Male,Normal Weight
+27,1.74,71.5,23.61606553,Male,Normal Weight
+34,1.78,73.2,23.10314354,Male,Normal Weight
+42,1.65,66.2,24.31588613,Male,Normal Weight
+16,1.6,55,21.484375,Female,Normal Weight
+26,1.72,68.5,23.15440779,Male,Normal Weight
+37,1.76,73.2,23.63119835,Male,Normal Weight
+47,1.66,63.7,23.11656264,Female,Normal Weight
+18,1.68,62.8,22.25056689,Female,Normal Weight
+29,1.79,71.4,22.28394869,Male,Normal Weight
+40,1.73,70,23.38868656,Male,Normal Weight
+49,1.65,63.3,23.25068871,Female,Normal Weight
+19,1.66,59.5,21.59239367,Female,Normal Weight
+30,1.76,68,21.95247934,Male,Normal Weight
+42,1.69,67.2,23.52858793,Male,Normal Weight
+50,1.64,62.7,23.31201666,Female,Normal Weight
+21,1.72,65.7,22.20795024,Male,Normal Weight
+32,1.78,70.5,22.25097841,Male,Normal Weight
+44,1.7,66.9,23.14878893,Male,Normal Weight
+22,1.69,64.3,22.51321732,Male,Normal Weight
+34,1.75,69.8,22.79183673,Female,Normal Weight
+46,1.68,63.8,22.60487528,Female,Normal Weight
+23,1.7,63.5,21.97231834,Male,Normal Weight
+35,1.77,70.3,22.43927352,Male,Normal Weight
+48,1.65,63.1,23.17722681,Male,Normal Weight
+25,1.71,66.7,22.8104374,Male,Normal Weight
+36,1.75,70.1,22.88979592,Male,Normal Weight
+45,1.67,63.5,22.76883359,Male,Normal Weight
+27,1.74,68.2,22.52609328,Male,Normal Weight
+38,1.78,71,22.40878677,Male,Normal Weight
+16,1.62,50,19.05197378,Female,Normal Weight
+26,1.67,55.5,19.90031912,Male,Normal Weight
+36,1.7,57.8,20,Male,Normal Weight
+46,1.73,60.2,20.11427044,Male,Normal Weight
+17,1.63,51.2,19.27057849,Female,Normal Weight
+27,1.68,56,19.84126984,Male,Normal Weight
+37,1.71,58.1,19.86936151,Male,Normal Weight
+47,1.74,61,20.14797199,Female,Normal Weight
+18,1.64,52.5,19.51963117,Female,Normal Weight
+28,1.69,56.7,19.85224607,Female,Normal Weight
+38,1.72,59,19.94321255,Male,Normal Weight
+48,1.75,62.3,20.34285714,Male,Normal Weight
+19,1.65,53.8,19.76124885,Female,Normal Weight
+29,1.7,57.3,19.82698962,Female,Normal Weight
+39,1.73,59.9,20.01403321,Male,Normal Weight
+49,1.76,63.6,20.53202479,Male,Normal Weight
+20,1.66,55,19.95935549,Male,Normal Weight
+30,1.71,58.5,20.00615574,Female,Normal Weight
+40,1.74,60.7,20.0488836,Male,Normal Weight
+50,1.77,64.9,20.71563089,Male,Normal Weight
+21,1.67,56.2,20.15131414,Female,Normal Weight
+31,1.72,59,19.94321255,Male,Normal Weight
+41,1.75,61.5,20.08163265,Male,Normal Weight
+22,1.68,57.5,20.37273243,Male,Normal Weight
+32,1.73,60.8,20.3147449,Male,Normal Weight
+42,1.76,62.2,20.08006198,Male,Normal Weight
+23,1.69,58.7,20.55250166,Female,Normal Weight
+33,1.74,61.2,20.21403092,Male,Normal Weight
+43,1.77,63.4,20.23684127,Male,Normal Weight
+24,1.7,60,20.76124567,Male,Normal Weight
+34,1.75,61.8,20.17959184,Male,Normal Weight
+44,1.78,64.8,20.45196314,Male,Normal Weight
+25,1.71,61.2,20.92951677,Male,Normal Weight
+35,1.76,62.4,20.1446281,Male,Normal Weight
+45,1.79,65.7,20.504978,Female,Normal Weight
+16,1.65,65.5,24.05876951,Female,Normal Weight
+26,1.7,75.6,26.15916955,Female,Overweight
+36,1.75,85.8,28.01632653,Male,Overweight
+46,1.8,95.9,29.59876543,Male,Overweight
+17,1.67,68,24.38237298,Female,Normal Weight
+27,1.72,78.2,26.43320714,Male,Overweight
+37,1.77,88.3,28.18474895,Male,Overweight
+47,1.82,98.4,29.70655718,Male,Overweight
+18,1.69,70.5,24.68400966,Male,Normal Weight
+28,1.74,80.8,26.68780552,Female,Overweight
+38,1.79,90.9,28.36990106,Male,Overweight
+48,1.84,101,29.83223062,Male,Overweight
+19,1.7,73,25.25951557,Male,Overweight
+29,1.76,83.3,26.89178719,Male,Overweight
+39,1.81,93.5,28.54003236,Male,Overweight
+49,1.86,104.6,30.23470921,Male,Obese Class 1
+20,1.72,75.6,25.5543537,Male,Overweight
+30,1.78,85.7,27.04835248,Male,Overweight
+40,1.83,96.1,28.69598973,Male,Overweight
+50,1.88,107.2,30.33046627,Male,Obese Class 1
+21,1.74,78.1,25.79601004,Male,Overweight
+31,1.8,88.2,27.22222222,Male,Overweight
+41,1.85,98.7,28.8385683,Male,Overweight
+22,1.76,80.7,26.05242769,Male,Overweight
+32,1.82,90.6,27.35176911,Male,Overweight
+42,1.87,101.3,28.96851497,Male,Overweight
+23,1.78,83.3,26.29087236,Male,Overweight
+33,1.84,93.1,27.49881853,Male,Overweight
+43,1.89,104,29.11452647,Male,Overweight
+24,1.8,85.8,26.48148148,Male,Overweight
+34,1.86,95.7,27.66215747,Male,Overweight
+44,1.91,106.9,29.30292481,Male,Overweight
+25,1.82,88.4,26.68759812,Male,Overweight
+35,1.88,98.5,27.86894522,Male,Overweight
+45,1.93,109.9,29.50414776,Male,Overweight
