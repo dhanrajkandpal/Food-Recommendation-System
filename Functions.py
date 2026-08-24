@@ -125,4 +125,3 @@ def nutrition_profile(
         "Carbohydrates": Macros["Carbohydrates"],
         "Fat": Macros["Fat"]
     }
-
