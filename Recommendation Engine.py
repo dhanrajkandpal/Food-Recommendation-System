@@ -31,3 +31,12 @@ cut_blueprint = {
     "volume_slots": 1,
     "volume_clusters": [0]
 }
+def filter_foods(df, allowed_clusters, preparation_state="cooked"):
+    filtered_df = df[
+        (df['clusters'].isin(allowed_clusters)) &
+        (df['preparation'] == preparation_state)
+        ].copy()
+
+    sorted_df = filtered_df.sort_values(by='micronutrient_density', ascending=False)
+
+    return sorted_df
