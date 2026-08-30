@@ -62,3 +62,13 @@ def select_diverse_food(sorted_food, pool_size=20):
     selected_item = sorted_food.head(actual_pool_size).sample(n=1)
 
     return selected_item
+
+def calculate_serving_size(food_row, target_macro_grams, primary_macro):
+    """
+    Calculates the exact gram weight of a food needed to hit a specific macronutrient target.
+    """
+    macro_per_100g = food_row[primary_macro].values[0]
+    if macro_per_100g == 0:
+        return 0
+    serving_grams = (target_macro_grams / macro_per_100g) * 100
+    return round(serving_grams, 1)
