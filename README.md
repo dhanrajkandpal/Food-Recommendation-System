@@ -38,6 +38,15 @@ This project is built on a two-pillar machine learning backend, heavily focusing
 * **Frontend / UI:** Streamlit
 * **Data Visualization:** Plotly, Seaborn, Matplotlib
 
+## Installation & Usage
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/dhanrajkandpal/FITTIN.git](https://github.com/dhanrajkandpal/FITTIN.git)
+   cd FITTIN
+2. pip install streamlit pandas numpy scikit-learn imbalanced-learn plotly seaborn matplotlib
+3. Run the application : streamlit run App.py
+
 ## Repository Structure
 
 ```text
@@ -53,12 +62,3 @@ This project is built on a two-pillar machine learning backend, heavily focusing
 ├── gender_encoder.pkl                       # Pickled Gender Label Encoder
 ├── random_forest.pkl                        # Pickled RF classifier (generated via BMI.ipynb)
 └── recommendation_engine.py                 # Backend logic for macro partitioning and food filtering
-
-## Installation & Usage
-
-1. **Clone the repository:**
-   ```bash
-   git clone [https://github.com/dhanrajkandpal/FITTIN.git](https://github.com/dhanrajkandpal/FITTIN.git)
-   cd FITTIN
-2. pip install streamlit pandas numpy scikit-learn imbalanced-learn plotly seaborn matplotlib
-3. Run the application : streamlit run App.py
