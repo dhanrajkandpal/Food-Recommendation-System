@@ -40,11 +40,12 @@ This project is built on a two-pillar machine learning backend, heavily focusing
 
 ## Installation & Usage
 
+## Installation & Usage
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/dhanrajkandpal/FITTIN.git](https://github.com/dhanrajkandpal/FITTIN.git)
-   cd FITTIN
-2. pip install streamlit pandas numpy scikit-learn imbalanced-learn plotly seaborn matplotlib
+   git clone [https://github.com/dhanrajkandpal/Food-Recommendation-System.git](https://github.com/dhanrajkandpal/Food-Recommendation-System.git)
+   cd Food-Recommendation-System
+2. pip install -r requirements.txt
 3. Run the application : streamlit run App.py
 
 ## Repository Structure
