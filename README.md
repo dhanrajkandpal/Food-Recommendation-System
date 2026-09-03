@@ -4,6 +4,8 @@ FITTIN is an end-to-end machine learning application designed to optimize person
 
 By taking basic user inputs (age, weight, height, gender, activity level, and goals), the engine leverages a trained Random Forest classifier for body composition analysis and a K-Means clustering algorithm to dynamically synthesize macro-calibrated, high-micronutrient diet plans.
 
+Live Demo: You can test the application directly in your browser without any installation at https://fittin-b8fjdspvsosvbjwzy6jjxr.streamlit.app/.
+
 ## Machine Learning Architecture
 
 This project is built on a two-pillar machine learning backend, heavily focusing on data engineering, feature scaling, and unsupervised clustering.
