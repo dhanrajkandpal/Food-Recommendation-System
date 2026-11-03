@@ -1,16 +1,26 @@
-/* =====================================================
+/* =========================================================
    FITTIN — ASSESSMENT EXPERIENCE
-===================================================== */
+   Complete stylesheet
+========================================================= */
+
+
+/* =========================================================
+   1. DESIGN SYSTEM
+========================================================= */
 
 :root {
     --ivory: #f8f7f2;
     --cream: #f4f0e5;
+
     --forest: #304d3b;
     --deep-forest: #203a2c;
+
     --sage: #c5cb91;
     --sage-light: #e5e8d4;
+
     --text: #252b25;
     --muted: #777d73;
+
     --border: #e4e0d5;
     --white: #ffffff;
 
@@ -18,9 +28,10 @@
     --body-font: "DM Sans", sans-serif;
 }
 
-/* =====================================================
-   RESET
-===================================================== */
+
+/* =========================================================
+   2. RESET
+========================================================= */
 
 * {
     box-sizing: border-box;
@@ -32,8 +43,11 @@ html {
 
 body {
     margin: 0;
+    min-height: 100vh;
+
     background-color: var(--ivory);
     color: var(--text);
+
     font-family: var(--body-font);
 
     background-image:
@@ -48,12 +62,13 @@ body {
             transparent 24%
         );
 
-    transition: background 0.5s ease, color 0.5s ease;
+    transition: background 0.4s ease, color 0.4s ease;
 }
 
 button,
 input,
-select {
+select,
+textarea {
     font: inherit;
 }
 
@@ -65,13 +80,19 @@ button {
     display: none !important;
 }
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+a {
+    color: inherit;
+}
+
+
+/* =========================================================
+   3. NAVIGATION
+========================================================= */
 
 .assessment-nav {
     width: 100%;
     min-height: 76px;
+
     padding: 0 8%;
 
     display: flex;
@@ -85,11 +106,12 @@ button {
 }
 
 .brand-logo {
-    text-decoration: none;
     color: var(--forest);
+    text-decoration: none;
 
     font-size: 27px;
     font-weight: 700;
+
     letter-spacing: -1.5px;
 }
 
@@ -115,22 +137,21 @@ button {
     margin-right: 7px;
 }
 
-/* =====================================================
-   MAIN CONTAINER
-===================================================== */
+
+/* =========================================================
+   4. MAIN CONTAINER
+========================================================= */
 
 .assessment-container {
     width: min(100% - 48px, 950px);
+
     margin: 0 auto;
+
     padding: 65px 0 95px;
 
     position: relative;
     z-index: 1;
 }
-
-/* =====================================================
-   ORGANIC BACKGROUND DECORATIONS
-===================================================== */
 
 .assessment-container::before {
     content: "";
@@ -145,7 +166,9 @@ button {
 
     background: rgba(197, 203, 145, 0.19);
 
-    border-radius: 10% 90% 20% 80% / 30% 20% 80% 70%;
+    border-radius:
+        10% 90% 20% 80% /
+        30% 20% 80% 70%;
 
     transform: rotate(-15deg);
 
@@ -166,7 +189,9 @@ button {
 
     background: rgba(197, 203, 145, 0.15);
 
-    border-radius: 75% 25% 65% 35% / 40% 65% 35% 60%;
+    border-radius:
+        75% 25% 65% 35% /
+        40% 65% 35% 60%;
 
     transform: rotate(20deg);
 
@@ -174,12 +199,14 @@ button {
     pointer-events: none;
 }
 
-/* =====================================================
-   INTRODUCTION
-===================================================== */
+
+/* =========================================================
+   5. INTRODUCTION
+========================================================= */
 
 .assessment-heading {
     margin-bottom: 45px;
+
     animation: fadeUp 0.7s ease both;
 }
 
@@ -190,6 +217,7 @@ button {
 
     font-size: 10px;
     font-weight: 700;
+
     letter-spacing: 2.4px;
 }
 
@@ -198,6 +226,7 @@ button {
     margin: 0;
 
     font-family: var(--heading-font);
+
     font-size: clamp(40px, 6vw, 57px);
     font-weight: 500;
 
@@ -212,6 +241,7 @@ button {
 
 .heading-description {
     max-width: 570px;
+
     margin-top: 18px;
 
     color: var(--muted);
@@ -220,9 +250,10 @@ button {
     line-height: 1.9;
 }
 
-/* =====================================================
-   PROGRESS
-===================================================== */
+
+/* =========================================================
+   6. PROGRESS INDICATOR
+========================================================= */
 
 .progress-section {
     margin-bottom: 50px;
@@ -230,6 +261,7 @@ button {
 
 .progress-info {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
@@ -241,6 +273,7 @@ button {
 
     font-size: 10px;
     font-weight: 700;
+
     letter-spacing: 1.4px;
 }
 
@@ -256,6 +289,7 @@ button {
     height: 4px;
 
     overflow: hidden;
+
     border-radius: 20px;
 
     background: #e8e7dd;
@@ -266,6 +300,7 @@ button {
     height: 100%;
 
     border-radius: 20px;
+
     background: var(--forest);
 
     transition: width 0.4s ease;
@@ -283,6 +318,7 @@ button {
     height: 8px;
 
     border-radius: 50%;
+
     background: #d9d9cf;
 
     transition: all 0.3s ease;
@@ -293,9 +329,10 @@ button {
     transform: scale(1.2);
 }
 
-/* =====================================================
-   FORM
-===================================================== */
+
+/* =========================================================
+   7. MULTI-STEP FORM
+========================================================= */
 
 #assessmentForm {
     animation: fadeUp 0.6s ease both;
@@ -314,12 +351,23 @@ button {
     margin-bottom: 32px;
 }
 
+.section-number {
+    margin: 0 0 18px;
+
+    color: #89916e;
+
+    font-family: var(--heading-font);
+    font-size: 21px;
+}
+
 .form-section-heading h2 {
     margin: 0 0 10px;
 
     font-family: var(--heading-font);
+
     font-size: 32px;
     font-weight: 500;
+
     letter-spacing: -0.6px;
 }
 
@@ -332,30 +380,45 @@ button {
     line-height: 1.8;
 }
 
-/* =====================================================
-   PERSONAL DETAILS
-===================================================== */
+
+/* =========================================================
+   8. PERSONAL DETAILS GRID
+========================================================= */
 
 .form-grid {
     display: grid;
+
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 25px 22px;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
+
     gap: 10px;
+
+    min-width: 0;
 }
 
-.form-group label {
+.form-group > label {
     color: var(--text);
 
     font-size: 12px;
     font-weight: 600;
 }
 
-.form-group input,
+
+/* =========================================================
+   9. TEXT INPUTS
+
+   IMPORTANT:
+   Only text-like inputs are styled here.
+   Radio buttons are deliberately excluded.
+========================================================= */
+
+.form-group input:not([type="radio"]):not([type="checkbox"]),
 .form-group select {
     width: 100%;
     min-height: 53px;
@@ -368,44 +431,152 @@ button {
     outline: none;
 
     background: rgba(255, 255, 255, 0.78);
+
     color: var(--text);
 
     font-size: 13px;
 
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.form-group input:focus,
+.form-group input:not([type="radio"]):not([type="checkbox"]):focus,
 .form-group select:focus {
     border-color: var(--forest);
-    box-shadow: 0 0 0 3px rgba(48, 77, 59, 0.08);
+
+    box-shadow:
+        0 0 0 3px rgba(48, 77, 59, 0.08);
 }
 
 .form-group input::placeholder {
     color: #a6aaa0;
 }
 
-.full-width {
+.input-wrapper {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+
+    position: relative;
+}
+
+.input-wrapper input {
+    flex: 1;
+    min-width: 0;
+}
+
+.input-wrapper > span {
+    position: absolute;
+
+    right: 16px;
+
+    color: var(--muted);
+
+    font-size: 12px;
+
+    pointer-events: none;
+}
+
+.input-wrapper input {
+    padding-right: 55px !important;
+}
+
+
+/* =========================================================
+   10. GENDER SELECTION
+========================================================= */
+
+.gender-options {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 12px;
+
     width: 100%;
 }
 
-/* =====================================================
-   ACTIVITY CARDS
-===================================================== */
+.gender-card {
+    min-height: 53px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    color: var(--text);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+/* Hide native radio without affecting layout */
+
+.gender-card input[type="radio"] {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.gender-card:hover {
+    border-color: var(--forest);
+}
+
+.gender-card:has(input:checked) {
+    border-color: var(--forest);
+
+    background: #e9ecd9;
+
+    color: var(--forest);
+
+    box-shadow: inset 0 0 0 1px var(--forest);
+}
+
+.gender-card:has(input:focus-visible) {
+    outline: 3px solid rgba(48, 77, 59, 0.2);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   11. ACTIVITY LEVEL CARDS
+========================================================= */
 
 .activity-options {
-    display: grid !important;
+    display: grid;
+
     grid-template-columns: 1fr;
+
     gap: 10px;
 
     width: 100%;
 }
 
 .activity-card {
-    display: block !important;
+    display: block;
+
     position: relative;
 
     width: 100%;
+
     cursor: pointer;
 }
 
@@ -420,12 +591,13 @@ button {
 }
 
 .activity-card-content {
-    display: grid !important;
+    display: grid;
 
     grid-template-columns: 48px minmax(0, 1fr) 28px;
     grid-template-rows: auto auto;
 
     align-items: center;
+
     gap: 3px 15px;
 
     width: 100%;
@@ -454,6 +626,7 @@ button {
     border-radius: 9px;
 
     color: var(--forest);
+
     font-size: 25px;
 }
 
@@ -518,6 +691,7 @@ button {
 
 .activity-card:hover .activity-card-content {
     border-color: var(--forest);
+
     background: rgba(255, 255, 255, 0.8);
 
     transform: translateY(-1px);
@@ -533,6 +707,7 @@ button {
 
 .activity-card input:checked + .activity-card-content::after {
     border-color: var(--forest);
+
     background-color: var(--forest);
 
     box-shadow: inset 0 0 0 4px #e9ecd9;
@@ -543,25 +718,30 @@ button {
     outline-offset: 3px;
 }
 
-/* =====================================================
-   ACTIVITY NOTE
-===================================================== */
+
+/* =========================================================
+   12. ACTIVITY NOTE
+========================================================= */
 
 .activity-note {
     display: flex;
     align-items: center;
+
     gap: 14px;
 
     margin-top: 22px;
     padding: 19px;
 
     border-left: 3px solid var(--sage);
+
     background: rgba(230, 232, 216, 0.55);
 }
 
 .note-icon {
     flex-shrink: 0;
+
     color: var(--forest);
+
     font-size: 19px;
 }
 
@@ -574,33 +754,28 @@ button {
     line-height: 1.7;
 }
 
-/* =====================================================
-   FITNESS GOALS
-===================================================== */
 
-/*
-   3 goals = vertical list.
-   4 or more goals = two-column grid.
-   Mobile = vertical list.
-*/
+/* =========================================================
+   13. FITNESS GOALS
+========================================================= */
 
 .goal-options {
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 13px;
-}
 
-.goal-options:has(.goal-card:nth-child(4)) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 13px;
 }
 
 .goal-card {
     display: block;
+
     position: relative;
+
     cursor: pointer;
 }
 
-.goal-card input {
+.goal-card input[type="radio"] {
     position: absolute;
 
     width: 1px;
@@ -617,9 +792,11 @@ button {
     grid-template-rows: auto auto;
 
     align-items: start;
+
     gap: 5px 15px;
 
     min-height: 115px;
+
     padding: 21px;
 
     border: 1px solid var(--border);
@@ -637,10 +814,14 @@ button {
     color: #9aa17a;
 
     font-family: var(--heading-font);
+
     font-size: 21px;
 }
 
 .goal-card-content strong {
+    grid-column: 2;
+    grid-row: 1;
+
     color: var(--text);
 
     font-size: 14px;
@@ -648,6 +829,9 @@ button {
 }
 
 .goal-card-content > span:last-child {
+    grid-column: 2;
+    grid-row: 2;
+
     color: var(--muted);
 
     font-size: 12px;
@@ -656,11 +840,13 @@ button {
 
 .goal-card:hover .goal-card-content {
     border-color: var(--forest);
+
     transform: translateY(-2px);
 }
 
 .goal-card input:checked + .goal-card-content {
     border-color: var(--forest);
+
     background: #e9ecd9;
 
     box-shadow: inset 3px 0 0 var(--forest);
@@ -671,12 +857,14 @@ button {
     outline-offset: 3px;
 }
 
-/* =====================================================
-   FORM NAVIGATION
-===================================================== */
+
+/* =========================================================
+   14. FORM NAVIGATION
+========================================================= */
 
 .form-navigation {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
@@ -692,6 +880,7 @@ button {
 .next-btn,
 .submit-btn {
     min-height: 49px;
+
     padding: 0 24px;
 
     border: none;
@@ -705,6 +894,7 @@ button {
 
 .previous-btn {
     background: transparent;
+
     color: var(--muted);
 }
 
@@ -717,18 +907,22 @@ button {
     margin-left: auto;
 
     background: var(--forest);
+
     color: var(--cream);
 }
 
 .next-btn:hover,
 .submit-btn:hover {
     background: var(--deep-forest);
+
     transform: translateY(-2px);
 }
 
 .submit-btn:disabled {
     opacity: 0.65;
+
     cursor: wait;
+
     transform: none;
 }
 
@@ -737,26 +931,30 @@ button {
     margin-left: 12px;
 }
 
-/* =====================================================
-   FORM ERRORS
-===================================================== */
+
+/* =========================================================
+   15. FORM ERRORS
+========================================================= */
 
 .form-error {
     margin-top: 20px;
+
     padding: 13px 16px;
 
     border-left: 3px solid #b94b4b;
 
     background: #f8eaea;
+
     color: #923737;
 
     font-size: 12px;
     line-height: 1.6;
 }
 
-/* =====================================================
-   RESULTS PAGE THEME
-===================================================== */
+
+/* =========================================================
+   16. RESULTS PAGE THEME
+========================================================= */
 
 body:has(#resultSection:not([hidden])) {
     background-color: var(--deep-forest);
@@ -806,34 +1004,28 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     display: none !important;
 }
 
-/* =====================================================
-   RESULTS INTRO
-===================================================== */
+
+/* =========================================================
+   17. RESULTS INTRODUCTION
+========================================================= */
 
 #resultSection {
     animation: fadeUp 0.7s ease both;
 }
 
-.results-heading {
-    margin-bottom: 65px;
-}
-
-.results-heading .section-eyebrow {
-    color: var(--sage);
-}
-
 .results-hero-title {
     color: var(--cream);
+
     font-size: clamp(40px, 6vw, 58px);
 }
 
-.results-hero-title em {
+#resultSection > .section-eyebrow {
     color: var(--sage);
-    font-weight: 500;
 }
 
 .result-intro {
     max-width: 550px;
+
     margin-top: 20px;
 
     color: #bdc6b8;
@@ -842,46 +1034,51 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     line-height: 1.9;
 }
 
-/* =====================================================
-   RESULTS SECTION HEADINGS
-===================================================== */
 
-.results-section-heading {
-    margin-bottom: 25px;
-}
+/* =========================================================
+   18. RESULTS HEADINGS
+========================================================= */
 
-.results-section-heading .section-eyebrow {
-    color: var(--sage);
-}
-
-.results-section-heading h3 {
+.macro-section > h3,
+.recommendation-section > h3 {
     margin: 0 0 10px;
 
     color: var(--cream);
 
     font-family: var(--heading-font);
+
     font-size: 30px;
     font-weight: 500;
 }
 
-.results-section-heading > p:last-child:not(.section-eyebrow) {
-    color: #bdc6b8;
-
-    font-size: 12px;
-    line-height: 1.8;
+.macro-section > .section-eyebrow,
+.recommendation-section > .section-eyebrow {
+    color: var(--sage);
 }
 
-/* =====================================================
-   METRIC CARDS
-===================================================== */
 
-.results-overview {
-    margin-bottom: 70px;
+/* =========================================================
+   19. RESULTS DIVIDERS
+========================================================= */
+
+.result-divider {
+    height: 1px;
+
+    margin: 55px 0;
+
+    background: rgba(255, 255, 255, 0.13);
 }
+
+
+/* =========================================================
+   20. METRIC CARDS
+========================================================= */
 
 .result-grid {
     display: grid;
+
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 12px;
 }
 
@@ -902,6 +1099,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
 .result-label {
     color: #b6c1b2;
+
     font-size: 11px;
     line-height: 1.5;
 }
@@ -910,6 +1108,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     color: var(--cream);
 
     font-family: var(--heading-font);
+
     font-size: 30px;
     font-weight: 500;
 
@@ -918,6 +1117,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
 .result-unit {
     color: #9da99a;
+
     font-size: 10px;
 }
 
@@ -927,17 +1127,20 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     min-height: 145px;
 
     border-color: rgba(197, 203, 145, 0.55);
+
     background: rgba(197, 203, 145, 0.1);
 }
 
 .result-item.featured .result-value {
     color: var(--sage);
+
     font-size: 38px;
 }
 
-/* =====================================================
-   MACRONUTRIENTS
-===================================================== */
+
+/* =========================================================
+   21. MACRONUTRIENTS
+========================================================= */
 
 .macro-section {
     margin-bottom: 70px;
@@ -945,6 +1148,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
 .macro-results {
     display: grid;
+
     gap: 18px;
 }
 
@@ -959,21 +1163,25 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
 .macro-header {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
     gap: 15px;
+
     margin-bottom: 14px;
 }
 
 .macro-name {
     color: var(--cream);
+
     font-size: 13px;
     font-weight: 600;
 }
 
 .macro-amount {
     color: var(--sage);
+
     font-size: 13px;
 }
 
@@ -981,6 +1189,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     height: 8px;
 
     overflow: hidden;
+
     border-radius: 20px;
 
     background: rgba(255, 255, 255, 0.12);
@@ -1003,21 +1212,25 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
 .macro-details {
     display: flex;
+
     justify-content: space-between;
 
     gap: 15px;
+
     margin-top: 11px;
 }
 
 .macro-calories,
 .macro-percentage {
     color: #b6c1b2;
+
     font-size: 10px;
 }
 
-/* =====================================================
-   FOOD RECOMMENDATIONS
-===================================================== */
+
+/* =========================================================
+   22. FOOD RECOMMENDATIONS
+========================================================= */
 
 .recommendation-section {
     margin-bottom: 60px;
@@ -1025,6 +1238,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
 .recommendation-results {
     display: grid;
+
     gap: 30px;
 }
 
@@ -1038,18 +1252,22 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     color: var(--sage);
 
     font-family: var(--heading-font);
+
     font-size: 23px;
     font-weight: 500;
 }
 
 .recommendation-grid {
     display: grid;
+
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 12px;
 }
 
 .recommendation-card {
     min-width: 0;
+
     padding: 19px;
 
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1062,6 +1280,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
 .recommendation-card:hover {
     background: rgba(255, 255, 255, 0.09);
+
     transform: translateY(-3px);
 }
 
@@ -1080,6 +1299,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     margin: 0 0 7px;
 
     color: #b5c0b1;
+
     font-size: 11px;
 }
 
@@ -1092,29 +1312,35 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     font-weight: 600;
 }
 
-.recommendation-empty {
+.recommendation-empty,
+.recommendation-loading {
     color: #b6c1b2;
+
     font-size: 12px;
     line-height: 1.7;
 }
 
-/* =====================================================
-   EDIT ASSESSMENT
-===================================================== */
 
-.results-actions {
+/* =========================================================
+   23. EDIT ASSESSMENT
+========================================================= */
+
+.result-navigation {
     padding-top: 28px;
+
     border-top: 1px solid rgba(255, 255, 255, 0.13);
 }
 
-.edit-assessment-btn {
+.result-navigation .previous-btn {
     min-height: 47px;
+
     padding: 0 22px;
 
     border: 1px solid rgba(197, 203, 145, 0.5);
     border-radius: 5px;
 
     background: transparent;
+
     color: var(--sage);
 
     font-size: 12px;
@@ -1123,23 +1349,27 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     transition: all 0.25s ease;
 }
 
-.edit-assessment-btn:hover {
+.result-navigation .previous-btn:hover {
     background: var(--sage);
+
     color: var(--deep-forest);
 }
 
-/* =====================================================
-   FOOTER
-===================================================== */
+
+/* =========================================================
+   24. FOOTER
+========================================================= */
 
 .assessment-footer {
     min-height: 95px;
 
     display: flex;
+
     align-items: center;
     justify-content: space-between;
 
     gap: 20px;
+
     padding: 20px 8%;
 
     border-top: 1px solid var(--border);
@@ -1151,15 +1381,19 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
 .assessment-footer p {
     margin: 0;
+
     color: var(--muted);
+
     font-size: 11px;
 }
 
-/* =====================================================
-   ANIMATIONS
-===================================================== */
+
+/* =========================================================
+   25. ANIMATIONS
+========================================================= */
 
 @keyframes fadeUp {
+
     from {
         opacity: 0;
         transform: translateY(16px);
@@ -1169,40 +1403,48 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
         opacity: 1;
         transform: translateY(0);
     }
+
 }
 
-/* =====================================================
-   TABLET
-===================================================== */
+
+/* =========================================================
+   26. TABLET
+========================================================= */
 
 @media (max-width: 768px) {
 
     .assessment-container {
         width: min(100% - 48px, 650px);
+
         padding-top: 55px;
     }
 
     .assessment-container::before {
         right: -100px;
+
         width: 120px;
         height: 110px;
     }
 
     .assessment-container::after {
         left: -100px;
+
         width: 110px;
         height: 100px;
     }
+
 }
 
-/* =====================================================
-   MOBILE
-===================================================== */
+
+/* =========================================================
+   27. MOBILE
+========================================================= */
 
 @media (max-width: 600px) {
 
     .assessment-nav {
         min-height: 68px;
+
         padding: 0 6%;
     }
 
@@ -1212,6 +1454,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
     .assessment-container {
         width: min(100% - 36px, 520px);
+
         padding: 50px 0 65px;
     }
 
@@ -1222,6 +1465,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     .assessment-heading h1,
     .results-hero-title {
         font-size: 38px;
+
         letter-spacing: -1.2px;
     }
 
@@ -1232,6 +1476,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
     .form-grid {
         grid-template-columns: 1fr;
+
         gap: 20px;
     }
 
@@ -1239,15 +1484,22 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
         font-size: 27px;
     }
 
+    .gender-options {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .activity-card-content {
         grid-template-columns: 40px minmax(0, 1fr) 25px;
+
         gap: 3px 10px;
+
         padding: 12px;
     }
 
     .activity-card-content::before {
         width: 32px;
         height: 32px;
+
         font-size: 22px;
     }
 
@@ -1259,22 +1511,16 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
         font-size: 10px;
     }
 
-    /* All goal counts become vertical on mobile */
-
-    .goal-options,
-    .goal-options:has(.goal-card:nth-child(4)) {
+    .goal-options {
         grid-template-columns: 1fr;
     }
 
     .goal-card-content {
-        min-height: 110px;
-        padding: 16px;
+        min-height: 100px;
+
+        padding: 17px;
 
         grid-template-columns: 38px minmax(0, 1fr);
-    }
-
-    .goal-number {
-        grid-row: 1 / 3;
     }
 
     .form-navigation {
@@ -1285,16 +1531,10 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     .next-btn,
     .submit-btn {
         min-height: 46px;
+
         padding: 0 16px;
+
         font-size: 11px;
-    }
-
-    .results-heading {
-        margin-bottom: 48px;
-    }
-
-    .results-section-heading h3 {
-        font-size: 25px;
     }
 
     .result-grid {
@@ -1303,6 +1543,7 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
     .result-item {
         min-height: 120px;
+
         padding: 15px;
     }
 
@@ -1324,18 +1565,22 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
     .assessment-footer {
         flex-direction: column;
+
         align-items: flex-start;
+
         padding: 25px 6%;
     }
 
     .assessment-footer p {
         line-height: 1.7;
     }
+
 }
 
-/* =====================================================
-   SMALL PHONES
-===================================================== */
+
+/* =========================================================
+   28. SMALL PHONES
+========================================================= */
 
 @media (max-width: 360px) {
 
@@ -1362,13 +1607,16 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 
     .activity-card-content {
         grid-template-columns: 32px minmax(0, 1fr) 22px;
+
         gap: 3px 8px;
     }
+
 }
 
-/* =====================================================
-   ACCESSIBILITY
-===================================================== */
+
+/* =========================================================
+   29. ACCESSIBILITY
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1376,8 +1624,12 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     *::before,
     *::after {
         scroll-behavior: auto !important;
+
         animation-duration: 0.01ms !important;
+
         animation-iteration-count: 1 !important;
+
         transition-duration: 0.01ms !important;
     }
+
 }

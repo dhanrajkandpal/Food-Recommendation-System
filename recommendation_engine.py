@@ -1,5 +1,9 @@
 import pandas as pd
-food = pd.read_csv('clustered_food_database.csv')
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+food = pd.read_csv(BASE_DIR / "clustered_food_database.csv")
 pd.set_option('display.max_columns', None)
 
 lean_bulk_blueprint = {

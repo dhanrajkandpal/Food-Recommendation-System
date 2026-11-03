@@ -5,9 +5,9 @@ from Functions import nutrition_profile
 from recommendation_adapter import generate_recommendations
 
 
-# ==========================================
-# APPLICATION CONFIGURATION
-# ==========================================
+# =====================================================
+# FLASK CONFIGURATION
+# =====================================================
 
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -20,123 +20,163 @@ app = Flask(
 app.config["JSON_SORT_KEYS"] = False
 
 
-# ==========================================
-# HOME PAGE
-# ==========================================
+# =====================================================
+# HOMEPAGE
+# =====================================================
 
 @app.route("/", methods=["GET"])
 def home():
     return render_template("index.html")
 
 
-# ==========================================
+# =====================================================
 # ASSESSMENT PAGE
-# ==========================================
+# =====================================================
 
 @app.route("/assessment", methods=["GET"])
 def assessment():
     return render_template("assessment.html")
 
 
-# ==========================================
-# NUTRITION PROFILE API
-# ==========================================
+# =====================================================
+# INPUT VALIDATION
+# =====================================================
+
+def validate_assessment_data(data):
+
+    required_fields = [
+        "age",
+        "gender",
+        "height",
+        "weight",
+        "activity",
+        "goal"
+    ]
+
+    for field in required_fields:
+        if field not in data or data[field] in (None, ""):
+            raise ValueError(f"Please provide your {field}.")
+
+    try:
+        age = int(data["age"])
+        height = float(data["height"])
+        weight = float(data["weight"])
+    except (ValueError, TypeError):
+        raise ValueError("Age, height and weight must be valid numbers.")
+
+    gender = str(data["gender"]).strip()
+    activity = str(data["activity"]).strip()
+    goal = str(data["goal"]).strip()
+
+    if not 15 <= age <= 80:
+        raise ValueError("Age must be between 15 and 80.")
+
+    if not 100 <= height <= 250:
+        raise ValueError("Height must be between 100 and 250 cm.")
+
+    if not 25 <= weight <= 300:
+        raise ValueError("Weight must be between 25 and 300 kg.")
+
+    if gender not in ["Male", "Female"]:
+        raise ValueError("Please select a valid gender.")
+
+    valid_activities = [
+        "Sedentary",
+        "Lightly Active",
+        "Moderately Active",
+        "Very Active",
+        "Super Active"
+    ]
+
+    if activity not in valid_activities:
+        raise ValueError("Please select a valid activity level.")
+
+    valid_goals = [
+        "Fat Loss",
+        "Cut",
+        "Maintain Weight",
+        "Lean Bulk",
+        "Muscle Gain"
+    ]
+
+    if goal not in valid_goals:
+        raise ValueError("Please select a valid fitness goal.")
+
+    return {
+        "age": age,
+        "gender": gender,
+        "height": height,
+        "weight": weight,
+        "activity": activity,
+        "goal": goal
+    }
+
+
+# =====================================================
+# BMI CLASSIFICATION
+# =====================================================
+
+def classify_bmi(bmi):
+
+    if bmi < 18.5:
+        return "Underweight"
+
+    elif bmi < 25:
+        return "Normal"
+
+    elif bmi < 30:
+        return "Overweight"
+
+    return "Obese"
+
+
+# =====================================================
+# ASSESSMENT API
+# =====================================================
 
 @app.route("/api/assessment", methods=["POST"])
 def generate_profile():
 
     try:
 
-        # ----------------------------------
-        # READ REQUEST
-        # ----------------------------------
+        # ---------------------------------------------
+        # 1. RECEIVE DATA
+        # ---------------------------------------------
 
         data = request.get_json(silent=True)
 
         if not isinstance(data, dict):
             return jsonify({
-                "error": "Invalid request. Please submit assessment data."
+                "error": "Invalid request. Please submit valid assessment data."
             }), 400
 
-        # ----------------------------------
-        # EXTRACT USER INPUT
-        # ----------------------------------
 
-        age = int(data["age"])
+        # ---------------------------------------------
+        # 2. VALIDATE DATA
+        # ---------------------------------------------
 
-        gender = str(data["gender"]).strip()
+        user = validate_assessment_data(data)
 
-        height = float(data["height"])
+        age = user["age"]
+        gender = user["gender"]
+        height = user["height"]
+        weight = user["weight"]
+        activity = user["activity"]
+        goal = user["goal"]
 
-        weight = float(data["weight"])
 
-        activity = str(data["activity"]).strip()
-
-        goal = str(data["goal"]).strip()
-
-        # ----------------------------------
-        # VALIDATE INPUT
-        # ----------------------------------
-
-        if not 15 <= age <= 80:
-            raise ValueError("Age must be between 15 and 80.")
-
-        if gender not in ["Male", "Female"]:
-            raise ValueError("Please select a valid gender.")
-
-        if not 100 <= height <= 250:
-            raise ValueError("Height must be between 100 and 250 cm.")
-
-        if not 25 <= weight <= 300:
-            raise ValueError("Weight must be between 25 and 300 kg.")
-
-        valid_activities = [
-            "Sedentary",
-            "Lightly Active",
-            "Moderately Active",
-            "Very Active",
-            "Super Active"
-        ]
-
-        if activity not in valid_activities:
-            raise ValueError("Please select a valid activity level.")
-
-        valid_goals = [
-            "Fat Loss",
-            "Cut",
-            "Maintain Weight",
-            "Lean Bulk",
-            "Muscle Gain"
-        ]
-
-        if goal not in valid_goals:
-            raise ValueError("Please select a valid fitness goal.")
-
-        # ----------------------------------
-        # BMI CALCULATION
-        # ----------------------------------
+        # ---------------------------------------------
+        # 3. CALCULATE BMI
+        # ---------------------------------------------
 
         bmi = weight / ((height / 100) ** 2)
 
-        # Existing BMI classification logic retained.
-        # Your Random Forest integration can be added
-        # separately once its preprocessing pipeline is verified.
+        predicted_bmi_class = classify_bmi(bmi)
 
-        if bmi < 18.5:
-            predicted_bmi_class = "Underweight"
 
-        elif bmi < 25:
-            predicted_bmi_class = "Normal"
-
-        elif bmi < 30:
-            predicted_bmi_class = "Overweight"
-
-        else:
-            predicted_bmi_class = "Obese"
-
-        # ----------------------------------
-        # NUTRITION PROFILE
-        # ----------------------------------
+        # ---------------------------------------------
+        # 4. GENERATE NUTRITION PROFILE
+        # ---------------------------------------------
 
         profile = nutrition_profile(
             age,
@@ -148,9 +188,10 @@ def generate_profile():
             predicted_bmi_class
         )
 
-        # ----------------------------------
-        # FOOD RECOMMENDATIONS
-        # ----------------------------------
+
+        # ---------------------------------------------
+        # 5. GENERATE FOOD RECOMMENDATIONS
+        # ---------------------------------------------
 
         recommendations = generate_recommendations(
             profile["Protein"],
@@ -158,9 +199,10 @@ def generate_profile():
             profile["Fat"]
         )
 
-        # ----------------------------------
-        # FINAL RESPONSE
-        # ----------------------------------
+
+        # ---------------------------------------------
+        # 6. RETURN RESULTS
+        # ---------------------------------------------
 
         response = {
             **profile,
@@ -169,40 +211,39 @@ def generate_profile():
 
         return jsonify(response), 200
 
-    # --------------------------------------
-    # INPUT ERRORS
-    # --------------------------------------
 
-    except KeyError as error:
+    # ---------------------------------------------
+    # VALIDATION ERRORS
+    # ---------------------------------------------
 
-        return jsonify({
-            "error": f"Missing required field: {error.args[0]}"
-        }), 400
-
-    except (ValueError, TypeError) as error:
+    except (ValueError, TypeError, KeyError) as error:
 
         return jsonify({
             "error": str(error)
         }), 400
 
-    # --------------------------------------
+
+    # ---------------------------------------------
     # SERVER ERRORS
-    # --------------------------------------
+    # ---------------------------------------------
 
     except Exception:
 
         app.logger.exception(
-            "An error occurred while generating the nutrition profile."
+            "FITTIN assessment generation failed."
         )
 
         return jsonify({
-            "error": "Unable to generate your nutrition profile right now. Please try again."
+            "error": (
+                "Something went wrong while generating "
+                "your nutrition profile. Please try again."
+            )
         }), 500
 
 
-# ==========================================
+# =====================================================
 # HEALTH CHECK
-# ==========================================
+# =====================================================
 
 @app.route("/health", methods=["GET"])
 def health():
@@ -213,9 +254,9 @@ def health():
     }), 200
 
 
-# ==========================================
-# APPLICATION ENTRY POINT
-# ==========================================
+# =====================================================
+# RUN APPLICATION
+# =====================================================
 
 if __name__ == "__main__":
 

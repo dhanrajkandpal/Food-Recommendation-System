@@ -1,20 +1,37 @@
-/* =================================
-   GLOBAL STYLES
-================================= */
+/* =====================================================
+   FITTIN — HOMEPAGE
+   Design: Ivory / Forest Green / Sage
+===================================================== */
+
+
+/* =====================================================
+   1. DESIGN SYSTEM
+===================================================== */
 
 :root {
     --background: #f8f7f2;
     --surface: #efeee6;
 
     --green: #304d3b;
+    --green-dark: #203a2c;
     --green-light: #e4e9df;
+
+    --sage: #a3a96d;
+    --sage-light: #dfe7d9;
 
     --text: #252b25;
     --muted: #777b70;
 
     --border: #deded4;
+
+    --heading-font: "Playfair Display", Georgia, serif;
+    --body-font: "DM Sans", sans-serif;
 }
 
+
+/* =====================================================
+   2. RESET
+===================================================== */
 
 * {
     margin: 0;
@@ -22,216 +39,269 @@
     box-sizing: border-box;
 }
 
-
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: 90px;
 }
-
 
 body {
+    min-height: 100vh;
+
+    overflow-x: hidden;
+
     background: var(--background);
     color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-}
 
+    font-family: var(--body-font);
+}
 
 a {
-    text-decoration: none;
     color: inherit;
+    text-decoration: none;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+    display: block;
 }
 
 
-/* =================================
-   NAVIGATION
-================================= */
+/* =====================================================
+   3. NAVIGATION
+===================================================== */
 
 .navbar {
-    height: 88px;
+    min-height: 88px;
+
     padding: 0 8%;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
+    position: relative;
+    z-index: 10;
+
+    background: rgba(248, 247, 242, 0.94);
+
+    backdrop-filter: blur(14px);
+
     border-bottom: 1px solid var(--border);
 }
 
-
 .logo {
+    color: var(--green);
+
     font-size: 30px;
     font-weight: 700;
-    letter-spacing: -2px;
-    color: var(--green);
-}
 
+    letter-spacing: -2px;
+}
 
 .logo span {
-    color: #a3a96d;
+    color: var(--sage);
 }
-
 
 .nav-links {
     display: flex;
+    align-items: center;
+
     gap: 42px;
 }
 
-
 .nav-links a {
-    font-size: 13px;
     color: var(--muted);
+
+    font-size: 13px;
 
     transition: color 0.2s ease;
 }
-
 
 .nav-links a:hover {
     color: var(--green);
 }
 
-
 .nav-cta {
+    display: inline-flex;
+    align-items: center;
+
     background: var(--green);
     color: white;
 
-    padding: 13px 22px;
+    padding: 14px 22px;
+
     font-size: 13px;
 
-    transition: background 0.2s ease;
-}
+    box-shadow: 0 8px 22px rgba(48, 77, 59, 0.12);
 
+    transition: all 0.25s ease;
+}
 
 .nav-cta:hover {
-    background: #45654e;
+    background: var(--green-dark);
+    transform: translateY(-2px);
 }
-
 
 .nav-cta span,
 .primary-btn span {
     margin-left: 12px;
 }
 
-
 .menu-toggle {
     display: none;
+
     border: none;
     background: none;
+
+    color: var(--green);
+
     font-size: 24px;
-    cursor: pointer;
 }
 
 
-/* =================================
-   HERO SECTION
-================================= */
+/* =====================================================
+   4. HERO SECTION
+===================================================== */
 
 .hero {
+    min-height: min(760px, calc(100vh - 88px));
+
     padding: 85px 8% 105px;
 
     display: grid;
+
     grid-template-columns: 0.95fr 1.05fr;
 
     align-items: center;
+
     gap: 65px;
 }
 
-
-.eyebrow {
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    color: var(--green);
-
-    display: flex;
-    align-items: center;
-    gap: 12px;
+.hero-content {
+    position: relative;
+    z-index: 1;
 }
 
+.eyebrow {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: var(--green);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
 
 .eyebrow-line {
     width: 27px;
     height: 1px;
+
     background: var(--green);
 }
 
-
 .hero h1 {
-    font-family: 'Playfair Display', serif;
+    margin: 35px 0 25px;
+
+    font-family: var(--heading-font);
 
     font-size: clamp(55px, 6.2vw, 88px);
+
     line-height: 1.08;
 
     font-weight: 500;
-    letter-spacing: -3px;
 
-    margin: 35px 0 25px;
+    letter-spacing: -3px;
 }
 
-
-h1 em,
+.hero h1 em,
 h2 em {
     color: var(--green);
     font-weight: 500;
 }
 
-
 .hero-description {
-    color: var(--muted);
-
     max-width: 410px;
+
+    color: var(--muted);
 
     font-size: 15px;
     line-height: 1.9;
 }
 
 
+/* =====================================================
+   5. HERO BUTTONS
+===================================================== */
+
 .hero-actions {
     display: flex;
     align-items: center;
+
     gap: 28px;
 
     margin-top: 35px;
 }
 
-
 .primary-btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 
     background: var(--green);
     color: white;
 
     padding: 17px 23px;
+
     font-size: 12px;
+    font-weight: 600;
+
+    box-shadow: 0 8px 22px rgba(48, 77, 59, 0.12);
 
     transition: all 0.25s ease;
 }
 
-
 .primary-btn:hover {
-    background: #45654e;
+    background: var(--green-dark);
     transform: translateY(-2px);
 }
 
-
 .secondary-link {
-    font-size: 12px;
     color: var(--green);
 
+    font-size: 12px;
+
     border-bottom: 1px solid var(--green);
+
     padding-bottom: 4px;
+
+    transition: opacity 0.2s ease;
 }
 
+.secondary-link:hover {
+    opacity: 0.65;
+}
 
 .hero-note {
     display: flex;
     align-items: center;
+
     gap: 10px;
 
     margin-top: 65px;
 
     color: var(--muted);
+
     font-size: 11px;
 }
-
 
 .hero-note span {
     color: #89955d;
@@ -239,37 +309,62 @@ h2 em {
 }
 
 
-/* =================================
-   HERO IMAGE
-================================= */
+/* =====================================================
+   6. HERO IMAGE
+===================================================== */
 
 .hero-visual {
     position: relative;
+
     padding-bottom: 45px;
+
+    isolation: isolate;
 }
 
+.hero-visual::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 5% 2% 4% 8%;
+
+    z-index: -1;
+
+    border-radius:
+        48% 52% 45% 55% /
+        48% 42% 58% 52%;
+
+    background:
+        radial-gradient(
+            circle at 45% 45%,
+            #e5eadf 0,
+            #e5eadf 38%,
+            rgba(229, 234, 223, 0) 72%
+        );
+}
 
 .hero-image {
-    display: block;
-
     width: 100%;
     height: 510px;
 
     object-fit: cover;
-}
 
+    border-radius: 2px;
+}
 
 .image-caption {
     display: flex;
     justify-content: space-between;
 
+    gap: 15px;
+
     padding-top: 15px;
 
     color: var(--muted);
+
     font-size: 10px;
     letter-spacing: 0.5px;
 }
-
 
 .floating-note {
     position: absolute;
@@ -277,80 +372,80 @@ h2 em {
     bottom: 75px;
     left: -35px;
 
-    background: var(--background);
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
 
     padding: 19px 23px;
 
-    display: flex;
-    align-items: center;
-    gap: 14px;
+    background: var(--background);
 
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.07);
 }
 
-
 .floating-icon {
-    font-size: 24px;
     color: var(--green);
+    font-size: 24px;
 }
-
 
 .floating-note strong {
     font-size: 12px;
 }
 
-
 .floating-note p {
-    font-size: 10px;
-    color: var(--muted);
     margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 10px;
 }
 
 
-/* =================================
-   INTRODUCTION
-================================= */
+/* =====================================================
+   7. INTRODUCTION
+===================================================== */
 
 .intro-section {
     padding: 100px 8%;
 
-    background: var(--surface);
-
     display: grid;
+
     grid-template-columns: 0.7fr 1.3fr;
 
     gap: 70px;
-}
 
+    background: var(--surface);
+}
 
 .intro-label {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-
     color: var(--green);
-    font-weight: 700;
-}
 
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
 
 .intro-label span {
     margin-right: 18px;
+
     color: #999d83;
 }
-
 
 .intro-content h2,
 .approach-heading h2,
 .assessment-section h2 {
-
-    font-family: 'Playfair Display', serif;
+    font-family: var(--heading-font);
 
     font-size: clamp(36px, 4vw, 55px);
+
     line-height: 1.25;
 
     font-weight: 500;
+
     letter-spacing: -1px;
 }
-
 
 .intro-content p {
     max-width: 530px;
@@ -359,69 +454,63 @@ h2 em {
 
     color: var(--muted);
 
-    line-height: 1.9;
     font-size: 14px;
+    line-height: 1.9;
 }
 
 
-/* =================================
-   APPROACH SECTION
-================================= */
+/* =====================================================
+   8. APPROACH SECTION
+===================================================== */
 
 .approach-section {
     padding: 110px 8%;
 }
 
-
 .approach-heading {
     margin-bottom: 65px;
 }
-
 
 .approach-heading h2 {
     margin-top: 22px;
 }
 
-
 .approach-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
     border-top: 1px solid var(--border);
 }
-
 
 .approach-item {
     padding: 35px 35px 20px 0;
 }
 
-
 .approach-item + .approach-item {
     padding-left: 35px;
+
     border-left: 1px solid var(--border);
 }
-
 
 .approach-number {
     color: #969b80;
     font-size: 12px;
 }
 
-
 .approach-item h3 {
     margin-top: 35px;
 
-    font-family: 'Playfair Display', serif;
-    font-size: 25px;
+    font-family: var(--heading-font);
 
+    font-size: 25px;
     font-weight: 500;
 }
 
-
 .approach-item p {
-    margin-top: 15px;
-
     max-width: 280px;
+
+    margin-top: 15px;
 
     color: var(--muted);
 
@@ -430,9 +519,9 @@ h2 em {
 }
 
 
-/* =================================
-   ASSESSMENT CTA
-================================= */
+/* =====================================================
+   9. FINAL ASSESSMENT CTA
+===================================================== */
 
 .assessment-section {
     padding: 100px 20px;
@@ -443,53 +532,56 @@ h2 em {
     text-align: center;
 }
 
-
 .assessment-section .eyebrow {
-    color: #c4cdb6;
     justify-content: center;
-}
 
+    color: #c4cdb6;
+}
 
 .assessment-section h2 {
     margin-top: 30px;
 }
 
-
 .assessment-section h2 em {
     color: #d1d9bd;
 }
 
-
 .assessment-section > p:not(.eyebrow) {
-    color: #d1d9d0;
+    max-width: 440px;
 
     margin: 20px auto 30px;
 
-    max-width: 440px;
+    color: #d1d9d0;
 
     font-size: 13px;
     line-height: 1.8;
 }
 
-
 .assessment-section .primary-btn {
     background: var(--background);
     color: var(--green);
+
+    box-shadow: none;
+}
+
+.assessment-section .primary-btn:hover {
+    background: var(--sage-light);
 }
 
 
-/* =================================
-   FOOTER
-================================= */
+/* =====================================================
+   10. FOOTER
+===================================================== */
 
 .footer {
-    padding: 35px 8%;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-}
 
+    gap: 20px;
+
+    padding: 35px 8%;
+}
 
 .footer p,
 .footer > span {
@@ -498,9 +590,23 @@ h2 em {
 }
 
 
-/* =================================
-   RESPONSIVE DESIGN
-================================= */
+/* =====================================================
+   11. ACCESSIBILITY
+===================================================== */
+
+.primary-btn:focus-visible,
+.nav-cta:focus-visible,
+.secondary-link:focus-visible,
+.menu-toggle:focus-visible,
+.nav-links a:focus-visible {
+    outline: 2px solid var(--green);
+    outline-offset: 4px;
+}
+
+
+/* =====================================================
+   12. TABLET RESPONSIVENESS
+===================================================== */
 
 @media (max-width: 900px) {
 
@@ -525,17 +631,26 @@ h2 em {
 }
 
 
+/* =====================================================
+   13. MOBILE NAVIGATION
+===================================================== */
+
 @media (max-width: 600px) {
 
     .navbar {
-        height: 72px;
+        min-height: 72px;
         padding: 0 6%;
+    }
+
+    .logo {
+        font-size: 26px;
     }
 
     .nav-links {
         display: none;
 
         position: absolute;
+
         top: 72px;
         left: 0;
 
@@ -546,11 +661,13 @@ h2 em {
         background: var(--background);
 
         flex-direction: column;
+        align-items: flex-start;
+
         gap: 22px;
 
-        z-index: 10;
-
         border-bottom: 1px solid var(--border);
+
+        z-index: 10;
     }
 
     .nav-links.active {
@@ -565,18 +682,36 @@ h2 em {
         display: block;
     }
 
+
+    /* HERO */
+
     .hero {
+        min-height: auto;
+
         padding: 65px 6%;
+
+        gap: 40px;
     }
 
     .hero h1 {
-        font-size: 58px;
+        font-size: clamp(48px, 12vw, 58px);
+
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        font-size: 13px;
     }
 
     .hero-actions {
         align-items: flex-start;
         flex-direction: column;
+
         gap: 20px;
+    }
+
+    .hero-note {
+        margin-top: 38px;
     }
 
     .hero-image {
@@ -585,11 +720,34 @@ h2 em {
 
     .floating-note {
         left: -8px;
+        bottom: 65px;
+
+        padding: 15px 17px;
     }
+
+    .image-caption {
+        font-size: 9px;
+    }
+
+
+    /* INTRODUCTION */
 
     .intro-section,
     .approach-section {
         padding: 75px 6%;
+    }
+
+    .intro-content h2,
+    .approach-heading h2,
+    .assessment-section h2 {
+        font-size: 36px;
+    }
+
+
+    /* APPROACH */
+
+    .approach-heading {
+        margin-bottom: 35px;
     }
 
     .approach-grid {
@@ -608,42 +766,64 @@ h2 em {
         margin-top: 20px;
     }
 
+
+    /* FINAL CTA */
+
+    .assessment-section {
+        padding: 75px 22px;
+    }
+
+
+    /* FOOTER */
+
     .footer {
         padding: 30px 6%;
+
         flex-wrap: wrap;
         gap: 20px;
     }
 
 }
 
-/* FITTIN visual refinement */
-:root {
-    --fittin-ink: #24372b;
-    --fittin-sage: #dfe7d9;
-    --fittin-paper: #f8f7f2;
+
+/* =====================================================
+   14. SMALL MOBILE DEVICES
+===================================================== */
+
+@media (max-width: 380px) {
+
+    .hero h1 {
+        font-size: 46px;
+    }
+
+    .hero-image {
+        height: 290px;
+    }
+
+    .floating-note {
+        left: -5px;
+    }
+
+    .image-caption {
+        flex-direction: column;
+        gap: 6px;
+    }
+
 }
-body { overflow-x: hidden; }
-.navbar {
-    position: relative;
-    z-index: 10;
-    background: rgba(248,247,242,.94);
-    backdrop-filter: blur(14px);
-}
-.hero { min-height: min(760px, calc(100vh - 88px)); }
-.hero-content { position: relative; z-index: 1; }
-.hero-visual { position: relative; isolation: isolate; }
-.hero-visual::before {
-    content: "";
-    position: absolute;
-    inset: 5% 2% 4% 8%;
-    z-index: -1;
-    border-radius: 48% 52% 45% 55% / 48% 42% 58% 52%;
-    background: radial-gradient(circle at 45% 45%, #e5eadf 0, #e5eadf 38%, rgba(229,234,223,0) 72%);
-}
-.primary-btn, .nav-cta { box-shadow: 0 8px 22px rgba(48,77,59,.12); }
-.primary-btn:focus-visible, .nav-cta:focus-visible, .secondary-link:focus-visible,
-.menu-toggle:focus-visible { outline: 2px solid var(--green); outline-offset: 4px; }
-@media (max-width: 760px) {
-    .hero { min-height: auto; padding-top: 58px; }
-    .hero-visual { margin-top: 10px; }
+
+
+/* =====================================================
+   15. REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
 }

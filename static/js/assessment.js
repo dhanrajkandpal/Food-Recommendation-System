@@ -1,34 +1,52 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // ==========================================
-    // DOM ELEMENTS
-    // ==========================================
+
+    "use strict";
+
+
+    // =====================================================
+    // 1. DOM ELEMENTS
+    // =====================================================
 
     const form = document.getElementById("assessmentForm");
-    const steps = document.querySelectorAll(".form-step");
+
+    const steps = Array.from(
+        document.querySelectorAll(".form-step")
+    );
+
     const stepDots = document.querySelectorAll(".step-dot");
 
     const previousBtn = document.getElementById("previousBtn");
+
     const nextBtn = document.getElementById("nextBtn");
+
     const submitBtn = document.getElementById("submitBtn");
 
     const progressFill = document.getElementById("progressFill");
+
     const stepLabel = document.getElementById("stepLabel");
+
     const stepName = document.getElementById("stepName");
 
     const formError = document.getElementById("formError");
 
     const resultSection = document.getElementById("resultSection");
+
     const resultGrid = document.getElementById("resultGrid");
+
     const macroResults = document.getElementById("macroResults");
+
     const recommendationResults = document.getElementById(
         "recommendationResults"
     );
 
     const editAssessment = document.getElementById("editAssessment");
 
-    // ==========================================
-    // CONFIGURATION
-    // ==========================================
+
+    // =====================================================
+    // 2. CONFIGURATION
+    // =====================================================
+
+    const totalSteps = steps.length;
 
     const stepNames = [
         "Personal Details",
@@ -36,18 +54,46 @@ document.addEventListener("DOMContentLoaded", () => {
         "Your Goals"
     ];
 
-    const totalSteps = steps.length;
     let currentStep = 0;
+
+    let isSubmitting = false;
+
 
     const numberFormatter = new Intl.NumberFormat("en-IN", {
         maximumFractionDigits: 1
     });
 
-    // ==========================================
-    // HELPER FUNCTIONS
-    // ==========================================
+
+    // =====================================================
+    // 3. ELEMENT VALIDATION
+    // =====================================================
+
+    if (
+        !form ||
+        totalSteps !== 3 ||
+        !previousBtn ||
+        !nextBtn ||
+        !submitBtn ||
+        !resultSection ||
+        !resultGrid ||
+        !macroResults ||
+        !recommendationResults
+    ) {
+
+        console.error(
+            "FITTIN: Required assessment elements are missing."
+        );
+
+        return;
+    }
+
+
+    // =====================================================
+    // 4. HELPER FUNCTIONS
+    // =====================================================
 
     function formatNumber(value, decimals = 1) {
+
         const number = Number(value);
 
         if (!Number.isFinite(number)) {
@@ -58,23 +104,12 @@ document.addEventListener("DOMContentLoaded", () => {
             minimumFractionDigits: decimals,
             maximumFractionDigits: decimals
         }).format(number);
+
     }
 
-    function showError(message) {
-        if (!formError) return;
 
-        formError.textContent = message;
-        formError.hidden = false;
-    }
+    function createElement(tag, className = "", text = "") {
 
-    function hideError() {
-        if (!formError) return;
-
-        formError.textContent = "";
-        formError.hidden = true;
-    }
-
-    function createElement(tag, className, text = "") {
         const element = document.createElement(tag);
 
         if (className) {
@@ -84,229 +119,529 @@ document.addEventListener("DOMContentLoaded", () => {
         element.textContent = text;
 
         return element;
+
     }
 
-    // ==========================================
-    // MULTI-STEP FORM
-    // ==========================================
 
-    function showStep(step) {
-        if (step < 0 || step >= totalSteps) return;
+    function showError(message) {
 
-        currentStep = step;
+        if (!formError) return;
 
-        steps.forEach((element, index) => {
-            element.classList.toggle("active", index === step);
+        formError.textContent = message;
+
+        formError.hidden = false;
+
+        formError.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
         });
 
-        stepDots.forEach((dot, index) => {
-            dot.classList.toggle("active", index <= step);
-        });
+    }
 
-        if (progressFill) {
-            const progress = ((step + 1) / totalSteps) * 100;
-            progressFill.style.width = `${progress}%`;
-        }
 
-        if (stepLabel) {
-            stepLabel.textContent = `STEP ${step + 1} OF ${totalSteps}`;
-        }
+    function hideError() {
 
-        if (stepName) {
-            stepName.textContent = stepNames[step];
-        }
+        if (!formError) return;
 
-        if (previousBtn) {
-            previousBtn.hidden = step === 0;
-        }
+        formError.textContent = "";
 
-        if (nextBtn) {
-            nextBtn.hidden = step === totalSteps - 1;
-        }
+        formError.hidden = true;
 
-        if (submitBtn) {
-            submitBtn.hidden = step !== totalSteps - 1;
-        }
+    }
 
-        hideError();
+
+    function scrollToTop() {
 
         window.scrollTo({
             top: 0,
             behavior: "smooth"
         });
+
     }
 
-    // ==========================================
-    // FORM VALIDATION
-    // ==========================================
 
-    function validateStep() {
+    // =====================================================
+    // 5. MULTI-STEP NAVIGATION
+    // =====================================================
+
+    function showStep(step) {
+
+        if (step < 0 || step >= totalSteps) {
+            return;
+        }
+
+        currentStep = step;
+
+
+        // Display active step
+
+        steps.forEach((element, index) => {
+
+            element.classList.toggle(
+                "active",
+                index === step
+            );
+
+        });
+
+
+        // Update progress indicators
+
+        stepDots.forEach((dot, index) => {
+
+            dot.classList.toggle(
+                "active",
+                index <= step
+            );
+
+        });
+
+
+        // Update progress bar
+
+        if (progressFill) {
+
+            const progress =
+                ((step + 1) / totalSteps) * 100;
+
+            progressFill.style.width = `${progress}%`;
+
+        }
+
+
+        // Update step label
+
+        if (stepLabel) {
+
+            stepLabel.textContent =
+                `STEP ${step + 1} OF ${totalSteps}`;
+
+        }
+
+
+        // Update step name
+
+        if (stepName) {
+
+            stepName.textContent =
+                stepNames[step];
+
+        }
+
+
+        // Previous button
+
+        previousBtn.hidden = step === 0;
+
+
+        // Continue button
+
+        nextBtn.hidden = step === totalSteps - 1;
+
+
+        // Submit button
+
+        submitBtn.hidden = step !== totalSteps - 1;
+
+
+        hideError();
+
+        scrollToTop();
+
+    }
+
+
+    // =====================================================
+    // 6. VALIDATE CURRENT STEP
+    // =====================================================
+
+    function validateCurrentStep() {
+
         const activeStep = steps[currentStep];
 
-        if (!activeStep) return false;
+        if (!activeStep) {
+            return false;
+        }
+
 
         const inputs = activeStep.querySelectorAll(
             "input, select, textarea"
         );
 
+
         for (const input of inputs) {
+
             if (!input.checkValidity()) {
+
                 input.reportValidity();
+
                 return false;
+
             }
+
         }
 
+
         return true;
+
     }
 
-    // ==========================================
-    // NAVIGATION
-    // ==========================================
 
-    if (nextBtn) {
-        nextBtn.addEventListener("click", () => {
-            if (!validateStep()) return;
+    // =====================================================
+    // 7. NEXT BUTTON
+    // =====================================================
 
-            showStep(currentStep + 1);
-        });
-    }
+    nextBtn.addEventListener("click", () => {
 
-    if (previousBtn) {
-        previousBtn.addEventListener("click", () => {
-            showStep(currentStep - 1);
-        });
-    }
-
-    // ==========================================
-    // FORM SUBMISSION
-    // ==========================================
-
-    if (form) {
-        form.addEventListener("submit", async (event) => {
-            event.preventDefault();
-
-            if (!validateStep()) return;
-
-            hideError();
-
-            const originalButtonText = submitBtn.textContent;
-
-            submitBtn.disabled = true;
-            submitBtn.textContent = "Calculating your profile...";
-
-            const payload = {
-                age: Number(form.elements["age"].value),
-                gender: form.elements["gender"].value,
-                height: Number(form.elements["height"].value),
-                weight: Number(form.elements["weight"].value),
-                activity: form.elements["activity"].value,
-                goal: form.elements["goal"].value
-            };
-
-            try {
-                const response = await fetch("/api/assessment", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-
-                if (!response.ok) {
-                    throw new Error(
-                        result.error || "Unable to calculate your profile."
-                    );
-                }
-
-                displayResults(result);
-
-            } catch (error) {
-                console.error("Assessment error:", error);
-
-                showError(
-                    error.message ||
-                    "Something went wrong. Please try again."
-                );
-
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalButtonText;
-            }
-        });
-    }
-
-    // ==========================================
-    // DISPLAY RESULTS
-    // ==========================================
-
-    function displayResults(profile) {
-        if (!profile || typeof profile !== "object") {
-            showError("Invalid response received. Please try again.");
+        if (!validateCurrentStep()) {
             return;
         }
 
-        form.hidden = true;
-        resultSection.hidden = false;
+        if (currentStep < totalSteps - 1) {
+
+            showStep(currentStep + 1);
+
+        }
+
+    });
+
+
+    // =====================================================
+    // 8. PREVIOUS BUTTON
+    // =====================================================
+
+    previousBtn.addEventListener("click", () => {
+
+        if (currentStep > 0) {
+
+            showStep(currentStep - 1);
+
+        }
+
+    });
+
+
+    // =====================================================
+    // 9. COLLECT FORM DATA
+    // =====================================================
+
+    function collectAssessmentData() {
+
+        const formData = new FormData(form);
+
+        return {
+
+            age: Number(formData.get("age")),
+
+            gender: formData.get("gender"),
+
+            height: Number(formData.get("height")),
+
+            weight: Number(formData.get("weight")),
+
+            activity: formData.get("activity"),
+
+            goal: formData.get("goal")
+
+        };
+
+    }
+
+
+    // =====================================================
+    // 10. SUBMIT ASSESSMENT
+    // =====================================================
+
+    form.addEventListener("submit", async (event) => {
+
+        event.preventDefault();
+
+
+        if (isSubmitting) {
+            return;
+        }
+
+
+        if (!validateCurrentStep()) {
+            return;
+        }
+
 
         hideError();
 
-        renderMetrics(profile);
-        renderMacros(profile);
-        renderRecommendations(profile.Recommendations);
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
+        const payload = collectAssessmentData();
+
+
+        // Prevent incomplete submission
+
+        for (const [key, value] of Object.entries(payload)) {
+
+            if (
+                value === null ||
+                value === "" ||
+                value === undefined ||
+                (
+                    typeof value === "number" &&
+                    !Number.isFinite(value)
+                )
+            ) {
+
+                showError(
+                    `Please provide a valid value for ${key}.`
+                );
+
+                return;
+
+            }
+
+        }
+
+
+        // Loading state
+
+        isSubmitting = true;
+
+        const originalButtonText = submitBtn.textContent;
+
+        submitBtn.disabled = true;
+
+        submitBtn.textContent =
+            "Calculating your profile...";
+
+
+        try {
+
+            // ---------------------------------------------
+            // API REQUEST
+            // ---------------------------------------------
+
+            const response = await fetch("/api/assessment", {
+
+                method: "POST",
+
+                headers: {
+                    "Content-Type": "application/json"
+                },
+
+                body: JSON.stringify(payload)
+
+            });
+
+
+            // ---------------------------------------------
+            // READ RESPONSE
+            // ---------------------------------------------
+
+            const result = await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    result.error ||
+                    "Unable to calculate your nutrition profile."
+                );
+
+            }
+
+
+            // ---------------------------------------------
+            // VALIDATE RESPONSE
+            // ---------------------------------------------
+
+            if (!result || typeof result !== "object") {
+
+                throw new Error(
+                    "The server returned an invalid response."
+                );
+
+            }
+
+
+            const requiredResults = [
+                "Predicted BMI Class",
+                "BMI",
+                "BMR",
+                "TDEE",
+                "Target Calories",
+                "Protein",
+                "Carbohydrates",
+                "Fat"
+            ];
+
+
+            for (const key of requiredResults) {
+
+                if (
+                    result[key] === undefined ||
+                    result[key] === null
+                ) {
+
+                    throw new Error(
+                        `The server response is missing ${key}.`
+                    );
+
+                }
+
+            }
+
+
+            // ---------------------------------------------
+            // DISPLAY RESULTS
+            // ---------------------------------------------
+
+            displayResults(result);
+
+
+        } catch (error) {
+
+            console.error(
+                "FITTIN assessment error:",
+                error
+            );
+
+            showError(
+                error.message ||
+                "Something went wrong. Please try again."
+            );
+
+
+        } finally {
+
+            isSubmitting = false;
+
+            submitBtn.disabled = false;
+
+            submitBtn.textContent = originalButtonText;
+
+        }
+
+    });
+
+
+    // =====================================================
+    // 11. DISPLAY RESULTS
+    // =====================================================
+
+    function displayResults(profile) {
+
+        if (!profile || typeof profile !== "object") {
+
+            showError(
+                "Unable to display your nutrition profile."
+            );
+
+            return;
+
+        }
+
+
+        // Hide form
+
+        form.hidden = true;
+
+
+        // Show results
+
+        resultSection.hidden = false;
+
+
+        hideError();
+
+
+        // Generate result sections
+
+        renderMetrics(profile);
+
+        renderMacros(profile);
+
+        renderRecommendations(
+            profile.Recommendations
+        );
+
+
+        scrollToTop();
+
     }
 
-    // ==========================================
-    // METRIC CARDS
-    // ==========================================
+
+    // =====================================================
+    // 12. BIOMETRIC METRICS
+    // =====================================================
 
     function renderMetrics(profile) {
+
         resultGrid.replaceChildren();
 
+
         const metrics = [
+
             {
                 label: "BMI Classification",
-                value: profile["Predicted BMI Class"] ?? "N/A",
+
+                value: profile["Predicted BMI Class"],
+
                 unit: "",
+
                 featured: false
+
             },
+
             {
                 label: "Body Mass Index",
+
                 value: formatNumber(profile.BMI),
+
                 unit: "BMI",
+
                 featured: false
+
             },
+
             {
                 label: "Basal Metabolic Rate",
+
                 value: formatNumber(profile.BMR, 0),
+
                 unit: "kcal/day",
+
                 featured: false
+
             },
+
             {
                 label: "Daily Energy Expenditure",
+
                 value: formatNumber(profile.TDEE, 0),
+
                 unit: "kcal/day",
+
                 featured: false
+
             },
+
             {
                 label: "Daily Calorie Target",
+
                 value: formatNumber(profile["Target Calories"], 0),
+
                 unit: "kcal/day",
+
                 featured: true
+
             }
+
         ];
 
+
         metrics.forEach((metric) => {
+
             const card = createElement(
                 "article",
                 `result-item${metric.featured ? " featured" : ""}`
             );
+
 
             const label = createElement(
                 "span",
@@ -314,11 +649,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 metric.label
             );
 
+
             const value = createElement(
                 "strong",
                 "result-value",
-                String(metric.value)
+                String(metric.value ?? "N/A")
             );
+
 
             const unit = createElement(
                 "span",
@@ -326,59 +663,102 @@ document.addEventListener("DOMContentLoaded", () => {
                 metric.unit
             );
 
+
             card.append(label, value, unit);
+
             resultGrid.appendChild(card);
+
         });
+
     }
 
-    // ==========================================
-    // MACRONUTRIENT BREAKDOWN
-    // ==========================================
+
+    // =====================================================
+    // 13. MACRONUTRIENT BREAKDOWN
+    // =====================================================
 
     function renderMacros(profile) {
+
         macroResults.replaceChildren();
 
-        const targetCalories = Number(profile["Target Calories"]);
+
+        const targetCalories =
+            Number(profile["Target Calories"]);
+
 
         const macros = [
+
             {
                 name: "Protein",
+
                 grams: Number(profile.Protein),
+
                 caloriesPerGram: 4,
+
                 className: "protein"
+
             },
+
             {
                 name: "Carbohydrates",
+
                 grams: Number(profile.Carbohydrates),
+
                 caloriesPerGram: 4,
+
                 className: "carbs"
+
             },
+
             {
                 name: "Fat",
+
                 grams: Number(profile.Fat),
+
                 caloriesPerGram: 9,
+
                 className: "fat"
+
             }
+
         ];
 
+
         macros.forEach((macro) => {
-            const validGrams = Number.isFinite(macro.grams)
+
+            const grams = Number.isFinite(macro.grams)
                 ? macro.grams
                 : 0;
 
-            const calories = validGrams * macro.caloriesPerGram;
+
+            const calories =
+                grams * macro.caloriesPerGram;
+
 
             const percentage =
-                Number.isFinite(targetCalories) && targetCalories > 0
+                Number.isFinite(targetCalories) &&
+                targetCalories > 0
+
                     ? (calories / targetCalories) * 100
+
                     : 0;
+
+
+            // Main row
 
             const row = createElement(
                 "div",
                 `macro-row ${macro.className}`
             );
 
-            const header = createElement("div", "macro-header");
+
+            // Header
+
+            const header = createElement(
+                "div",
+                "macro-header"
+            );
+
 
             const name = createElement(
                 "span",
@@ -386,26 +766,45 @@ document.addEventListener("DOMContentLoaded", () => {
                 macro.name
             );
 
+
             const amount = createElement(
                 "strong",
                 "macro-amount",
-                `${formatNumber(validGrams)} g`
+                `${formatNumber(grams)} g`
             );
+
 
             header.append(name, amount);
 
-            const track = createElement("div", "macro-track");
 
-            const bar = createElement("div", "macro-bar");
+            // Progress bar
 
-            bar.style.width = `${Math.min(100, Math.max(0, percentage))}%`;
+            const track = createElement(
+                "div",
+                "macro-track"
+            );
+
+
+            const bar = createElement(
+                "div",
+                "macro-bar"
+            );
+
+
+            bar.style.width =
+                `${Math.min(100, Math.max(0, percentage))}%`;
+
 
             track.appendChild(bar);
+
+
+            // Details
 
             const details = createElement(
                 "div",
                 "macro-details"
             );
+
 
             const calorieText = createElement(
                 "span",
@@ -413,46 +812,86 @@ document.addEventListener("DOMContentLoaded", () => {
                 `${formatNumber(calories, 0)} kcal`
             );
 
+
             const percentageText = createElement(
                 "span",
                 "macro-percentage",
                 `${formatNumber(percentage)}%`
             );
 
-            details.append(calorieText, percentageText);
 
-            row.append(header, track, details);
+            details.append(
+                calorieText,
+                percentageText
+            );
+
+
+            row.append(
+                header,
+                track,
+                details
+            );
+
 
             macroResults.appendChild(row);
+
         });
+
     }
 
-    // ==========================================
-    // FOOD RECOMMENDATIONS
-    // ==========================================
+
+    // =====================================================
+    // 14. FOOD RECOMMENDATIONS
+    // =====================================================
 
     function renderRecommendations(recommendations) {
+
         recommendationResults.replaceChildren();
 
+
         const categories = [
+
             {
                 title: "Protein Sources",
+
                 key: "Protein",
-                className: "protein"
+
+                className: "protein",
+
+                macroLabel: "protein"
+
             },
+
             {
                 title: "Carbohydrate Sources",
+
                 key: "Carbohydrates",
-                className: "carbs"
+
+                className: "carbs",
+
+                macroLabel: "carbs"
+
             },
+
             {
                 title: "Fat Sources",
+
                 key: "Fat",
-                className: "fat"
+
+                className: "fat",
+
+                macroLabel: "fat"
+
             }
+
         ];
 
-        if (!recommendations || typeof recommendations !== "object") {
+
+        if (
+            !recommendations ||
+            typeof recommendations !== "object"
+        ) {
+
             recommendationResults.appendChild(
                 createElement(
                     "p",
@@ -462,17 +901,27 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             return;
+
         }
 
+
         categories.forEach((category) => {
-            const foods = Array.isArray(recommendations[category.key])
+
+
+            const foods = Array.isArray(
+                recommendations[category.key]
+            )
+
                 ? recommendations[category.key]
+
                 : [];
+
 
             const group = createElement(
                 "section",
                 `recommendation-group ${category.className}`
             );
+
 
             const heading = createElement(
                 "h3",
@@ -480,9 +929,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 category.title
             );
 
+
             group.appendChild(heading);
 
+
             if (foods.length === 0) {
+
                 group.appendChild(
                     createElement(
                         "p",
@@ -492,19 +944,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
                 recommendationResults.appendChild(group);
+
                 return;
+
             }
+
 
             const grid = createElement(
                 "div",
                 "recommendation-grid"
             );
 
+
             foods.forEach((food) => {
+
+
                 const card = createElement(
                     "article",
                     "recommendation-card"
                 );
+
 
                 const name = createElement(
                     "h4",
@@ -512,43 +971,85 @@ document.addEventListener("DOMContentLoaded", () => {
                     food.food ?? "Unknown food"
                 );
 
+
+                const servingValue = Number(food.serving);
+
                 const serving = createElement(
                     "p",
                     "food-serving",
-                    `${formatNumber(food.serving, 0)} g serving`
+                    Number.isFinite(servingValue)
+
+                        ? `${formatNumber(servingValue, 0)} g serving`
+
+                        : "Serving size unavailable"
                 );
+
+
+                const macroValue = Number(food.macro);
 
                 const macro = createElement(
                     "p",
                     "food-macro",
-                    `${formatNumber(food.macro)} g ${category.key === "Carbohydrates" ? "carbs" : category.key.toLowerCase()}`
+                    Number.isFinite(macroValue)
+
+                        ? `${formatNumber(macroValue)} g ${category.macroLabel}`
+
+                        : "Macro information unavailable"
                 );
 
-                card.append(name, serving, macro);
+
+                card.append(
+                    name,
+                    serving,
+                    macro
+                );
+
+
                 grid.appendChild(card);
+
             });
 
+
             group.appendChild(grid);
+
             recommendationResults.appendChild(group);
+
         });
+
     }
 
-    // ==========================================
-    // EDIT ASSESSMENT
-    // ==========================================
+
+    // =====================================================
+    // 15. EDIT ASSESSMENT
+    // =====================================================
 
     if (editAssessment) {
+
         editAssessment.addEventListener("click", () => {
+
             resultSection.hidden = true;
+
             form.hidden = false;
 
+
+            // Retain previously entered values
+
             showStep(0);
+
         });
+
     }
 
-    // ==========================================
-    // INITIALIZE
-    // ==========================================
+
+    // =====================================================
+    // 16. INITIALIZE APPLICATION
+    // =====================================================
 
     showStep(0);
+
+
+    console.log(
+        "FITTIN assessment interface initialized successfully."
+    );
+
 });
