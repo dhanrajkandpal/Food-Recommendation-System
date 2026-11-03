@@ -8,9 +8,12 @@ def bmi_calculation(Height,Weight):
             raise ValueError("Height must be greater than 0.")
         elif Weight <= 0:
             raise ValueError("Weight must be greater than 0.")
+
         Height = Height / 100
         BMI = Weight / (Height ** 2)
+
         return BMI
+
 
 #BMR FUNCTION
 """
@@ -56,10 +59,12 @@ def TDEE_calculation(bmr,ActivityLevel):
 
     return bmr * activity_factor[ActivityLevel]
 
+
 #Target calories
 """
 Determine the daily calorie target based on the user's fitness goal.
 """
+
 def target_calories(TDEE_calculation,Goal):
     goal_adjustment = {
         "Fat Loss": -400,
@@ -68,22 +73,46 @@ def target_calories(TDEE_calculation,Goal):
         "Lean Bulk": 400,
         "Muscle Gain": 400
     }
+
     if Goal not in goal_adjustment:
         raise ValueError("Invalid fitness goal.")
 
     return TDEE_calculation + goal_adjustment[Goal]
 
+
 #Intake
 """
-Calculate the daily protein, carbohydrate, and fat requirements from the target calorie intake.
+Calculate daily protein, carbohydrate and fat requirements.
+Protein is based on body weight, while fats are calculated
+as a percentage of target calories. Remaining calories go to carbohydrates.
 """
-def calculate_macros(target_calories):
+
+def calculate_macros(target_calories,Weight,Goal):
     if target_calories <= 0:
         raise ValueError("Target calories must be greater than 0.")
 
-    protein = (target_calories * 0.30) / 4
-    carbohydrates = (target_calories * 0.40) / 4
-    fat = (target_calories * 0.30) / 9
+    if Weight <= 0:
+        raise ValueError("Weight must be greater than 0.")
+
+    protein_factor = {
+        "Fat Loss": 1.8,
+        "Cut": 1.8,
+        "Maintain Weight": 1.6,
+        "Lean Bulk": 1.8,
+        "Muscle Gain": 1.8
+    }
+
+    if Goal not in protein_factor:
+        raise ValueError("Invalid fitness goal.")
+
+    protein = Weight * protein_factor[Goal]
+
+    fat = (target_calories * 0.25) / 9
+
+    carbohydrates = (target_calories - (protein * 4) - (fat * 9)) / 4
+
+    if carbohydrates < 0:
+        raise ValueError("Not enough calories available for the selected macro requirements.")
 
     return {
         "Protein": round(protein, 2),
@@ -91,10 +120,13 @@ def calculate_macros(target_calories):
         "Fat": round(fat, 2)
     }
 
+
 #Profile
 """
-Generate a complete nutrition profile by combining BMI, BMR, TDEE, target calories, and macronutrient requirements.
+Generate a complete nutrition profile by combining BMI, BMR, TDEE,
+target calories and macronutrient requirements.
 """
+
 def nutrition_profile(
     Age,
     Gender,
@@ -113,7 +145,7 @@ def nutrition_profile(
 
     TargetCalories = target_calories(TDEE_Value, Goal)
 
-    Macros = calculate_macros(TargetCalories)
+    Macros = calculate_macros(TargetCalories, Weight, Goal)
 
     return {
         "Predicted BMI Class": PredictedBMIClass,
@@ -125,3 +157,4 @@ def nutrition_profile(
         "Carbohydrates": Macros["Carbohydrates"],
         "Fat": Macros["Fat"]
     }
+
