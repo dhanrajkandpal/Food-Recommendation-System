@@ -6,3 +6,4 @@ imbalanced-learn
 plotly
 seaborn
 matplotlib
+Flask

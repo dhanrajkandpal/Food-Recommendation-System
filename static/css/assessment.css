@@ -1,0 +1,1383 @@
+/* =====================================================
+   FITTIN — ASSESSMENT EXPERIENCE
+===================================================== */
+
+:root {
+    --ivory: #f8f7f2;
+    --cream: #f4f0e5;
+    --forest: #304d3b;
+    --deep-forest: #203a2c;
+    --sage: #c5cb91;
+    --sage-light: #e5e8d4;
+    --text: #252b25;
+    --muted: #777d73;
+    --border: #e4e0d5;
+    --white: #ffffff;
+
+    --heading-font: "Playfair Display", Georgia, serif;
+    --body-font: "DM Sans", sans-serif;
+}
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background-color: var(--ivory);
+    color: var(--text);
+    font-family: var(--body-font);
+
+    background-image:
+        radial-gradient(
+            ellipse at 0% 35%,
+            rgba(197, 203, 145, 0.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            ellipse at 100% 65%,
+            rgba(197, 203, 145, 0.12),
+            transparent 24%
+        );
+
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+button,
+input,
+select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.assessment-nav {
+    width: 100%;
+    min-height: 76px;
+    padding: 0 8%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid rgba(48, 77, 59, 0.10);
+
+    position: relative;
+    z-index: 5;
+}
+
+.brand-logo {
+    text-decoration: none;
+    color: var(--forest);
+
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: -1.5px;
+}
+
+.brand-logo span {
+    color: #a3ad6d;
+}
+
+.back-link {
+    color: var(--muted);
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: color 0.2s ease;
+}
+
+.back-link:hover {
+    color: var(--forest);
+}
+
+.back-link span {
+    margin-right: 7px;
+}
+
+/* =====================================================
+   MAIN CONTAINER
+===================================================== */
+
+.assessment-container {
+    width: min(100% - 48px, 950px);
+    margin: 0 auto;
+    padding: 65px 0 95px;
+
+    position: relative;
+    z-index: 1;
+}
+
+/* =====================================================
+   ORGANIC BACKGROUND DECORATIONS
+===================================================== */
+
+.assessment-container::before {
+    content: "";
+
+    position: absolute;
+
+    width: 190px;
+    height: 155px;
+
+    top: -40px;
+    right: -145px;
+
+    background: rgba(197, 203, 145, 0.19);
+
+    border-radius: 10% 90% 20% 80% / 30% 20% 80% 70%;
+
+    transform: rotate(-15deg);
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+.assessment-container::after {
+    content: "";
+
+    position: absolute;
+
+    width: 165px;
+    height: 140px;
+
+    bottom: 30px;
+    left: -155px;
+
+    background: rgba(197, 203, 145, 0.15);
+
+    border-radius: 75% 25% 65% 35% / 40% 65% 35% 60%;
+
+    transform: rotate(20deg);
+
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* =====================================================
+   INTRODUCTION
+===================================================== */
+
+.assessment-heading {
+    margin-bottom: 45px;
+    animation: fadeUp 0.7s ease both;
+}
+
+.section-eyebrow {
+    margin: 0 0 17px;
+
+    color: #84905d;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2.4px;
+}
+
+.assessment-heading h1,
+.results-hero-title {
+    margin: 0;
+
+    font-family: var(--heading-font);
+    font-size: clamp(40px, 6vw, 57px);
+    font-weight: 500;
+
+    line-height: 1.18;
+    letter-spacing: -1.8px;
+}
+
+.assessment-heading h1 em {
+    color: var(--forest);
+    font-weight: 500;
+}
+
+.heading-description {
+    max-width: 570px;
+    margin-top: 18px;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* =====================================================
+   PROGRESS
+===================================================== */
+
+.progress-section {
+    margin-bottom: 50px;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 13px;
+}
+
+#stepLabel {
+    color: #89916e;
+
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.4px;
+}
+
+#stepName {
+    color: var(--text);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.progress-track {
+    width: 100%;
+    height: 4px;
+
+    overflow: hidden;
+    border-radius: 20px;
+
+    background: #e8e7dd;
+}
+
+.progress-fill {
+    width: 33.33%;
+    height: 100%;
+
+    border-radius: 20px;
+    background: var(--forest);
+
+    transition: width 0.4s ease;
+}
+
+.step-indicators {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 13px;
+}
+
+.step-dot {
+    width: 8px;
+    height: 8px;
+
+    border-radius: 50%;
+    background: #d9d9cf;
+
+    transition: all 0.3s ease;
+}
+
+.step-dot.active {
+    background: var(--forest);
+    transform: scale(1.2);
+}
+
+/* =====================================================
+   FORM
+===================================================== */
+
+#assessmentForm {
+    animation: fadeUp 0.6s ease both;
+}
+
+.form-step {
+    display: none;
+}
+
+.form-step.active {
+    display: block;
+    animation: fadeUp 0.4s ease both;
+}
+
+.form-section-heading {
+    margin-bottom: 32px;
+}
+
+.form-section-heading h2 {
+    margin: 0 0 10px;
+
+    font-family: var(--heading-font);
+    font-size: 32px;
+    font-weight: 500;
+    letter-spacing: -0.6px;
+}
+
+.form-section-heading > p:last-child {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* =====================================================
+   PERSONAL DETAILS
+===================================================== */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px 22px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-group label {
+    color: var(--text);
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    min-height: 53px;
+
+    padding: 0 16px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    outline: none;
+
+    background: rgba(255, 255, 255, 0.78);
+    color: var(--text);
+
+    font-size: 13px;
+
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--forest);
+    box-shadow: 0 0 0 3px rgba(48, 77, 59, 0.08);
+}
+
+.form-group input::placeholder {
+    color: #a6aaa0;
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* =====================================================
+   ACTIVITY CARDS
+===================================================== */
+
+.activity-options {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 10px;
+
+    width: 100%;
+}
+
+.activity-card {
+    display: block !important;
+    position: relative;
+
+    width: 100%;
+    cursor: pointer;
+}
+
+.activity-card input[type="radio"] {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.activity-card-content {
+    display: grid !important;
+
+    grid-template-columns: 48px minmax(0, 1fr) 28px;
+    grid-template-rows: auto auto;
+
+    align-items: center;
+    gap: 3px 15px;
+
+    width: 100%;
+    min-height: 68px;
+
+    padding: 12px 17px;
+
+    border: 1px solid #ded9cc;
+    border-radius: 9px;
+
+    background: rgba(255, 255, 255, 0.45);
+
+    transition: all 0.25s ease;
+}
+
+.activity-card-content::before {
+    grid-column: 1;
+    grid-row: 1 / 3;
+
+    width: 38px;
+    height: 38px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 9px;
+
+    color: var(--forest);
+    font-size: 25px;
+}
+
+.activity-card:nth-child(1) .activity-card-content::before {
+    content: "▱";
+}
+
+.activity-card:nth-child(2) .activity-card-content::before {
+    content: "♙";
+}
+
+.activity-card:nth-child(3) .activity-card-content::before {
+    content: "↔";
+}
+
+.activity-card:nth-child(4) .activity-card-content::before {
+    content: "♧";
+}
+
+.activity-card:nth-child(5) .activity-card-content::before {
+    content: "⚒";
+}
+
+.activity-card-content strong {
+    grid-column: 2;
+    grid-row: 1;
+
+    color: var(--text);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.activity-card-content > span:last-child {
+    grid-column: 2;
+    grid-row: 2;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.activity-card-content::after {
+    content: "";
+
+    grid-column: 3;
+    grid-row: 1 / 3;
+
+    width: 17px;
+    height: 17px;
+
+    justify-self: center;
+
+    border: 1.5px solid #a9a696;
+    border-radius: 50%;
+
+    background: transparent;
+
+    transition: all 0.2s ease;
+}
+
+.activity-card:hover .activity-card-content {
+    border-color: var(--forest);
+    background: rgba(255, 255, 255, 0.8);
+
+    transform: translateY(-1px);
+}
+
+.activity-card input:checked + .activity-card-content {
+    border-color: var(--forest);
+
+    background: #e9ecd9;
+
+    box-shadow: inset 3px 0 0 var(--forest);
+}
+
+.activity-card input:checked + .activity-card-content::after {
+    border-color: var(--forest);
+    background-color: var(--forest);
+
+    box-shadow: inset 0 0 0 4px #e9ecd9;
+}
+
+.activity-card input:focus-visible + .activity-card-content {
+    outline: 3px solid rgba(48, 77, 59, 0.22);
+    outline-offset: 3px;
+}
+
+/* =====================================================
+   ACTIVITY NOTE
+===================================================== */
+
+.activity-note {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-top: 22px;
+    padding: 19px;
+
+    border-left: 3px solid var(--sage);
+    background: rgba(230, 232, 216, 0.55);
+}
+
+.note-icon {
+    flex-shrink: 0;
+    color: var(--forest);
+    font-size: 19px;
+}
+
+.activity-note p {
+    margin: 0;
+
+    color: #686f63;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   FITNESS GOALS
+===================================================== */
+
+/*
+   3 goals = vertical list.
+   4 or more goals = two-column grid.
+   Mobile = vertical list.
+*/
+
+.goal-options {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 13px;
+}
+
+.goal-options:has(.goal-card:nth-child(4)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.goal-card {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.goal-card input {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+.goal-card-content {
+    display: grid;
+
+    grid-template-columns: 45px minmax(0, 1fr);
+    grid-template-rows: auto auto;
+
+    align-items: start;
+    gap: 5px 15px;
+
+    min-height: 115px;
+    padding: 21px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.55);
+
+    transition: all 0.25s ease;
+}
+
+.goal-number {
+    grid-column: 1;
+    grid-row: 1 / 3;
+
+    color: #9aa17a;
+
+    font-family: var(--heading-font);
+    font-size: 21px;
+}
+
+.goal-card-content strong {
+    color: var(--text);
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.goal-card-content > span:last-child {
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.goal-card:hover .goal-card-content {
+    border-color: var(--forest);
+    transform: translateY(-2px);
+}
+
+.goal-card input:checked + .goal-card-content {
+    border-color: var(--forest);
+    background: #e9ecd9;
+
+    box-shadow: inset 3px 0 0 var(--forest);
+}
+
+.goal-card input:focus-visible + .goal-card-content {
+    outline: 3px solid rgba(48, 77, 59, 0.22);
+    outline-offset: 3px;
+}
+
+/* =====================================================
+   FORM NAVIGATION
+===================================================== */
+
+.form-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-top: 42px;
+    padding-top: 25px;
+
+    border-top: 1px solid var(--border);
+}
+
+.previous-btn,
+.next-btn,
+.submit-btn {
+    min-height: 49px;
+    padding: 0 24px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.previous-btn {
+    background: transparent;
+    color: var(--muted);
+}
+
+.previous-btn:hover {
+    color: var(--forest);
+}
+
+.next-btn,
+.submit-btn {
+    margin-left: auto;
+
+    background: var(--forest);
+    color: var(--cream);
+}
+
+.next-btn:hover,
+.submit-btn:hover {
+    background: var(--deep-forest);
+    transform: translateY(-2px);
+}
+
+.submit-btn:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+.next-btn span,
+.submit-btn span {
+    margin-left: 12px;
+}
+
+/* =====================================================
+   FORM ERRORS
+===================================================== */
+
+.form-error {
+    margin-top: 20px;
+    padding: 13px 16px;
+
+    border-left: 3px solid #b94b4b;
+
+    background: #f8eaea;
+    color: #923737;
+
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+/* =====================================================
+   RESULTS PAGE THEME
+===================================================== */
+
+body:has(#resultSection:not([hidden])) {
+    background-color: var(--deep-forest);
+
+    background-image:
+        radial-gradient(
+            ellipse at 100% 0%,
+            rgba(197, 203, 145, 0.11),
+            transparent 25%
+        ),
+        radial-gradient(
+            ellipse at 0% 75%,
+            rgba(197, 203, 145, 0.07),
+            transparent 24%
+        );
+
+    color: var(--cream);
+}
+
+body:has(#resultSection:not([hidden])) .assessment-nav {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+body:has(#resultSection:not([hidden])) .brand-logo {
+    color: var(--cream);
+}
+
+body:has(#resultSection:not([hidden])) .back-link {
+    color: #b6c0af;
+}
+
+body:has(#resultSection:not([hidden])) .back-link:hover {
+    color: var(--sage);
+}
+
+body:has(#resultSection:not([hidden])) .assessment-footer {
+    border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+body:has(#resultSection:not([hidden])) .assessment-footer p {
+    color: #b4bcae;
+}
+
+body:has(#resultSection:not([hidden])) .assessment-heading,
+body:has(#resultSection:not([hidden])) .progress-section,
+body:has(#resultSection:not([hidden])) #assessmentForm {
+    display: none !important;
+}
+
+/* =====================================================
+   RESULTS INTRO
+===================================================== */
+
+#resultSection {
+    animation: fadeUp 0.7s ease both;
+}
+
+.results-heading {
+    margin-bottom: 65px;
+}
+
+.results-heading .section-eyebrow {
+    color: var(--sage);
+}
+
+.results-hero-title {
+    color: var(--cream);
+    font-size: clamp(40px, 6vw, 58px);
+}
+
+.results-hero-title em {
+    color: var(--sage);
+    font-weight: 500;
+}
+
+.result-intro {
+    max-width: 550px;
+    margin-top: 20px;
+
+    color: #bdc6b8;
+
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+/* =====================================================
+   RESULTS SECTION HEADINGS
+===================================================== */
+
+.results-section-heading {
+    margin-bottom: 25px;
+}
+
+.results-section-heading .section-eyebrow {
+    color: var(--sage);
+}
+
+.results-section-heading h3 {
+    margin: 0 0 10px;
+
+    color: var(--cream);
+
+    font-family: var(--heading-font);
+    font-size: 30px;
+    font-weight: 500;
+}
+
+.results-section-heading > p:last-child:not(.section-eyebrow) {
+    color: #bdc6b8;
+
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+/* =====================================================
+   METRIC CARDS
+===================================================== */
+
+.results-overview {
+    margin-bottom: 70px;
+}
+
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.result-item {
+    min-height: 135px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 21px;
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.result-label {
+    color: #b6c1b2;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.result-value {
+    color: var(--cream);
+
+    font-family: var(--heading-font);
+    font-size: 30px;
+    font-weight: 500;
+
+    overflow-wrap: anywhere;
+}
+
+.result-unit {
+    color: #9da99a;
+    font-size: 10px;
+}
+
+.result-item.featured {
+    grid-column: span 2;
+
+    min-height: 145px;
+
+    border-color: rgba(197, 203, 145, 0.55);
+    background: rgba(197, 203, 145, 0.1);
+}
+
+.result-item.featured .result-value {
+    color: var(--sage);
+    font-size: 38px;
+}
+
+/* =====================================================
+   MACRONUTRIENTS
+===================================================== */
+
+.macro-section {
+    margin-bottom: 70px;
+}
+
+.macro-results {
+    display: grid;
+    gap: 18px;
+}
+
+.macro-row {
+    padding: 21px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.macro-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+    margin-bottom: 14px;
+}
+
+.macro-name {
+    color: var(--cream);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.macro-amount {
+    color: var(--sage);
+    font-size: 13px;
+}
+
+.macro-track {
+    height: 8px;
+
+    overflow: hidden;
+    border-radius: 20px;
+
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.macro-bar {
+    width: 0;
+    height: 100%;
+
+    border-radius: 20px;
+
+    background: linear-gradient(
+        90deg,
+        #9dbb84,
+        #c5cb91
+    );
+
+    transition: width 0.8s ease;
+}
+
+.macro-details {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 15px;
+    margin-top: 11px;
+}
+
+.macro-calories,
+.macro-percentage {
+    color: #b6c1b2;
+    font-size: 10px;
+}
+
+/* =====================================================
+   FOOD RECOMMENDATIONS
+===================================================== */
+
+.recommendation-section {
+    margin-bottom: 60px;
+}
+
+.recommendation-results {
+    display: grid;
+    gap: 30px;
+}
+
+.recommendation-group {
+    min-width: 0;
+}
+
+.recommendation-heading {
+    margin: 0 0 15px;
+
+    color: var(--sage);
+
+    font-family: var(--heading-font);
+    font-size: 23px;
+    font-weight: 500;
+}
+
+.recommendation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.recommendation-card {
+    min-width: 0;
+    padding: 19px;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 7px;
+
+    background: rgba(255, 255, 255, 0.045);
+
+    transition: all 0.25s ease;
+}
+
+.recommendation-card:hover {
+    background: rgba(255, 255, 255, 0.09);
+    transform: translateY(-3px);
+}
+
+.food-name {
+    margin: 0 0 12px;
+
+    color: var(--cream);
+
+    font-size: 13px;
+    font-weight: 600;
+
+    overflow-wrap: anywhere;
+}
+
+.food-serving {
+    margin: 0 0 7px;
+
+    color: #b5c0b1;
+    font-size: 11px;
+}
+
+.food-macro {
+    margin: 0;
+
+    color: var(--sage);
+
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.recommendation-empty {
+    color: #b6c1b2;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* =====================================================
+   EDIT ASSESSMENT
+===================================================== */
+
+.results-actions {
+    padding-top: 28px;
+    border-top: 1px solid rgba(255, 255, 255, 0.13);
+}
+
+.edit-assessment-btn {
+    min-height: 47px;
+    padding: 0 22px;
+
+    border: 1px solid rgba(197, 203, 145, 0.5);
+    border-radius: 5px;
+
+    background: transparent;
+    color: var(--sage);
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.25s ease;
+}
+
+.edit-assessment-btn:hover {
+    background: var(--sage);
+    color: var(--deep-forest);
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.assessment-footer {
+    min-height: 95px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+    padding: 20px 8%;
+
+    border-top: 1px solid var(--border);
+}
+
+.assessment-footer .brand-logo {
+    font-size: 22px;
+}
+
+.assessment-footer p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (max-width: 768px) {
+
+    .assessment-container {
+        width: min(100% - 48px, 650px);
+        padding-top: 55px;
+    }
+
+    .assessment-container::before {
+        right: -100px;
+        width: 120px;
+        height: 110px;
+    }
+
+    .assessment-container::after {
+        left: -100px;
+        width: 110px;
+        height: 100px;
+    }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 600px) {
+
+    .assessment-nav {
+        min-height: 68px;
+        padding: 0 6%;
+    }
+
+    .brand-logo {
+        font-size: 23px;
+    }
+
+    .assessment-container {
+        width: min(100% - 36px, 520px);
+        padding: 50px 0 65px;
+    }
+
+    .assessment-heading {
+        margin-bottom: 38px;
+    }
+
+    .assessment-heading h1,
+    .results-hero-title {
+        font-size: 38px;
+        letter-spacing: -1.2px;
+    }
+
+    .heading-description,
+    .result-intro {
+        font-size: 12px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .form-section-heading h2 {
+        font-size: 27px;
+    }
+
+    .activity-card-content {
+        grid-template-columns: 40px minmax(0, 1fr) 25px;
+        gap: 3px 10px;
+        padding: 12px;
+    }
+
+    .activity-card-content::before {
+        width: 32px;
+        height: 32px;
+        font-size: 22px;
+    }
+
+    .activity-card-content strong {
+        font-size: 12px;
+    }
+
+    .activity-card-content > span:last-child {
+        font-size: 10px;
+    }
+
+    /* All goal counts become vertical on mobile */
+
+    .goal-options,
+    .goal-options:has(.goal-card:nth-child(4)) {
+        grid-template-columns: 1fr;
+    }
+
+    .goal-card-content {
+        min-height: 110px;
+        padding: 16px;
+
+        grid-template-columns: 38px minmax(0, 1fr);
+    }
+
+    .goal-number {
+        grid-row: 1 / 3;
+    }
+
+    .form-navigation {
+        margin-top: 32px;
+    }
+
+    .previous-btn,
+    .next-btn,
+    .submit-btn {
+        min-height: 46px;
+        padding: 0 16px;
+        font-size: 11px;
+    }
+
+    .results-heading {
+        margin-bottom: 48px;
+    }
+
+    .results-section-heading h3 {
+        font-size: 25px;
+    }
+
+    .result-grid {
+        gap: 9px;
+    }
+
+    .result-item {
+        min-height: 120px;
+        padding: 15px;
+    }
+
+    .result-value {
+        font-size: 25px;
+    }
+
+    .result-item.featured .result-value {
+        font-size: 32px;
+    }
+
+    .recommendation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .macro-row {
+        padding: 16px;
+    }
+
+    .assessment-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 25px 6%;
+    }
+
+    .assessment-footer p {
+        line-height: 1.7;
+    }
+}
+
+/* =====================================================
+   SMALL PHONES
+===================================================== */
+
+@media (max-width: 360px) {
+
+    .assessment-heading h1,
+    .results-hero-title {
+        font-size: 33px;
+    }
+
+    .result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .result-item.featured {
+        grid-column: span 1;
+    }
+
+    .progress-info {
+        gap: 10px;
+    }
+
+    #stepName {
+        text-align: right;
+    }
+
+    .activity-card-content {
+        grid-template-columns: 32px minmax(0, 1fr) 22px;
+        gap: 3px 8px;
+    }
+}
+
+/* =====================================================
+   ACCESSIBILITY
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}

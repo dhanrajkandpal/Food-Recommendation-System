@@ -62,3 +62,23 @@ This project is built on a two-pillar machine learning backend, heavily focusing
 ├── gender_encoder.pkl                       # Pickled Gender Label Encoder
 ├── random_forest.pkl                        # Pickled RF classifier (generated via BMI.ipynb)
 └── recommendation_engine.py                 # Backend logic for macro partitioning and food filtering
+
+## Flask frontend (FITTIN)
+
+The Flask interface is launched from the project root:
+
+```bash
+pip install -r requirements.txt
+python app.py
+```
+
+In a second terminal, build/watch Tailwind CSS:
+
+```bash
+npm install
+npm run dev:css
+```
+
+Then open `http://127.0.0.1:5000`.
+
+`App.py` is the original Streamlit application and has been left untouched. The Flask application entry point is `app.py`.

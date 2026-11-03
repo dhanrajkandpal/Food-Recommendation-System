@@ -1,10 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FITTIN | Nutrition That Fits You</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tailwind.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
-$END$
+
+    <!-- Navigation -->
+    <header class="navbar">
+
+        <a href="#" class="logo">fittin<span>.</span></a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#about">About</a>
+            <a href="#approach">Our Approach</a>
+        </nav>
+
+        <a href="#assessment" class="nav-cta">
+            Get Started <span>↗</span>
+        </a>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+            ☰
+        </button>
+
+    </header>
+
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    <span class="eyebrow-line"></span>
+                    PERSONALIZED NUTRITION, REIMAGINED
+                </p>
+
+                <h1>
+                    Eat better.<br>
+                    Feel better.<br>
+                    <em>Be better.</em>
+                </h1>
+
+                <p class="hero-description">
+                    Nutrition isn't one-size-fits-all.
+
+                    Discover a food plan shaped around your body,
+                    your goals and the way you live.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a href="#assessment" class="primary-btn">
+                        Find your nutrition plan <span>↗</span>
+                    </a>
+
+                    <a href="#about" class="secondary-link">
+                        Discover FITTIN
+                    </a>
+
+                </div>
+
+                <div class="hero-note">
+                    <span>✳</span>
+                    Built around you, not the other way around.
+                </div>
+
+            </div>
+
+
+            <div class="hero-visual">
+
+                <img
+                    src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=1200&q=85"
+                    alt="Fresh and nutritious food bowl"
+                    class="hero-image"
+                >
+
+                <div class="image-caption">
+                    <span>01 / A BETTER WAY TO EAT</span>
+                    <span>Nutrition, made personal.</span>
+                </div>
+
+                <div class="floating-note">
+
+                    <span class="floating-icon">✳</span>
+
+                    <div>
+                        <strong>Made for you.</strong>
+                        <p>Not a generic diet plan.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- About Section -->
+        <section class="intro-section" id="about">
+
+            <div class="intro-label">
+                <span>01</span>
+                THE FITTIN PHILOSOPHY
+            </div>
+
+            <div class="intro-content">
+
+                <h2>
+                    Your body is unique.<br>
+                    <em>Your nutrition should be too.</em>
+                </h2>
+
+                <p>
+                    From understanding your nutritional needs to discovering
+                    foods that work for your goals, FITTIN brings together
+                    data and nutrition to make healthier eating more personal.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Approach Section -->
+        <section class="approach-section" id="approach">
+
+            <div class="approach-heading">
+
+                <p class="eyebrow">A MORE PERSONAL APPROACH</p>
+
+                <h2>
+                    Understand your needs.<br>
+                    <em>Find your balance.</em>
+                </h2>
+
+            </div>
+
+
+            <div class="approach-grid">
+
+                <div class="approach-item">
+
+                    <span class="approach-number">01</span>
+
+                    <h3>Know your body</h3>
+
+                    <p>
+                        Understand your biometrics and discover
+                        your body's nutritional requirements.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-item">
+
+                    <span class="approach-number">02</span>
+
+                    <h3>Define your goals</h3>
+
+                    <p>
+                        Whether you're looking to lose weight,
+                        build muscle or maintain your current weight.
+                    </p>
+
+                </div>
+
+
+                <div class="approach-item">
+
+                    <span class="approach-number">03</span>
+
+                    <h3>Discover your food</h3>
+
+                    <p>
+                        Explore food recommendations based on
+                        nutritional composition and your requirements.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Final CTA -->
+        <section class="assessment-section" id="assessment">
+
+            <p class="eyebrow">YOUR JOURNEY STARTS HERE</p>
+
+            <h2>
+                Better nutrition<br>
+                starts with <em>you.</em>
+            </h2>
+
+            <p>
+                Take the first step towards understanding
+                what your body actually needs.
+            </p>
+
+            <a href="#" class="primary-btn">
+                Start your assessment <span>↗</span>
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+
+        <a href="#" class="logo">fittin<span>.</span></a>
+
+        <p>Nutrition that fits you.</p>
+
+        <span>© 2026 FITTIN. All rights reserved.</span>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
 </body>
 </html>

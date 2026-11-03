@@ -1,6 +1,7 @@
 import pandas as pd
 food = pd.read_csv('clustered_food_database.csv')
 pd.set_option('display.max_columns', None)
+
 lean_bulk_blueprint = {
     "protein_slots": 2,
     "protein_clusters": [4, 5],
@@ -11,6 +12,7 @@ lean_bulk_blueprint = {
     "volume_slots": 1,
     "volume_clusters": [0]
 }
+
 sustain_blueprint = {
     "protein_slots": 2,
     "protein_clusters": [4, 5],
@@ -21,6 +23,7 @@ sustain_blueprint = {
     "volume_slots": 1,
     "volume_clusters": [0]
 }
+
 cut_blueprint = {
     "protein_slots": 2,
     "protein_clusters": [4, 5],
@@ -42,8 +45,10 @@ def filter_foods(food, allowed_clusters, preparation_state="cooked"):
         (food['clusters'].isin(allowed_clusters)) &
         (food['preparation'] == preparation_state)
         ].copy()
+
     # Gate 2.5: Filter out organ meats, brains, and exotic animals
     filtered_food = filtered_food[~filtered_food['food'].str.contains('liver|lungs|kidney|heart|spleen|splean|ostrich|brain', case=False)]
+
     sorted_food = filtered_food.sort_values(by='micronutrient_density', ascending=False)
 
     return sorted_food
@@ -64,14 +69,18 @@ def select_diverse_food(sorted_food, pool_size=150, num_items=1):
 
     return selected_items
 
+
 def calculate_serving_size(food_row, target_macro_grams, primary_macro):
     """
     Calculates the exact gram weight of a food needed to hit a specific macronutrient target.
     """
     macro_per_100g = food_row[primary_macro].values[0]
+
     if macro_per_100g == 0:
         return 0
+
     serving_grams = (target_macro_grams / macro_per_100g) * 100
+
     return round(serving_grams, 1)
 
 
@@ -116,3 +125,4 @@ def generate_daily_allowance(daily_protein, daily_carbs, daily_fats, protein_spl
         portion = calculate_serving_size(row, target_per_fat, "Fat (g per 100g)")
         print(f"[ ] {portion}g of {row['food'].values[0]} (Yields {target_per_fat}g Fats)")
     print()
+
