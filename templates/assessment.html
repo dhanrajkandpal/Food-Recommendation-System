@@ -5,885 +5,587 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description"
-          content="Complete your FITTIN assessment to discover your personalized nutrition profile.">
-
+    <meta name="theme-color" content="#f8f7f2">
     <title>Your Assessment | FITTIN</title>
 
-    <!-- Assessment Stylesheet -->
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='css/assessment.css') }}">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/assessment.css') }}">
 </head>
-
 
 <body>
 
-
-<!-- =================================================
-     NAVIGATION
-================================================= -->
-
 <header class="assessment-nav">
 
-    <a href="{{ url_for('home') }}"
-       class="brand-logo"
-       aria-label="FITTIN Homepage">
-
+    <a href="{{ url_for('home') }}" class="brand-logo">
         fittin<span>.</span>
-
     </a>
 
-    <a href="{{ url_for('home') }}"
-       class="back-link">
+    <div class="nav-actions">
 
-        <span>←</span> Back to home
+        <div class="visitor-counter" aria-label="Total unique visitors">
+            <span>Visitors</span>
+            <strong id="visitorCount">—</strong>
+        </div>
 
-    </a>
+        <a href="{{ url_for('home') }}" class="back-link">
+            <span aria-hidden="true">←</span>
+            Back to home
+        </a>
+
+    </div>
 
 </header>
 
 
-
 <main class="assessment-container">
 
+    <!-- INTRODUCTION -->
 
-<!-- =================================================
-     INTRODUCTION
-================================================= -->
+    <section class="assessment-heading">
 
-<section class="assessment-heading">
+        <p class="eyebrow">LET'S GET TO KNOW YOU</p>
 
-    <p class="section-eyebrow">
-        LET'S GET TO KNOW YOU
-    </p>
+        <h1>
+            A little about you.<br>
+            <em>A lot about your health.</em>
+        </h1>
 
-    <h1>
-        A little about you.<br>
-        <em>A lot about your health.</em>
-    </h1>
+        <p class="heading-description">
+            Tell us about yourself, your lifestyle and what
+            you're working towards. We'll use this information
+            to understand your nutritional requirements.
+        </p>
 
-    <p class="heading-description">
-
-        Tell us about yourself, your lifestyle and what
-        you're working towards. We'll use this information
-        to understand your nutritional requirements.
-
-    </p>
-
-</section>
+    </section>
 
 
+    <!-- PROGRESS -->
 
-<!-- =================================================
-     PROGRESS INDICATOR
-================================================= -->
+    <div class="progress-section">
 
-<div class="progress-section">
+        <div class="progress-info">
+            <span id="stepLabel">STEP 1 OF 3</span>
+            <span id="stepName">Personal Details</span>
+        </div>
 
-    <div class="progress-info">
+        <div class="progress-track">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
 
-        <span id="stepLabel">
-            STEP 1 OF 3
-        </span>
-
-        <span id="stepName">
-            Personal Details
-        </span>
-
-    </div>
-
-
-    <div class="progress-track">
-
-        <div class="progress-fill"
-             id="progressFill">
+        <div class="step-indicators">
+            <span class="step-dot active" data-step="0"></span>
+            <span class="step-dot" data-step="1"></span>
+            <span class="step-dot" data-step="2"></span>
         </div>
 
     </div>
 
 
-    <div class="step-indicators">
+    <!-- ASSESSMENT FORM -->
 
-        <span class="step-dot active"
-              data-step="0">
-        </span>
+    <form id="assessmentForm">
 
-        <span class="step-dot"
-              data-step="1">
-        </span>
+        <!-- STEP 1: PERSONAL DETAILS -->
 
-        <span class="step-dot"
-              data-step="2">
-        </span>
+        <section class="form-step active" data-step="0">
 
-    </div>
+            <div class="step-heading">
 
-</div>
+                <span class="section-number">01</span>
 
+                <div>
+                    <h2>Let's start with the basics.</h2>
+                    <p>First, we need to understand your biometrics.</p>
+                </div>
 
-
-<!-- =================================================
-     ASSESSMENT FORM
-================================================= -->
-
-<form id="assessmentForm" novalidate>
+            </div>
 
 
-<!-- =================================================
-     STEP 1: PERSONAL DETAILS
-================================================= -->
+            <div class="form-grid">
 
-<section class="form-step active" data-step="0">
+                <div class="form-group">
 
+                    <label for="age">Age</label>
 
-    <div class="form-section-heading">
+                    <div class="input-wrapper">
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            placeholder="e.g. 21"
+                            min="15"
+                            max="80"
+                            required
+                        >
+                        <span>years</span>
+                    </div>
 
-        <p class="section-number">
-            01
-        </p>
-
-        <h2>
-            Let's start with the basics.
-        </h2>
-
-        <p>
-            First, we need to understand your biometrics.
-        </p>
-
-    </div>
+                </div>
 
 
+                <div class="form-group">
 
-    <div class="form-grid">
+                    <label>Gender</label>
 
+                    <div class="option-group">
 
-        <!-- AGE -->
+                        <label class="option-card">
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Male"
+                                required
+                            >
+                            <span>Male</span>
+                        </label>
 
-        <div class="form-group">
+                        <label class="option-card">
+                            <input
+                                type="radio"
+                                name="gender"
+                                value="Female"
+                            >
+                            <span>Female</span>
+                        </label>
 
-            <label for="age">
-                Age
-            </label>
+                    </div>
 
-            <input
-                type="number"
-                id="age"
-                name="age"
-                placeholder="e.g. 21"
-                min="15"
-                max="80"
-                step="1"
-                required
-            >
-
-        </div>
-
-
-
-        <!-- GENDER -->
-
-        <div class="form-group">
-
-            <label>
-                Gender
-            </label>
+                </div>
 
 
-            <div class="gender-options">
+                <div class="form-group">
+
+                    <label for="height">Height</label>
+
+                    <div class="input-wrapper">
+                        <input
+                            type="number"
+                            id="height"
+                            name="height"
+                            placeholder="e.g. 175"
+                            min="100"
+                            max="250"
+                            step="0.1"
+                            required
+                        >
+                        <span>cm</span>
+                    </div>
+
+                </div>
 
 
-                <label class="gender-card">
+                <div class="form-group">
+
+                    <label for="weight">Weight</label>
+
+                    <div class="input-wrapper">
+                        <input
+                            type="number"
+                            id="weight"
+                            name="weight"
+                            placeholder="e.g. 71"
+                            min="30"
+                            max="250"
+                            step="0.1"
+                            required
+                        >
+                        <span>kg</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STEP 2: ACTIVITY -->
+
+        <section class="form-step" data-step="1">
+
+            <div class="step-heading">
+
+                <span class="section-number">02</span>
+
+                <div>
+                    <h2>How active is your lifestyle?</h2>
+                    <p>
+                        Choose the option that best describes your usual activity.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="selection-list">
+
+                <label class="selection-card">
 
                     <input
                         type="radio"
-                        name="gender"
-                        value="Male"
+                        name="activity"
+                        value="Sedentary"
                         required
                     >
 
-                    <span>
-                        Male
+                    <span class="selection-content">
+                        <strong>Sedentary</strong>
+                        <small>Little or no exercise, mostly sitting.</small>
                     </span>
+
+                    <span class="selection-check">✓</span>
 
                 </label>
 
 
-
-                <label class="gender-card">
+                <label class="selection-card">
 
                     <input
                         type="radio"
-                        name="gender"
-                        value="Female"
+                        name="activity"
+                        value="Lightly Active"
                     >
 
-                    <span>
-                        Female
+                    <span class="selection-content">
+                        <strong>Lightly Active</strong>
+                        <small>Light exercise or sports 1–3 days a week.</small>
                     </span>
+
+                    <span class="selection-check">✓</span>
 
                 </label>
 
 
-            </div>
+                <label class="selection-card">
 
-        </div>
+                    <input
+                        type="radio"
+                        name="activity"
+                        value="Moderately Active"
+                    >
 
+                    <span class="selection-content">
+                        <strong>Moderately Active</strong>
+                        <small>Moderate exercise 3–5 days a week.</small>
+                    </span>
 
+                    <span class="selection-check">✓</span>
 
-        <!-- HEIGHT -->
-
-        <div class="form-group">
-
-            <label for="height">
-                Height
-            </label>
-
-            <div class="input-wrapper">
-
-                <input
-                    type="number"
-                    id="height"
-                    name="height"
-                    placeholder="e.g. 175"
-                    min="100"
-                    max="250"
-                    step="0.1"
-                    required
-                >
-
-                <span>cm</span>
-
-            </div>
-
-        </div>
+                </label>
 
 
+                <label class="selection-card">
 
-        <!-- WEIGHT -->
+                    <input
+                        type="radio"
+                        name="activity"
+                        value="Very Active"
+                    >
 
-        <div class="form-group">
+                    <span class="selection-content">
+                        <strong>Very Active</strong>
+                        <small>Hard exercise or sports 6–7 days a week.</small>
+                    </span>
 
-            <label for="weight">
-                Weight
-            </label>
+                    <span class="selection-check">✓</span>
 
-            <div class="input-wrapper">
+                </label>
 
-                <input
-                    type="number"
-                    id="weight"
-                    name="weight"
-                    placeholder="e.g. 71"
-                    min="25"
-                    max="300"
-                    step="0.1"
-                    required
-                >
 
-                <span>kg</span>
+                <label class="selection-card">
+
+                    <input
+                        type="radio"
+                        name="activity"
+                        value="Super Active"
+                    >
+
+                    <span class="selection-content">
+                        <strong>Super Active</strong>
+                        <small>
+                            Very intense physical activity or demanding daily work.
+                        </small>
+                    </span>
+
+                    <span class="selection-check">✓</span>
+
+                </label>
 
             </div>
 
+            <div class="activity-note">
+                <span>✳</span>
+                Be realistic about your usual activity level. Choose what you
+                consistently do, rather than your most active day.
+            </div>
+
+        </section>
+
+
+        <!-- STEP 3: FITNESS GOALS -->
+
+        <section class="form-step" data-step="2">
+
+            <div class="step-heading">
+
+                <span class="section-number">03</span>
+
+                <div>
+                    <h2>What are you working towards?</h2>
+                    <p>
+                        Choose the goal that best describes your current objective.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="goal-grid">
+
+                <label class="goal-card">
+                    <input
+                        type="radio"
+                        name="goal"
+                        value="Fat Loss"
+                        required
+                    >
+                    <span class="goal-number">01</span>
+                    <strong>Fat Loss</strong>
+                    <small>Reduce body weight and fat.</small>
+                </label>
+
+
+                <label class="goal-card">
+                    <input
+                        type="radio"
+                        name="goal"
+                        value="Cut"
+                    >
+                    <span class="goal-number">02</span>
+                    <strong>Cut</strong>
+                    <small>Reduce body fat while preserving muscle.</small>
+                </label>
+
+
+                <label class="goal-card">
+                    <input
+                        type="radio"
+                        name="goal"
+                        value="Maintain Weight"
+                    >
+                    <span class="goal-number">03</span>
+                    <strong>Maintain Weight</strong>
+                    <small>Maintain your current body weight.</small>
+                </label>
+
+
+                <label class="goal-card">
+                    <input
+                        type="radio"
+                        name="goal"
+                        value="Lean Bulk"
+                    >
+                    <span class="goal-number">04</span>
+                    <strong>Lean Bulk</strong>
+                    <small>Build muscle with controlled weight gain.</small>
+                </label>
+
+
+                <label class="goal-card">
+                    <input
+                        type="radio"
+                        name="goal"
+                        value="Muscle Gain"
+                    >
+                    <span class="goal-number">05</span>
+                    <strong>Muscle Gain</strong>
+                    <small>Focus on increasing muscle mass.</small>
+                </label>
+
+            </div>
+
+        </section>
+
+
+        <!-- FORM NAVIGATION -->
+
+        <div class="form-navigation">
+
+            <button
+                type="button"
+                id="previousBtn"
+                class="previous-btn"
+                disabled
+            >
+                ← Previous
+            </button>
+
+            <button
+                type="button"
+                id="nextBtn"
+                class="next-btn"
+            >
+                Continue →
+            </button>
+
+            <button
+                type="submit"
+                id="submitBtn"
+                class="next-btn"
+                hidden
+            >
+                Generate my profile ↗
+            </button>
+
         </div>
 
+        <p id="formError" class="form-error" role="alert"></p>
 
-    </div>
+    </form>
 
 
-</section>
+    <!-- RESULTS -->
 
+    <section id="resultSection" class="result-section" hidden>
 
+        <div class="results-header">
 
-<!-- =================================================
-     STEP 2: ACTIVITY LEVEL
-================================================= -->
+            <p class="eyebrow">YOUR PERSONAL NUTRITION PROFILE</p>
 
-<section class="form-step" data-step="1">
+            <h2>Your starting point.</h2>
 
-
-    <div class="form-section-heading">
-
-        <p class="section-number">
-            02
-        </p>
-
-        <h2>
-            How active is your lifestyle?
-        </h2>
-
-        <p>
-            Choose the option that best describes your usual activity.
-        </p>
-
-    </div>
-
-
-
-    <div class="activity-options">
-
-
-        <!-- SEDENTARY -->
-
-        <label class="activity-card">
-
-            <input
-                type="radio"
-                name="activity"
-                value="Sedentary"
-                required
-            >
-
-            <span class="activity-card-content">
-
-                <strong>
-                    Sedentary
-                </strong>
-
-                <span>
-                    Little or no exercise, mostly sitting.
-                </span>
-
-            </span>
-
-        </label>
-
-
-
-        <!-- LIGHTLY ACTIVE -->
-
-        <label class="activity-card">
-
-            <input
-                type="radio"
-                name="activity"
-                value="Lightly Active"
-            >
-
-            <span class="activity-card-content">
-
-                <strong>
-                    Lightly Active
-                </strong>
-
-                <span>
-                    Light exercise or sports 1–3 days a week.
-                </span>
-
-            </span>
-
-        </label>
-
-
-
-        <!-- MODERATELY ACTIVE -->
-
-        <label class="activity-card">
-
-            <input
-                type="radio"
-                name="activity"
-                value="Moderately Active"
-            >
-
-            <span class="activity-card-content">
-
-                <strong>
-                    Moderately Active
-                </strong>
-
-                <span>
-                    Moderate exercise 3–5 days a week.
-                </span>
-
-            </span>
-
-        </label>
-
-
-
-        <!-- VERY ACTIVE -->
-
-        <label class="activity-card">
-
-            <input
-                type="radio"
-                name="activity"
-                value="Very Active"
-            >
-
-            <span class="activity-card-content">
-
-                <strong>
-                    Very Active
-                </strong>
-
-                <span>
-                    Hard exercise or sports 6–7 days a week.
-                </span>
-
-            </span>
-
-        </label>
-
-
-
-        <!-- SUPER ACTIVE -->
-
-        <label class="activity-card">
-
-            <input
-                type="radio"
-                name="activity"
-                value="Super Active"
-            >
-
-            <span class="activity-card-content">
-
-                <strong>
-                    Super Active
-                </strong>
-
-                <span>
-                    Very intense physical activity or demanding daily work.
-                </span>
-
-            </span>
-
-        </label>
-
-
-    </div>
-
-
-
-    <!-- ACTIVITY NOTE -->
-
-    <div class="activity-note">
-
-        <span class="note-icon">
-            ✳
-        </span>
-
-        <p>
-
-            Be realistic about your usual activity level.
-            Choose what you consistently do, rather than
-            your most active day.
-
-        </p>
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =================================================
-     STEP 3: FITNESS GOALS
-================================================= -->
-
-<section class="form-step" data-step="2">
-
-
-    <div class="form-section-heading">
-
-        <p class="section-number">
-            03
-        </p>
-
-        <h2>
-            What are you working towards?
-        </h2>
-
-        <p>
-            Choose the goal that best describes your current objective.
-        </p>
-
-    </div>
-
-
-
-    <div class="goal-options">
-
-
-        <!-- FAT LOSS -->
-
-        <label class="goal-card">
-
-            <input
-                type="radio"
-                name="goal"
-                value="Fat Loss"
-                required
-            >
-
-            <span class="goal-card-content">
-
-                <span class="goal-number">
-                    01
-                </span>
-
-                <strong>
-                    Fat Loss
-                </strong>
-
-                <span>
-                    Reduce body weight and fat.
-                </span>
-
-            </span>
-
-        </label>
-
-
-
-        <!-- CUT -->
-
-        <label class="goal-card">
-
-            <input
-                type="radio"
-                name="goal"
-                value="Cut"
-            >
-
-            <span class="goal-card-content">
-
-                <span class="goal-number">
-                    02
-                </span>
-
-                <strong>
-                    Cut
-                </strong>
-
-                <span>
-                    Reduce body fat while preserving muscle.
-                </span>
-
-            </span>
-
-        </label>
-
-
-
-        <!-- MAINTAIN -->
-
-        <label class="goal-card">
-
-            <input
-                type="radio"
-                name="goal"
-                value="Maintain Weight"
-            >
-
-            <span class="goal-card-content">
-
-                <span class="goal-number">
-                    03
-                </span>
-
-                <strong>
-                    Maintain Weight
-                </strong>
-
-                <span>
-                    Maintain your current body weight.
-                </span>
-
-            </span>
-
-        </label>
-
-
-
-        <!-- LEAN BULK -->
-
-        <label class="goal-card">
-
-            <input
-                type="radio"
-                name="goal"
-                value="Lean Bulk"
-            >
-
-            <span class="goal-card-content">
-
-                <span class="goal-number">
-                    04
-                </span>
-
-                <strong>
-                    Lean Bulk
-                </strong>
-
-                <span>
-                    Build muscle with controlled weight gain.
-                </span>
-
-            </span>
-
-        </label>
-
-
-
-        <!-- MUSCLE GAIN -->
-
-        <label class="goal-card">
-
-            <input
-                type="radio"
-                name="goal"
-                value="Muscle Gain"
-            >
-
-            <span class="goal-card-content">
-
-                <span class="goal-number">
-                    05
-                </span>
-
-                <strong>
-                    Muscle Gain
-                </strong>
-
-                <span>
-                    Focus on increasing muscle mass.
-                </span>
-
-            </span>
-
-        </label>
-
-
-    </div>
-
-
-</section>
-
-
-
-<!-- =================================================
-     FORM NAVIGATION
-================================================= -->
-
-<div class="form-navigation">
-
-
-    <button
-        type="button"
-        id="previousBtn"
-        class="previous-btn"
-        hidden
-    >
-
-        ← Previous
-
-    </button>
-
-
-
-    <button
-        type="button"
-        id="nextBtn"
-        class="next-btn"
-    >
-
-        Continue →
-
-    </button>
-
-
-
-    <button
-        type="submit"
-        id="submitBtn"
-        class="next-btn submit-btn"
-        hidden
-    >
-
-        Generate my profile ↗
-
-    </button>
-
-
-</div>
-
-
-
-<!-- ERROR MESSAGE -->
-
-<p
-    id="formError"
-    class="form-error"
-    role="alert"
-    hidden>
-</p>
-
-
-</form>
-
-
-
-<!-- =================================================
-     RESULTS SECTION
-================================================= -->
-
-<section
-    id="resultSection"
-    class="result-section"
-    hidden>
-
-
-    <p class="section-eyebrow">
-        YOUR PERSONAL NUTRITION PROFILE
-    </p>
-
-
-    <h2 class="results-hero-title">
-        Your starting point.
-    </h2>
-
-
-    <p class="result-intro">
-        Here's what your information tells us.
-    </p>
-
-
-
-    <!-- BIOMETRIC RESULTS -->
-
-    <div
-        class="result-grid"
-        id="resultGrid">
-    </div>
-
-
-
-    <div class="result-divider"></div>
-
-
-
-    <!-- MACRONUTRIENTS -->
-
-    <div class="macro-section">
-
-        <p class="section-eyebrow">
-            DAILY NUTRITION
-        </p>
-
-        <h3>
-            Your macronutrient requirements
-        </h3>
-
-        <p class="result-intro">
-            Your daily protein, carbohydrate and fat targets.
-        </p>
-
-        <div id="macroResults"></div>
-
-    </div>
-
-
-
-    <div class="result-divider"></div>
-
-
-
-    <!-- FOOD RECOMMENDATIONS -->
-
-    <div class="recommendation-section">
-
-        <p class="section-eyebrow">
-            BUILT AROUND YOUR GOALS
-        </p>
-
-        <h3>
-            Your food recommendations.
-        </h3>
-
-        <p class="result-intro">
-
-            A selection of foods and portions based on
-            your daily nutritional requirements.
-
-        </p>
-
-
-        <div id="recommendationResults">
-
-            <p class="recommendation-loading">
-                Your food recommendations will appear here.
+            <p class="result-intro">
+                Here's what your information tells us.
             </p>
 
         </div>
 
-    </div>
+
+        <div class="result-grid" id="resultGrid"></div>
 
 
-
-    <!-- EDIT ASSESSMENT -->
-
-    <div class="result-navigation">
-
-        <button
-            type="button"
-            id="editAssessment"
-            class="previous-btn">
-
-            ← Edit my information
-
-        </button>
-
-    </div>
+        <div class="result-divider"></div>
 
 
-</section>
+        <!-- MACROS -->
+
+        <section class="macro-section">
+
+            <p class="eyebrow">DAILY NUTRITION</p>
+
+            <h3>Your macronutrient requirements.</h3>
+
+            <p class="result-intro">
+                Your daily protein, carbohydrate and fat targets.
+            </p>
+
+            <div id="macroResults"></div>
+
+        </section>
 
 
+        <div class="result-divider"></div>
 
-<!-- =================================================
-     FOOTER
-================================================= -->
 
-<footer class="assessment-footer">
+        <!-- RECOMMENDATIONS -->
 
-    <a href="{{ url_for('home') }}"
-       class="brand-logo">
+        <section class="recommendation-section">
 
-        fittin<span>.</span>
+            <p class="eyebrow">BUILT AROUND YOUR GOALS</p>
 
-    </a>
+            <h3>Your food recommendations.</h3>
 
-    <p>
-        Nutrition that fits you.
-    </p>
+            <p class="result-intro">
+                A selection of foods and portions based on your
+                daily nutritional requirements.
+            </p>
 
-</footer>
+            <div id="recommendationResults">
 
+                <p class="recommendation-loading">
+                    Your food recommendations will appear here.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- EDIT -->
+
+        <div class="result-navigation">
+
+            <button
+                type="button"
+                id="editAssessment"
+                class="previous-btn"
+            >
+                ← Edit my information
+            </button>
+
+        </div>
+
+    </section>
 
 </main>
 
 
+<footer class="assessment-footer">
 
-<!-- =================================================
-     JAVASCRIPT
-================================================= -->
+    <a href="{{ url_for('home') }}" class="footer-logo">
+        fittin<span>.</span>
+    </a>
 
-<script
-    src="{{ url_for('static', filename='js/assessment.js') }}"
-    defer>
+    <p>Nutrition that fits you.</p>
+
+</footer>
+
+
+<!-- VISITOR COUNT -->
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+    const visitorElement = document.getElementById("visitorCount");
+
+    if (!visitorElement) return;
+
+    try {
+        const response = await fetch("/api/visitor-count", {
+            method: "GET",
+            headers: {
+                "Accept": "application/json"
+            },
+            cache: "no-store"
+        });
+
+        if (!response.ok) {
+            throw new Error("Visitor count unavailable");
+        }
+
+        const data = await response.json();
+
+        if (data.success && Number.isFinite(Number(data.visitor_count))) {
+            visitorElement.textContent =
+                new Intl.NumberFormat("en-IN").format(data.visitor_count);
+        }
+
+    } catch (error) {
+        console.error("Visitor counter:", error);
+        visitorElement.textContent = "—";
+    }
+});
 </script>
 
+
+<!-- EXISTING ASSESSMENT FUNCTIONALITY -->
+
+<script src="{{ url_for('static', filename='js/assessment.js') }}" defer></script>
 
 </body>
 </html>

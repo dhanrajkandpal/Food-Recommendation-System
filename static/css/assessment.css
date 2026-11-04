@@ -1,74 +1,56 @@
-/* =========================================================
-   FITTIN — ASSESSMENT EXPERIENCE
-   Complete stylesheet
-========================================================= */
-
 
 /* =========================================================
-   1. DESIGN SYSTEM
+   FITTIN — ASSESSMENT DESIGN SYSTEM
 ========================================================= */
 
 :root {
     --ivory: #f8f7f2;
-    --cream: #f4f0e5;
-
-    --forest: #304d3b;
-    --deep-forest: #203a2c;
-
-    --sage: #c5cb91;
-    --sage-light: #e5e8d4;
-
-    --text: #252b25;
-    --muted: #777d73;
-
-    --border: #e4e0d5;
-    --white: #ffffff;
+    --cream: #f1efe5;
+    --forest: #304f3d;
+    --forest-dark: #254433;
+    --deep-forest: #193629;
+    --sage: #a4b58f;
+    --sage-light: #e8eddd;
+    --olive: #a4a77c;
+    --gold: #c5c58c;
+    --text: #292f29;
+    --muted: #80867c;
+    --border: #e2dfd3;
 
     --heading-font: "Playfair Display", Georgia, serif;
-    --body-font: "DM Sans", sans-serif;
+    --body-font: "DM Sans", Arial, sans-serif;
 }
 
-
-/* =========================================================
-   2. RESET
-========================================================= */
+/* RESET */
 
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html {
+    width: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
 body {
-    margin: 0;
+    width: 100%;
+    min-width: 320px;
     min-height: 100vh;
-
-    background-color: var(--ivory);
+    overflow-x: hidden;
+    background: var(--ivory);
     color: var(--text);
-
     font-family: var(--body-font);
-
-    background-image:
-        radial-gradient(
-            ellipse at 0% 35%,
-            rgba(197, 203, 145, 0.10),
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 100% 65%,
-            rgba(197, 203, 145, 0.12),
-            transparent 24%
-        );
-
-    transition: background 0.4s ease, color 0.4s ease;
+    font-size: 14px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
 }
 
 button,
-input,
-select,
-textarea {
+input {
     font: inherit;
 }
 
@@ -76,210 +58,249 @@ button {
     cursor: pointer;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 [hidden] {
     display: none !important;
 }
 
-a {
-    color: inherit;
-}
-
-
 /* =========================================================
-   3. NAVIGATION
+   HEADER
 ========================================================= */
 
 .assessment-nav {
-    width: 100%;
-    min-height: 76px;
-
-    padding: 0 8%;
-
+    position: relative;
+    z-index: 20;
     display: flex;
     align-items: center;
     justify-content: space-between;
-
-    border-bottom: 1px solid rgba(48, 77, 59, 0.10);
-
-    position: relative;
-    z-index: 5;
+    width: 100%;
+    min-height: 82px;
+    padding: 0 clamp(20px, 6vw, 90px);
+    background: var(--ivory);
+    border-bottom: 1px solid rgba(48, 79, 61, 0.12);
 }
 
 .brand-logo {
-    color: var(--forest);
-    text-decoration: none;
-
+    display: inline-flex;
+    align-items: baseline;
+    color: var(--forest) !important;
+    font-family: var(--body-font);
     font-size: 27px;
-    font-weight: 700;
-
-    letter-spacing: -1.5px;
+    font-weight: 800;
+    letter-spacing: -1.6px;
+    line-height: 1;
+    text-decoration: none !important;
 }
 
 .brand-logo span {
-    color: #a3ad6d;
+    color: var(--olive);
 }
 
-.back-link {
-    color: var(--muted);
-    text-decoration: none;
+.nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 26px;
+}
 
+/* =========================================================
+   LIQUID GLASS VISITOR COUNTER
+========================================================= */
+
+.visitor-counter {
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 0 19px;
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.46);
+
+    backdrop-filter: blur(22px) saturate(170%);
+    -webkit-backdrop-filter: blur(22px) saturate(170%);
+
+    box-shadow:
+        0 8px 25px rgba(37, 62, 45, 0.07),
+        inset 0 1px 1px rgba(255, 255, 255, 0.8),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.15);
+
+    white-space: nowrap;
+    transition:
+        background 300ms ease,
+        border-color 300ms ease,
+        box-shadow 300ms ease,
+        transform 300ms ease;
+}
+
+.visitor-counter::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: -100% -60%;
+    pointer-events: none;
+
+    background: linear-gradient(
+        115deg,
+        transparent 38%,
+        rgba(255, 255, 255, 0.05) 43%,
+        rgba(255, 255, 255, 0.34) 49%,
+        rgba(255, 255, 255, 0.08) 54%,
+        transparent 60%
+    );
+
+    transform: translateX(-65%) rotate(12deg);
+    animation: glassReflection 7s ease-in-out infinite;
+}
+
+.visitor-counter::after {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 14%;
+    width: 40%;
+    height: 1px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    opacity: 0.7;
+    pointer-events: none;
+}
+
+.visitor-counter span,
+.visitor-counter strong {
+    position: relative;
+    z-index: 2;
+}
+
+.visitor-counter span {
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.visitor-counter strong {
+    color: var(--forest);
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.visitor-counter:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 12px 30px rgba(37, 62, 45, 0.12),
+        inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+@keyframes glassReflection {
+    0%, 15% {
+        transform: translateX(-65%) rotate(12deg);
+    }
+
+    65%, 100% {
+        transform: translateX(65%) rotate(12deg);
+    }
+}
+
+/* Back link */
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted);
     font-size: 12px;
     font-weight: 600;
-
-    transition: color 0.2s ease;
+    white-space: nowrap;
+    transition: color 180ms ease;
 }
 
 .back-link:hover {
     color: var(--forest);
 }
 
-.back-link span {
-    margin-right: 7px;
-}
-
-
 /* =========================================================
-   4. MAIN CONTAINER
+   MAIN CONTAINER
 ========================================================= */
 
 .assessment-container {
-    width: min(100% - 48px, 950px);
-
+    width: min(calc(100% - 48px), 950px);
     margin: 0 auto;
-
-    padding: 65px 0 95px;
-
-    position: relative;
-    z-index: 1;
+    padding: 65px 0 75px;
 }
 
-.assessment-container::before {
-    content: "";
-
-    position: absolute;
-
-    width: 190px;
-    height: 155px;
-
-    top: -40px;
-    right: -145px;
-
-    background: rgba(197, 203, 145, 0.19);
-
-    border-radius:
-        10% 90% 20% 80% /
-        30% 20% 80% 70%;
-
-    transform: rotate(-15deg);
-
-    z-index: -1;
-    pointer-events: none;
-}
-
-.assessment-container::after {
-    content: "";
-
-    position: absolute;
-
-    width: 165px;
-    height: 140px;
-
-    bottom: 30px;
-    left: -155px;
-
-    background: rgba(197, 203, 145, 0.15);
-
-    border-radius:
-        75% 25% 65% 35% /
-        40% 65% 35% 60%;
-
-    transform: rotate(20deg);
-
-    z-index: -1;
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   5. INTRODUCTION
-========================================================= */
+/* INTRODUCTION */
 
 .assessment-heading {
-    margin-bottom: 45px;
-
-    animation: fadeUp 0.7s ease both;
+    max-width: 850px;
+    margin-bottom: 55px;
 }
 
-.section-eyebrow {
-    margin: 0 0 17px;
-
-    color: #84905d;
-
+.eyebrow {
+    margin-bottom: 13px;
+    color: var(--olive);
     font-size: 10px;
     font-weight: 700;
-
-    letter-spacing: 2.4px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
 }
 
-.assessment-heading h1,
-.results-hero-title {
-    margin: 0;
-
+.assessment-heading h1 {
+    color: var(--text);
     font-family: var(--heading-font);
-
-    font-size: clamp(40px, 6vw, 57px);
+    font-size: clamp(38px, 5vw, 60px);
     font-weight: 500;
-
-    line-height: 1.18;
-    letter-spacing: -1.8px;
+    line-height: 1.12;
+    letter-spacing: -1px;
 }
 
 .assessment-heading h1 em {
     color: var(--forest);
-    font-weight: 500;
 }
 
 .heading-description {
-    max-width: 570px;
-
-    margin-top: 18px;
-
+    max-width: 590px;
+    margin-top: 17px;
     color: var(--muted);
-
     font-size: 13px;
     line-height: 1.9;
 }
 
-
 /* =========================================================
-   6. PROGRESS INDICATOR
+   PROGRESS BAR
 ========================================================= */
 
 .progress-section {
-    margin-bottom: 50px;
+    width: 100%;
+    margin-bottom: 65px;
 }
 
 .progress-info {
     display: flex;
-
-    justify-content: space-between;
     align-items: center;
-
-    margin-bottom: 13px;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 15px;
 }
 
 #stepLabel {
-    color: #89916e;
-
+    color: var(--olive);
     font-size: 10px;
     font-weight: 700;
-
-    letter-spacing: 1.4px;
+    letter-spacing: 1.7px;
 }
 
 #stepName {
     color: var(--text);
-
     font-size: 12px;
     font-weight: 600;
 }
@@ -287,959 +308,766 @@ a {
 .progress-track {
     width: 100%;
     height: 4px;
-
     overflow: hidden;
-
     border-radius: 20px;
-
-    background: #e8e7dd;
+    background: #e6e5dc;
 }
 
 .progress-fill {
-    width: 33.33%;
+    width: 33.333%;
     height: 100%;
-
-    border-radius: 20px;
-
+    border-radius: inherit;
     background: var(--forest);
-
-    transition: width 0.4s ease;
+    transition: width 350ms ease;
 }
 
 .step-indicators {
     display: flex;
     justify-content: space-between;
-
-    margin-top: 13px;
+    margin-top: 12px;
 }
 
 .step-dot {
     width: 8px;
     height: 8px;
-
     border-radius: 50%;
-
-    background: #d9d9cf;
-
-    transition: all 0.3s ease;
+    background: #d8d8cd;
 }
 
 .step-dot.active {
     background: var(--forest);
-    transform: scale(1.2);
 }
-
 
 /* =========================================================
-   7. MULTI-STEP FORM
+   FORM STEPS
 ========================================================= */
-
-#assessmentForm {
-    animation: fadeUp 0.6s ease both;
-}
 
 .form-step {
     display: none;
+    width: 100%;
 }
 
 .form-step.active {
     display: block;
-    animation: fadeUp 0.4s ease both;
+    animation: stepFade 300ms ease;
 }
 
-.form-section-heading {
-    margin-bottom: 32px;
+@keyframes stepFade {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 22px;
+    margin-bottom: 35px;
 }
 
 .section-number {
-    margin: 0 0 18px;
-
-    color: #89916e;
-
+    flex-shrink: 0;
+    color: var(--olive);
     font-family: var(--heading-font);
-    font-size: 21px;
+    font-size: 24px;
+    font-style: italic;
 }
 
-.form-section-heading h2 {
-    margin: 0 0 10px;
-
+.step-heading h2 {
+    color: var(--text);
     font-family: var(--heading-font);
-
-    font-size: 32px;
+    font-size: clamp(26px, 3vw, 36px);
     font-weight: 500;
-
-    letter-spacing: -0.6px;
+    line-height: 1.3;
 }
 
-.form-section-heading > p:last-child {
-    margin: 0;
-
+.step-heading p {
+    margin-top: 9px;
     color: var(--muted);
-
     font-size: 13px;
-    line-height: 1.8;
 }
-
 
 /* =========================================================
-   8. PERSONAL DETAILS GRID
+   PERSONAL DETAILS
 ========================================================= */
 
 .form-grid {
     display: grid;
-
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 25px 22px;
+    gap: 25px 28px;
 }
 
 .form-group {
-    display: flex;
-    flex-direction: column;
-
-    gap: 10px;
-
     min-width: 0;
 }
 
 .form-group > label {
+    display: block;
+    margin-bottom: 9px;
     color: var(--text);
-
     font-size: 12px;
-    font-weight: 600;
-}
-
-
-/* =========================================================
-   9. TEXT INPUTS
-
-   IMPORTANT:
-   Only text-like inputs are styled here.
-   Radio buttons are deliberately excluded.
-========================================================= */
-
-.form-group input:not([type="radio"]):not([type="checkbox"]),
-.form-group select {
-    width: 100%;
-    min-height: 53px;
-
-    padding: 0 16px;
-
-    border: 1px solid var(--border);
-    border-radius: 7px;
-
-    outline: none;
-
-    background: rgba(255, 255, 255, 0.78);
-
-    color: var(--text);
-
-    font-size: 13px;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease;
-}
-
-.form-group input:not([type="radio"]):not([type="checkbox"]):focus,
-.form-group select:focus {
-    border-color: var(--forest);
-
-    box-shadow:
-        0 0 0 3px rgba(48, 77, 59, 0.08);
-}
-
-.form-group input::placeholder {
-    color: #a6aaa0;
+    font-weight: 700;
 }
 
 .input-wrapper {
     display: flex;
     align-items: center;
-
     width: 100%;
+    height: 56px;
+    padding: 0 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+}
 
-    position: relative;
+.input-wrapper:focus-within {
+    border-color: var(--forest);
+    box-shadow: 0 0 0 3px rgba(48, 79, 61, 0.08);
 }
 
 .input-wrapper input {
-    flex: 1;
+    display: block;
+    width: 100%;
     min-width: 0;
+    height: 100%;
+    padding: 0;
+    border: 0 !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent;
+    color: var(--text);
+    font-size: 14px;
+    appearance: textfield;
+    -moz-appearance: textfield;
 }
 
-.input-wrapper > span {
-    position: absolute;
+.input-wrapper input::-webkit-inner-spin-button,
+.input-wrapper input::-webkit-outer-spin-button {
+    appearance: none;
+    -webkit-appearance: none;
+}
 
-    right: 16px;
+.input-wrapper input::placeholder {
+    color: #a5a99e;
+}
 
+.input-wrapper span {
+    flex-shrink: 0;
     color: var(--muted);
-
     font-size: 12px;
-
-    pointer-events: none;
 }
 
-.input-wrapper input {
-    padding-right: 55px !important;
-}
+/* GENDER */
 
-
-/* =========================================================
-   10. GENDER SELECTION
-========================================================= */
-
-.gender-options {
+.option-group {
     display: grid;
-
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
     gap: 12px;
-
-    width: 100%;
 }
 
-.gender-card {
-    min-height: 53px;
-
+.option-card {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    position: relative;
-
-    padding: 12px;
-
+    min-height: 56px;
     border: 1px solid var(--border);
-    border-radius: 7px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+    transition: all 180ms ease;
+}
 
-    background: rgba(255, 255, 255, 0.65);
+.option-card input {
+    position: absolute;
+    opacity: 0;
+}
 
+.option-card span {
     color: var(--text);
-
     font-size: 13px;
     font-weight: 600;
-
-    cursor: pointer;
-
-    transition: all 0.2s ease;
 }
 
-/* Hide native radio without affecting layout */
-
-.gender-card input[type="radio"] {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    opacity: 0;
-    pointer-events: none;
-}
-
-.gender-card:hover {
+.option-card:has(input:checked) {
     border-color: var(--forest);
+    background: var(--sage-light);
+    box-shadow: inset 3px 0 var(--forest);
 }
 
-.gender-card:has(input:checked) {
-    border-color: var(--forest);
-
-    background: #e9ecd9;
-
-    color: var(--forest);
-
-    box-shadow: inset 0 0 0 1px var(--forest);
+.option-card:has(input:checked) span {
+    color: var(--forest-dark);
 }
-
-.gender-card:has(input:focus-visible) {
-    outline: 3px solid rgba(48, 77, 59, 0.2);
-    outline-offset: 3px;
-}
-
 
 /* =========================================================
-   11. ACTIVITY LEVEL CARDS
+   ACTIVITY
 ========================================================= */
 
-.activity-options {
-    display: grid;
-
-    grid-template-columns: 1fr;
-
-    gap: 10px;
-
+.selection-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
     width: 100%;
 }
 
-.activity-card {
-    display: block;
-
+.selection-card {
     position: relative;
-
-    width: 100%;
-
-    cursor: pointer;
-}
-
-.activity-card input[type="radio"] {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    opacity: 0;
-    pointer-events: none;
-}
-
-.activity-card-content {
-    display: grid;
-
-    grid-template-columns: 48px minmax(0, 1fr) 28px;
-    grid-template-rows: auto auto;
-
+    display: flex;
     align-items: center;
-
-    gap: 3px 15px;
-
     width: 100%;
-    min-height: 68px;
-
-    padding: 12px 17px;
-
-    border: 1px solid #ded9cc;
-    border-radius: 9px;
-
-    background: rgba(255, 255, 255, 0.45);
-
-    transition: all 0.25s ease;
+    min-height: 76px;
+    padding: 15px 20px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    transition: all 180ms ease;
 }
 
-.activity-card-content::before {
-    grid-column: 1;
-    grid-row: 1 / 3;
-
-    width: 38px;
-    height: 38px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 9px;
-
-    color: var(--forest);
-
-    font-size: 25px;
+.selection-card input {
+    position: absolute;
+    opacity: 0;
 }
 
-.activity-card:nth-child(1) .activity-card-content::before {
-    content: "▱";
+.selection-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
 }
 
-.activity-card:nth-child(2) .activity-card-content::before {
-    content: "♙";
-}
-
-.activity-card:nth-child(3) .activity-card-content::before {
-    content: "↔";
-}
-
-.activity-card:nth-child(4) .activity-card-content::before {
-    content: "♧";
-}
-
-.activity-card:nth-child(5) .activity-card-content::before {
-    content: "⚒";
-}
-
-.activity-card-content strong {
-    grid-column: 2;
-    grid-row: 1;
-
+.selection-content strong {
     color: var(--text);
-
     font-size: 13px;
     font-weight: 700;
 }
 
-.activity-card-content > span:last-child {
-    grid-column: 2;
-    grid-row: 2;
-
+.selection-content small {
     color: var(--muted);
-
-    font-size: 11px;
-    line-height: 1.5;
+    font-size: 12px;
 }
 
-.activity-card-content::after {
-    content: "";
-
-    grid-column: 3;
-    grid-row: 1 / 3;
-
-    width: 17px;
-    height: 17px;
-
-    justify-self: center;
-
-    border: 1.5px solid #a9a696;
+.selection-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 19px;
+    height: 19px;
+    margin-left: auto;
+    border: 1px solid #b9b9aa;
     border-radius: 50%;
-
-    background: transparent;
-
-    transition: all 0.2s ease;
+    color: transparent;
+    font-size: 11px;
 }
 
-.activity-card:hover .activity-card-content {
+.selection-card:hover {
+    border-color: rgba(48, 79, 61, 0.4);
+}
+
+.selection-card:has(input:checked) {
     border-color: var(--forest);
-
-    background: rgba(255, 255, 255, 0.8);
-
-    transform: translateY(-1px);
+    background: var(--sage-light);
+    box-shadow: inset 3px 0 var(--forest);
 }
 
-.activity-card input:checked + .activity-card-content {
+.selection-card:has(input:checked) .selection-check {
     border-color: var(--forest);
-
-    background: #e9ecd9;
-
-    box-shadow: inset 3px 0 0 var(--forest);
+    background: var(--forest);
+    color: white;
 }
-
-.activity-card input:checked + .activity-card-content::after {
-    border-color: var(--forest);
-
-    background-color: var(--forest);
-
-    box-shadow: inset 0 0 0 4px #e9ecd9;
-}
-
-.activity-card input:focus-visible + .activity-card-content {
-    outline: 3px solid rgba(48, 77, 59, 0.22);
-    outline-offset: 3px;
-}
-
-
-/* =========================================================
-   12. ACTIVITY NOTE
-========================================================= */
 
 .activity-note {
     display: flex;
-    align-items: center;
-
-    gap: 14px;
-
+    align-items: flex-start;
+    gap: 12px;
     margin-top: 22px;
-    padding: 19px;
-
-    border-left: 3px solid var(--sage);
-
-    background: rgba(230, 232, 216, 0.55);
-}
-
-.note-icon {
-    flex-shrink: 0;
-
-    color: var(--forest);
-
-    font-size: 19px;
-}
-
-.activity-note p {
-    margin: 0;
-
-    color: #686f63;
-
+    padding: 18px;
+    background: #efefe5;
+    border-left: 3px solid var(--olive);
+    color: var(--muted);
     font-size: 12px;
-    line-height: 1.7;
 }
 
+.activity-note span {
+    color: var(--olive);
+}
 
 /* =========================================================
-   13. FITNESS GOALS
+   FITNESS GOALS
 ========================================================= */
 
-.goal-options {
+.goal-grid {
     display: grid;
-
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 13px;
+    gap: 14px;
+    width: 100%;
 }
 
 .goal-card {
-    display: block;
-
     position: relative;
-
-    cursor: pointer;
-}
-
-.goal-card input[type="radio"] {
-    position: absolute;
-
-    width: 1px;
-    height: 1px;
-
-    opacity: 0;
-    pointer-events: none;
-}
-
-.goal-card-content {
     display: grid;
-
-    grid-template-columns: 45px minmax(0, 1fr);
+    grid-template-columns: 40px minmax(0, 1fr);
     grid-template-rows: auto auto;
-
-    align-items: start;
-
-    gap: 5px 15px;
-
-    min-height: 115px;
-
-    padding: 21px;
-
+    gap: 8px 12px;
+    min-height: 120px;
+    padding: 20px;
     border: 1px solid var(--border);
-    border-radius: 7px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.65);
+    cursor: pointer;
+    transition: all 180ms ease;
+}
 
-    background: rgba(255, 255, 255, 0.55);
-
-    transition: all 0.25s ease;
+.goal-card input {
+    position: absolute;
+    opacity: 0;
 }
 
 .goal-number {
     grid-column: 1;
     grid-row: 1 / 3;
-
-    color: #9aa17a;
-
+    color: var(--olive);
     font-family: var(--heading-font);
-
-    font-size: 21px;
+    font-size: 17px;
+    font-style: italic;
 }
 
-.goal-card-content strong {
+.goal-card strong {
     grid-column: 2;
     grid-row: 1;
-
     color: var(--text);
-
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 700;
 }
 
-.goal-card-content > span:last-child {
+.goal-card small {
     grid-column: 2;
     grid-row: 2;
-
     color: var(--muted);
-
-    font-size: 12px;
-    line-height: 1.7;
-}
-
-.goal-card:hover .goal-card-content {
-    border-color: var(--forest);
-
-    transform: translateY(-2px);
-}
-
-.goal-card input:checked + .goal-card-content {
-    border-color: var(--forest);
-
-    background: #e9ecd9;
-
-    box-shadow: inset 3px 0 0 var(--forest);
-}
-
-.goal-card input:focus-visible + .goal-card-content {
-    outline: 3px solid rgba(48, 77, 59, 0.22);
-    outline-offset: 3px;
-}
-
-
-/* =========================================================
-   14. FORM NAVIGATION
-========================================================= */
-
-.form-navigation {
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 15px;
-
-    margin-top: 42px;
-    padding-top: 25px;
-
-    border-top: 1px solid var(--border);
-}
-
-.previous-btn,
-.next-btn,
-.submit-btn {
-    min-height: 49px;
-
-    padding: 0 24px;
-
-    border: none;
-    border-radius: 5px;
-
-    font-size: 12px;
-    font-weight: 600;
-
-    transition: all 0.25s ease;
-}
-
-.previous-btn {
-    background: transparent;
-
-    color: var(--muted);
-}
-
-.previous-btn:hover {
-    color: var(--forest);
-}
-
-.next-btn,
-.submit-btn {
-    margin-left: auto;
-
-    background: var(--forest);
-
-    color: var(--cream);
-}
-
-.next-btn:hover,
-.submit-btn:hover {
-    background: var(--deep-forest);
-
-    transform: translateY(-2px);
-}
-
-.submit-btn:disabled {
-    opacity: 0.65;
-
-    cursor: wait;
-
-    transform: none;
-}
-
-.next-btn span,
-.submit-btn span {
-    margin-left: 12px;
-}
-
-
-/* =========================================================
-   15. FORM ERRORS
-========================================================= */
-
-.form-error {
-    margin-top: 20px;
-
-    padding: 13px 16px;
-
-    border-left: 3px solid #b94b4b;
-
-    background: #f8eaea;
-
-    color: #923737;
-
     font-size: 12px;
     line-height: 1.6;
 }
 
+.goal-card:hover {
+    border-color: rgba(48, 79, 61, 0.4);
+    transform: translateY(-2px);
+}
+
+.goal-card:has(input:checked) {
+    border-color: var(--forest);
+    background: var(--sage-light);
+    box-shadow: inset 3px 0 var(--forest);
+}
 
 /* =========================================================
-   16. RESULTS PAGE THEME
+   FORM NAVIGATION
+========================================================= */
+
+.form-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-top: 45px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.next-btn,
+.previous-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0 24px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: all 180ms ease;
+}
+
+.next-btn {
+    border: 1px solid var(--forest);
+    background: var(--forest);
+    color: white;
+}
+
+.next-btn:hover {
+    background: var(--forest-dark);
+    transform: translateY(-2px);
+}
+
+.next-btn:disabled {
+    opacity: 0.65;
+    cursor: wait;
+    transform: none;
+}
+
+.previous-btn {
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--forest);
+}
+
+.previous-btn:hover:not(:disabled) {
+    border-color: var(--forest);
+    background: var(--sage-light);
+}
+
+.previous-btn:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.form-error {
+    min-height: 20px;
+    margin-top: 12px;
+    color: #b45b52;
+    font-size: 12px;
+}
+
+/* =========================================================
+   RESULTS PAGE — FULL GREEN THEME
 ========================================================= */
 
 body:has(#resultSection:not([hidden])) {
-    background-color: var(--deep-forest);
-
-    background-image:
-        radial-gradient(
-            ellipse at 100% 0%,
-            rgba(197, 203, 145, 0.11),
-            transparent 25%
-        ),
-        radial-gradient(
-            ellipse at 0% 75%,
-            rgba(197, 203, 145, 0.07),
-            transparent 24%
-        );
-
+    background: var(--deep-forest);
     color: var(--cream);
 }
 
-body:has(#resultSection:not([hidden])) .assessment-nav {
-    border-bottom-color: rgba(255, 255, 255, 0.12);
-}
-
-body:has(#resultSection:not([hidden])) .brand-logo {
-    color: var(--cream);
-}
-
-body:has(#resultSection:not([hidden])) .back-link {
-    color: #b6c0af;
-}
-
-body:has(#resultSection:not([hidden])) .back-link:hover {
-    color: var(--sage);
-}
-
-body:has(#resultSection:not([hidden])) .assessment-footer {
-    border-top-color: rgba(255, 255, 255, 0.12);
-}
-
-body:has(#resultSection:not([hidden])) .assessment-footer p {
-    color: #b4bcae;
+body:has(#resultSection:not([hidden])) .assessment-container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
 }
 
 body:has(#resultSection:not([hidden])) .assessment-heading,
-body:has(#resultSection:not([hidden])) .progress-section,
-body:has(#resultSection:not([hidden])) #assessmentForm {
+body:has(#resultSection:not([hidden])) .progress-section {
     display: none !important;
 }
 
+body:has(#resultSection:not([hidden])) .assessment-nav {
+    background: var(--deep-forest);
+    border-bottom-color: rgba(255, 255, 255, 0.13);
+}
 
-/* =========================================================
-   17. RESULTS INTRODUCTION
-========================================================= */
+body:has(#resultSection:not([hidden])) .brand-logo {
+    color: var(--cream) !important;
+}
+
+body:has(#resultSection:not([hidden])) .brand-logo span {
+    color: var(--gold);
+}
+
+body:has(#resultSection:not([hidden])) .back-link {
+    color: rgba(244, 240, 229, 0.72);
+}
+
+body:has(#resultSection:not([hidden])) .back-link:hover {
+    color: var(--gold);
+}
+
+/* RESULTS CANVAS */
 
 #resultSection {
-    animation: fadeUp 0.7s ease both;
-}
-
-.results-hero-title {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    min-height: calc(100vh - 82px);
+    margin: 0;
+    padding: clamp(38px, 5vw, 75px) clamp(22px, 6vw, 100px);
+    overflow: hidden;
+    border: 0;
+    border-radius: 0;
     color: var(--cream);
 
-    font-size: clamp(40px, 6vw, 58px);
+    background:
+        radial-gradient(
+            ellipse at 10% 0%,
+            rgba(122, 153, 116, 0.17),
+            transparent 42%
+        ),
+        linear-gradient(
+            140deg,
+            #254735 0%,
+            #1e3d2d 48%,
+            #193629 100%
+        );
+
+    animation: resultFade 450ms ease both;
 }
 
-#resultSection > .section-eyebrow {
-    color: var(--sage);
+@keyframes resultFade {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* BACKGROUND IMAGE — RESULTS ONLY */
+
+#resultSection::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    right: 0;
+    bottom: 0;
+    width: min(78%, 1150px);
+    height: 78%;
+    pointer-events: none;
+
+    background-image: url("../images/results-background.png");
+    background-repeat: no-repeat;
+    background-position: right bottom;
+    background-size: contain;
+
+    opacity: 0.88;
+
+    -webkit-mask-image:
+        linear-gradient(
+            to left,
+            black 0%,
+            rgba(0, 0, 0, 0.9) 48%,
+            transparent 100%
+        ),
+        linear-gradient(
+            to top,
+            black 0%,
+            rgba(0, 0, 0, 0.85) 65%,
+            transparent 100%
+        );
+
+    -webkit-mask-composite: source-in;
+
+    mask-image:
+        linear-gradient(
+            to left,
+            black 0%,
+            rgba(0, 0, 0, 0.9) 48%,
+            transparent 100%
+        ),
+        linear-gradient(
+            to top,
+            black 0%,
+            rgba(0, 0, 0, 0.85) 65%,
+            transparent 100%
+        );
+
+    mask-composite: intersect;
+}
+
+#resultSection > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* RESULTS HEADINGS */
+
+.results-header {
+    margin-bottom: 30px;
+}
+
+#resultSection .eyebrow {
+    color: var(--gold);
+}
+
+#resultSection h2 {
+    color: var(--cream);
+    font-family: var(--heading-font);
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -1px;
 }
 
 .result-intro {
-    max-width: 550px;
-
-    margin-top: 20px;
-
-    color: #bdc6b8;
-
+    max-width: 650px;
+    margin-top: 12px;
+    color: rgba(244, 240, 229, 0.72);
     font-size: 13px;
-    line-height: 1.9;
+    line-height: 1.8;
 }
 
-
-/* =========================================================
-   18. RESULTS HEADINGS
-========================================================= */
-
-.macro-section > h3,
-.recommendation-section > h3 {
-    margin: 0 0 10px;
-
-    color: var(--cream);
-
-    font-family: var(--heading-font);
-
-    font-size: 30px;
-    font-weight: 500;
-}
-
-.macro-section > .section-eyebrow,
-.recommendation-section > .section-eyebrow {
-    color: var(--sage);
-}
-
-
-/* =========================================================
-   19. RESULTS DIVIDERS
-========================================================= */
-
-.result-divider {
-    height: 1px;
-
-    margin: 55px 0;
-
-    background: rgba(255, 255, 255, 0.13);
-}
-
-
-/* =========================================================
-   20. METRIC CARDS
-========================================================= */
+/* METRIC CARDS */
 
 .result-grid {
     display: grid;
-
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 12px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 13px;
+    width: 100%;
+    margin-top: 30px;
 }
 
 .result-item {
-    min-height: 135px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    padding: 21px;
-
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 7px;
-
-    background: rgba(255, 255, 255, 0.045);
+    min-width: 0;
+    min-height: 125px;
+    padding: 19px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.065);
 }
 
 .result-label {
-    color: #b6c1b2;
-
+    color: rgba(244, 240, 229, 0.72);
     font-size: 11px;
     line-height: 1.5;
 }
 
 .result-value {
     color: var(--cream);
-
     font-family: var(--heading-font);
-
-    font-size: 30px;
+    font-size: 25px;
     font-weight: 500;
-
     overflow-wrap: anywhere;
 }
 
 .result-unit {
-    color: #9da99a;
-
+    color: rgba(244, 240, 229, 0.65);
     font-size: 10px;
 }
 
 .result-item.featured {
     grid-column: span 2;
-
-    min-height: 145px;
-
-    border-color: rgba(197, 203, 145, 0.55);
-
-    background: rgba(197, 203, 145, 0.1);
+    border-color: rgba(197, 197, 140, 0.45);
+    background: rgba(197, 197, 140, 0.10);
 }
 
 .result-item.featured .result-value {
-    color: var(--sage);
-
-    font-size: 38px;
+    color: var(--gold);
+    font-size: 32px;
 }
 
+/* DIVIDERS */
+
+.result-divider {
+    width: 100%;
+    height: 1px;
+    margin: 36px 0;
+    background: rgba(255, 255, 255, 0.18);
+}
 
 /* =========================================================
-   21. MACRONUTRIENTS
+   MACRONUTRIENTS
 ========================================================= */
 
-.macro-section {
-    margin-bottom: 70px;
+.macro-section,
+.recommendation-section {
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
 }
 
-.macro-results {
-    display: grid;
+.macro-section h3,
+.recommendation-section h3 {
+    color: var(--cream);
+    font-family: var(--heading-font);
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 500;
+}
 
-    gap: 18px;
+#macroResults {
+    display: grid;
+    gap: 24px;
+    width: 100%;
+    min-width: 0;
+    margin-top: 30px;
 }
 
 .macro-row {
-    padding: 21px;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 7px;
-
-    background: rgba(255, 255, 255, 0.035);
+    display: grid;
+    grid-template-columns:
+        minmax(130px, 180px)
+        minmax(0, 1fr)
+        minmax(85px, 110px);
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
 }
 
 .macro-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
-    gap: 15px;
-
-    margin-bottom: 14px;
+    gap: 8px;
+    min-width: 0;
 }
 
 .macro-name {
     color: var(--cream);
-
     font-size: 13px;
     font-weight: 600;
 }
 
 .macro-amount {
-    color: var(--sage);
-
+    color: var(--gold);
     font-size: 13px;
+    white-space: nowrap;
 }
 
 .macro-track {
+    width: 100%;
     height: 8px;
-
     overflow: hidden;
-
-    border-radius: 20px;
-
-    background: rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.15);
 }
 
 .macro-bar {
     width: 0;
     height: 100%;
-
-    border-radius: 20px;
-
-    background: linear-gradient(
-        90deg,
-        #9dbb84,
-        #c5cb91
-    );
-
-    transition: width 0.8s ease;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #9cbd89, #d0d8a3);
+    transition: width 800ms ease;
 }
 
 .macro-details {
     display: flex;
-
-    justify-content: space-between;
-
-    gap: 15px;
-
-    margin-top: 11px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
 }
 
 .macro-calories,
 .macro-percentage {
-    color: #b6c1b2;
-
-    font-size: 10px;
+    color: rgba(244, 240, 229, 0.72);
+    font-size: 11px;
+    white-space: nowrap;
 }
-
 
 /* =========================================================
-   22. FOOD RECOMMENDATIONS
+   FOOD RECOMMENDATIONS
 ========================================================= */
 
-.recommendation-section {
-    margin-bottom: 60px;
-}
-
-.recommendation-results {
+#recommendationResults {
     display: grid;
-
-    gap: 30px;
+    gap: 32px;
+    width: 100%;
+    min-width: 0;
+    margin-top: 30px;
 }
 
 .recommendation-group {
@@ -1247,376 +1075,547 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
 }
 
 .recommendation-heading {
-    margin: 0 0 15px;
-
-    color: var(--sage);
-
+    margin-bottom: 15px;
+    color: var(--gold);
     font-family: var(--heading-font);
-
-    font-size: 23px;
+    font-size: 25px;
     font-weight: 500;
 }
 
 .recommendation-grid {
     display: grid;
-
     grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    gap: 12px;
+    gap: 13px;
+    width: 100%;
 }
 
 .recommendation-card {
     min-width: 0;
-
-    padding: 19px;
-
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 7px;
-
-    background: rgba(255, 255, 255, 0.045);
-
-    transition: all 0.25s ease;
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.075);
+    transition:
+        background 180ms ease,
+        border-color 180ms ease,
+        transform 180ms ease;
 }
 
 .recommendation-card:hover {
-    background: rgba(255, 255, 255, 0.09);
-
-    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.24);
+    transform: translateY(-2px);
 }
 
 .food-name {
-    margin: 0 0 12px;
-
+    margin-bottom: 9px;
     color: var(--cream);
-
     font-size: 13px;
-    font-weight: 600;
-
+    font-weight: 700;
     overflow-wrap: anywhere;
 }
 
 .food-serving {
-    margin: 0 0 7px;
-
-    color: #b5c0b1;
-
-    font-size: 11px;
+    margin-bottom: 6px;
+    color: rgba(244, 240, 229, 0.72);
+    font-size: 12px;
 }
 
 .food-macro {
-    margin: 0;
-
-    color: var(--sage);
-
-    font-size: 11px;
+    color: var(--gold);
+    font-size: 12px;
     font-weight: 600;
 }
 
 .recommendation-empty,
 .recommendation-loading {
-    color: #b6c1b2;
-
+    color: rgba(244, 240, 229, 0.72);
     font-size: 12px;
-    line-height: 1.7;
 }
 
-
-/* =========================================================
-   23. EDIT ASSESSMENT
-========================================================= */
+/* EDIT BUTTON */
 
 .result-navigation {
-    padding-top: 28px;
-
-    border-top: 1px solid rgba(255, 255, 255, 0.13);
+    display: flex;
+    align-items: center;
+    margin-top: 36px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.17);
 }
 
 .result-navigation .previous-btn {
-    min-height: 47px;
-
+    min-height: 48px;
     padding: 0 22px;
-
-    border: 1px solid rgba(197, 203, 145, 0.5);
-    border-radius: 5px;
-
+    border: 1px solid rgba(197, 197, 140, 0.55);
+    border-radius: 8px;
     background: transparent;
-
-    color: var(--sage);
-
+    color: var(--gold);
     font-size: 12px;
     font-weight: 600;
-
-    transition: all 0.25s ease;
 }
 
 .result-navigation .previous-btn:hover {
-    background: var(--sage);
-
-    color: var(--deep-forest);
+    background: rgba(255, 255, 255, 0.08);
 }
 
-
 /* =========================================================
-   24. FOOTER
+   FOOTER
 ========================================================= */
 
 .assessment-footer {
-    min-height: 95px;
-
     display: flex;
-
     align-items: center;
     justify-content: space-between;
-
     gap: 20px;
-
-    padding: 20px 8%;
-
+    width: 100%;
+    min-height: 90px;
+    margin: 0;
+    padding: 20px clamp(22px, 6vw, 100px);
     border-top: 1px solid var(--border);
+    background: var(--ivory);
 }
 
-.assessment-footer .brand-logo {
-    font-size: 22px;
+.footer-logo {
+    color: var(--forest) !important;
+    font-family: var(--body-font);
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: -1.3px;
+    text-decoration: none !important;
+}
+
+.footer-logo span {
+    color: var(--olive);
 }
 
 .assessment-footer p {
-    margin: 0;
-
     color: var(--muted);
-
     font-size: 11px;
 }
 
-
-/* =========================================================
-   25. ANIMATIONS
-========================================================= */
-
-@keyframes fadeUp {
-
-    from {
-        opacity: 0;
-        transform: translateY(16px);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
+body:has(#resultSection:not([hidden])) .assessment-footer {
+    background: var(--deep-forest);
+    border-top-color: rgba(255, 255, 255, 0.14);
 }
 
+body:has(#resultSection:not([hidden])) .footer-logo {
+    color: var(--cream) !important;
+}
+
+body:has(#resultSection:not([hidden])) .footer-logo span {
+    color: var(--gold);
+}
+
+body:has(#resultSection:not([hidden])) .assessment-footer p {
+    color: rgba(244, 240, 229, 0.7);
+}
 
 /* =========================================================
-   26. TABLET
+   RESULTS HEADER — GLASS BLENDS INTO GREEN
 ========================================================= */
 
-@media (max-width: 768px) {
+/*
+   This is the important correction.
+
+   The counter has its own appearance on the ivory
+   assessment screens. On the results screen it changes
+   to a much darker, green-tinted transparent glass.
+*/
+
+body:has(#resultSection:not([hidden])) .visitor-counter {
+    border: 1px solid rgba(220, 239, 215, 0.22);
+
+    background: rgba(144, 177, 145, 0.10);
+
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.09),
+        inset 0 1px 1px rgba(255, 255, 255, 0.20),
+        inset 0 -1px 1px rgba(255, 255, 255, 0.05);
+}
+
+body:has(#resultSection:not([hidden])) .visitor-counter::before {
+    background: linear-gradient(
+        115deg,
+        transparent 35%,
+        rgba(255, 255, 255, 0.025) 42%,
+        rgba(255, 255, 255, 0.18) 49%,
+        rgba(255, 255, 255, 0.045) 55%,
+        transparent 63%
+    );
+}
+
+body:has(#resultSection:not([hidden])) .visitor-counter::after {
+    background: rgba(255, 255, 255, 0.4);
+    opacity: 0.55;
+}
+
+body:has(#resultSection:not([hidden])) .visitor-counter span {
+    color: rgba(235, 242, 225, 0.74);
+}
+
+body:has(#resultSection:not([hidden])) .visitor-counter strong {
+    color: #e7edda;
+}
+
+body:has(#resultSection:not([hidden])) .visitor-counter:hover {
+    border-color: rgba(220, 239, 215, 0.38);
+    background: rgba(144, 177, 145, 0.16);
+
+    box-shadow:
+        0 10px 32px rgba(0, 0, 0, 0.13),
+        inset 0 1px 1px rgba(255, 255, 255, 0.27);
+}
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 900px) {
 
     .assessment-container {
-        width: min(100% - 48px, 650px);
-
-        padding-top: 55px;
+        width: calc(100% - 44px);
     }
 
-    .assessment-container::before {
-        right: -100px;
-
-        width: 120px;
-        height: 110px;
+    .result-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .assessment-container::after {
-        left: -100px;
-
-        width: 110px;
-        height: 100px;
+    #resultSection::after {
+        width: 85%;
+        height: 65%;
     }
 
+    .macro-row {
+        grid-template-columns:
+            minmax(110px, 145px)
+            minmax(0, 1fr)
+            85px;
+        gap: 14px;
+    }
 }
 
-
 /* =========================================================
-   27. MOBILE
+   MOBILE
 ========================================================= */
 
 @media (max-width: 600px) {
 
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
     .assessment-nav {
         min-height: 68px;
-
-        padding: 0 6%;
+        padding: 0 16px;
     }
 
     .brand-logo {
         font-size: 23px;
     }
 
-    .assessment-container {
-        width: min(100% - 36px, 520px);
+    .nav-actions {
+        gap: 13px;
+    }
 
-        padding: 50px 0 65px;
+    .visitor-counter {
+        min-height: 39px;
+        padding: 0 11px;
+        gap: 7px;
+        border-radius: 13px;
+    }
+
+    .visitor-counter span {
+        font-size: 10px;
+    }
+
+    .visitor-counter strong {
+        font-size: 12px;
+    }
+
+    .back-link {
+        font-size: 10px;
+    }
+
+    .assessment-container {
+        width: calc(100% - 32px);
+        max-width: 100%;
+        padding-top: 36px;
     }
 
     .assessment-heading {
         margin-bottom: 38px;
     }
 
-    .assessment-heading h1,
-    .results-hero-title {
-        font-size: 38px;
-
-        letter-spacing: -1.2px;
+    .assessment-heading h1 {
+        font-size: clamp(34px, 9vw, 45px);
     }
 
-    .heading-description,
-    .result-intro {
+    .heading-description {
+        font-size: 12px;
+    }
+
+    .progress-section {
+        margin-bottom: 42px;
+    }
+
+    .step-heading {
+        gap: 14px;
+        margin-bottom: 25px;
+    }
+
+    .section-number {
+        font-size: 20px;
+    }
+
+    .step-heading h2 {
+        font-size: 26px;
+    }
+
+    .step-heading p {
         font-size: 12px;
     }
 
     .form-grid {
-        grid-template-columns: 1fr;
-
-        gap: 20px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 19px;
     }
 
-    .form-section-heading h2 {
-        font-size: 27px;
+    .input-wrapper {
+        height: 53px;
     }
 
-    .gender-options {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .selection-card {
+        min-height: 72px;
+        padding: 13px 15px;
     }
 
-    .activity-card-content {
-        grid-template-columns: 40px minmax(0, 1fr) 25px;
-
-        gap: 3px 10px;
-
-        padding: 12px;
+    .selection-content small {
+        font-size: 11px;
     }
 
-    .activity-card-content::before {
-        width: 32px;
-        height: 32px;
-
-        font-size: 22px;
+    .goal-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 11px;
     }
 
-    .activity-card-content strong {
-        font-size: 12px;
-    }
-
-    .activity-card-content > span:last-child {
-        font-size: 10px;
-    }
-
-    .goal-options {
-        grid-template-columns: 1fr;
-    }
-
-    .goal-card-content {
+    .goal-card {
         min-height: 100px;
-
-        padding: 17px;
-
-        grid-template-columns: 38px minmax(0, 1fr);
+        padding: 16px;
     }
 
     .form-navigation {
         margin-top: 32px;
     }
 
-    .previous-btn,
     .next-btn,
-    .submit-btn {
-        min-height: 46px;
-
+    .previous-btn {
+        min-height: 44px;
         padding: 0 16px;
-
         font-size: 11px;
     }
 
+    /* MOBILE RESULTS */
+
+    body:has(#resultSection:not([hidden])) {
+        width: 100%;
+        min-width: 320px;
+        background: var(--deep-forest);
+    }
+
+    body:has(#resultSection:not([hidden])) .assessment-container {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    #resultSection {
+        width: 100%;
+        max-width: none;
+        min-width: 0;
+        min-height: calc(100vh - 68px);
+        padding: 30px 17px;
+        border-radius: 0;
+
+        background:
+            radial-gradient(
+                ellipse at 10% 0%,
+                rgba(122, 153, 116, 0.16),
+                transparent 42%
+            ),
+            linear-gradient(
+                145deg,
+                #254735,
+                #193629
+            );
+    }
+
+    #resultSection::after {
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 58%;
+        background-position: right bottom;
+        background-size: auto 100%;
+        opacity: 0.78;
+
+        -webkit-mask-image: linear-gradient(
+            to top,
+            black 0%,
+            rgba(0, 0, 0, 0.85) 65%,
+            transparent 100%
+        );
+
+        mask-image: linear-gradient(
+            to top,
+            black 0%,
+            rgba(0, 0, 0, 0.85) 65%,
+            transparent 100%
+        );
+    }
+
+    #resultSection h2 {
+        font-size: 34px;
+    }
+
+    .result-intro {
+        font-size: 12px;
+    }
+
     .result-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 9px;
     }
 
     .result-item {
-        min-height: 120px;
-
-        padding: 15px;
+        min-height: 110px;
+        padding: 13px 10px;
     }
 
     .result-value {
-        font-size: 25px;
+        font-size: 20px;
     }
 
     .result-item.featured .result-value {
-        font-size: 32px;
+        font-size: 26px;
     }
 
-    .recommendation-grid {
-        grid-template-columns: 1fr;
+    .result-divider {
+        margin: 27px 0;
+    }
+
+    .macro-section h3,
+    .recommendation-section h3 {
+        font-size: 28px;
+    }
+
+    #macroResults {
+        gap: 22px;
     }
 
     .macro-row {
-        padding: 16px;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 9px;
     }
 
-    .assessment-footer {
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        padding: 25px 6%;
+    .macro-header {
+        justify-content: space-between;
     }
 
-    .assessment-footer p {
-        line-height: 1.7;
+    .macro-details {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
     }
 
-}
-
-
-/* =========================================================
-   28. SMALL PHONES
-========================================================= */
-
-@media (max-width: 360px) {
-
-    .assessment-heading h1,
-    .results-hero-title {
-        font-size: 33px;
+    .macro-track {
+        height: 7px;
     }
 
-    .result-grid {
-        grid-template-columns: 1fr;
+    #recommendationResults {
+        gap: 25px;
     }
 
-    .result-item.featured {
-        grid-column: span 1;
+    .recommendation-heading {
+        font-size: 22px;
     }
 
-    .progress-info {
+    .recommendation-grid {
+        grid-template-columns: minmax(0, 1fr);
         gap: 10px;
     }
 
-    #stepName {
-        text-align: right;
+    .recommendation-card {
+        padding: 15px;
     }
 
-    .activity-card-content {
-        grid-template-columns: 32px minmax(0, 1fr) 22px;
-
-        gap: 3px 8px;
+    .result-navigation {
+        margin-top: 25px;
+        padding-top: 20px;
     }
 
+    .assessment-footer {
+        min-height: 75px;
+        padding: 18px 17px;
+    }
+
+    body:has(#resultSection:not([hidden])) .assessment-footer {
+        background: var(--deep-forest);
+    }
 }
 
+/* SMALL PHONES */
 
-/* =========================================================
-   29. ACCESSIBILITY
-========================================================= */
+@media (max-width: 360px) {
+
+    .assessment-nav {
+        padding-inline: 11px;
+    }
+
+    .nav-actions {
+        gap: 9px;
+    }
+
+    .visitor-counter {
+        padding-inline: 8px;
+        gap: 5px;
+    }
+
+    .assessment-container {
+        width: calc(100% - 26px);
+    }
+
+    #resultSection {
+        padding-inline: 13px;
+    }
+
+    .result-item {
+        padding: 11px 8px;
+    }
+
+    .result-value {
+        font-size: 17px;
+    }
+}
+
+/* ACCESSIBILITY */
+
+button:focus-visible,
+a:focus-visible,
+.option-card:focus-within,
+.selection-card:focus-within,
+.goal-card:focus-within {
+    outline: 2px solid var(--olive);
+    outline-offset: 3px;
+}
+
+/* REDUCED MOTION */
 
 @media (prefers-reduced-motion: reduce) {
 
@@ -1624,12 +1623,8 @@ body:has(#resultSection:not([hidden])) #assessmentForm {
     *::before,
     *::after {
         scroll-behavior: auto !important;
-
         animation-duration: 0.01ms !important;
-
         animation-iteration-count: 1 !important;
-
         transition-duration: 0.01ms !important;
     }
-
 }
