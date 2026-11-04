@@ -820,56 +820,28 @@ body:has(#resultSection:not([hidden])) .back-link:hover {
     }
 }
 
-/* BACKGROUND IMAGE — RESULTS ONLY */
+/* BACKGROUND IMAGE — FOOD RECOMMENDATIONS ONLY */
 
-#resultSection::after {
+.recommendation-section {
+    position: relative;
+    isolation: isolate;
+}
+
+.recommendation-section::after {
     content: "";
     position: absolute;
-    z-index: 0;
+    z-index: -1;
     right: 0;
     bottom: 0;
-    width: min(78%, 1150px);
-    height: 78%;
+    width: min(100%, 900px);
+    height: 100%;
     pointer-events: none;
 
-    background-image: url("../images/results-background.png");
+    background-image: url("../images/results-decoration.png");
     background-repeat: no-repeat;
     background-position: right bottom;
-    background-size: contain;
-
-    opacity: 0.88;
-
-    -webkit-mask-image:
-        linear-gradient(
-            to left,
-            black 0%,
-            rgba(0, 0, 0, 0.9) 48%,
-            transparent 100%
-        ),
-        linear-gradient(
-            to top,
-            black 0%,
-            rgba(0, 0, 0, 0.85) 65%,
-            transparent 100%
-        );
-
-    -webkit-mask-composite: source-in;
-
-    mask-image:
-        linear-gradient(
-            to left,
-            black 0%,
-            rgba(0, 0, 0, 0.9) 48%,
-            transparent 100%
-        ),
-        linear-gradient(
-            to top,
-            black 0%,
-            rgba(0, 0, 0, 0.85) 65%,
-            transparent 100%
-        );
-
-    mask-composite: intersect;
+    background-size: auto 100%;
+    opacity: 0.92;
 }
 
 #resultSection > * {
@@ -1283,11 +1255,6 @@ body:has(#resultSection:not([hidden])) .visitor-counter:hover {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    #resultSection::after {
-        width: 85%;
-        height: 65%;
-    }
-
     .macro-row {
         grid-template-columns:
             minmax(110px, 145px)
@@ -1454,30 +1421,6 @@ body:has(#resultSection:not([hidden])) .visitor-counter:hover {
                 #254735,
                 #193629
             );
-    }
-
-    #resultSection::after {
-        right: 0;
-        bottom: 0;
-        width: 100%;
-        height: 58%;
-        background-position: right bottom;
-        background-size: auto 100%;
-        opacity: 0.78;
-
-        -webkit-mask-image: linear-gradient(
-            to top,
-            black 0%,
-            rgba(0, 0, 0, 0.85) 65%,
-            transparent 100%
-        );
-
-        mask-image: linear-gradient(
-            to top,
-            black 0%,
-            rgba(0, 0, 0, 0.85) 65%,
-            transparent 100%
-        );
     }
 
     #resultSection h2 {
